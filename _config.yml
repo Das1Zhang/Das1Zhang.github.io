@@ -1,9 +1,9 @@
-baseurl: "/Das1Zhang.github.io" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://das1zhang.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 
 # Build settings
-markdown: kramdown
+markdown: typora
 permalink: pretty
 plugins:
   - jekyll-paginate
