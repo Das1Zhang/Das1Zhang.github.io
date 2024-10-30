@@ -3,7 +3,7 @@ url: "https://das1zhang.github.io" # the base hostname & protocol for your site,
 
 
 # Build settings
-markdown: typora
+markdown: kramdown
 permalink: pretty
 plugins:
   - jekyll-paginate
