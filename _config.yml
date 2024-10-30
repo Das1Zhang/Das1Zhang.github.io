@@ -1,6 +1,6 @@
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://das1zhang.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-
+permalink: /:categories/:title
 
 # Build settings
 markdown: kramdown
@@ -29,6 +29,8 @@ include:
 tag_page_dir:         tag
 tag_page_layout:      tag_page
 tag_permalink_style:  pretty
+
+
 
 sass:
   sass_dir: _sass

@@ -1,27 +1,28 @@
 #-------------------------------
 # General Site Settings
-title: Zolan
-logo: logo.svg # You can add own logo.
+title: Das1
+logo: logo.jpg # You can add own logo.
 description: Zolan is modern minimal theme for Jekyll
 
 
 #-------------------------------
 # Author Settings
 author:
-  name: Alex Rodriguez
+  name: Das1Zhang
   image: 01.jpg
-  say-hello: Hello, I’m <strong>Alex Rodriguez</strong>
-  bio: Designs, talks, and writes about <strong>web</strong>, <strong>ethics</strong>, <strong>privacy</strong>, and dev. I share design tutorials, free resources and inspiration. Loves <a href="#">music</a> & riding his bicycle.
+  say-hello: Hello, I'm <strong>Das1 Zhang</strong>
+  bio: An undergraduate majoring Computer Science in WHU.  Music, Love, Sunshine, Discipline
 
 
 #-------------------------------
 # Contact links
-twitter: https://twitter.com/ # Add your Twitter handle
-facebook: https://facebook.com/ # Add your Facebook handle
-dribbble: https://dribbble.com/ # Add your Dribbble handle
-instagram: https://instagram.com/ # Add your Instagram handle
-pinterest: https://pinterest.com/ # Add your Pinterest handle
-
+twitter: https://x.com/SihaoFlower # Add your Twitter handle
+#facebook: https://facebook.com/ # Add your Facebook handle
+dribbble: https://dribbble.com/Das1Zhang # Add your Dribbble handle
+#instagram: https://instagram.com/ # Add your Instagram handle
+pinterest: https://www.pinterest.com/sihao050721com/ # Add your Pinterest handle
+bilibili: https://space.bilibili.com/352757351
+github: https://github.com/Das1Zhang
 
 #-------------------------------
 # Comment Section (Disqus)
