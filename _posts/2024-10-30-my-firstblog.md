@@ -4,8 +4,6 @@ title:  "First Blog!"
 date:   2024-10-30 00:37:55 +0300
 image:  99.jpg
 tags:   ZSH
-typora-root-url: ../../das1zhang.github.io/
-categories: Jekyll
 ---
 
 # this would be my first blog
