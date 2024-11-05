@@ -1,0 +1,163 @@
+user:
+  name: Das1
+  first_name: Das1
+  last_name: Zhang
+  email: sihao050721.com@gmail.com
+  domain: https://www.imalun.com
+  avatar: /logo.jpg
+  describe: Das1's Blog for recording notes and life.
+  rule_text: A real good blog, only accessible for personal blog.
+
+favicon:
+  logo: /logo.jpg
+  icon16: /favicon-16x16.png
+  icon32: /favicon-32x32.png
+  apple_touch_icon: apple-touch-icon.png
+  webmanifest: /site.webmanifest
+  visibilitychange: true
+  hidden: /logo.jpg
+  show_text: Das1's Blog.
+  hide_text: Waiting for u.
+
+assets:
+  third_party_provider: https://npm.elemecdn.com
+  icons:
+    type: symbol
+    css:
+    js: //at.alicdn.com/t/c/font_4729113_s83tz7zxo5.js
+
+sidebar:
+  social: 
+    - name: github
+      icon: icon-github
+      url: https://github.com/Das1Zhang
+    - name: twitter
+      icon: icon-TwitterX
+      url: https://x.com/SihaoFlower
+    - name: pinterest
+      icon: icon-Pinterest
+      url: https://www.pinterest.com/sihao050721com/
+    - name: bilibili
+      icon: icon-bilibili-line
+      url: https://space.bilibili.com/352757351
+    - name: redbook
+      icon: icon-xiaohongshu
+      url: https://www.xiaohongshu.com/user/profile/660a4195000000000b00c2b0
+    - name: youtube
+      icon: icon-youtube
+      rul: 
+  info: 
+    - key: address
+      val: HubeiWuhan
+    - key: age
+      val: 19
+    - key: school
+      val: WHU
+      
+  typed_text_prefix: I`m
+  typed_text: ["an undergraduate in WHU"]
+
+top_bars:
+  - title: home
+    url: /
+    noswup: true
+  - title: archives
+    url: /archives/
+    children:
+      - title: tags
+        url: /tags/
+      - title: categories
+        url: /categories/
+    noswup: true
+  - titlt: links
+    url: /links/
+    noswup: true
+  - title: lifeguide
+    url: /lifeguide/
+    noswup: true
+  - title: about
+    url: /about/
+    noswup: true
+
+
+layout:
+    footer: async/footer
+
+banner:
+  index:
+    type: video
+    bgurl: https://132-1331126615.cos.ap-guangzhou.myqcloud.com/videoplayback.mp4
+    banner_title: Hello, I'm<br>Das1 Zhang
+    banner_text: Hi my new friend!
+  archive:
+    type: img
+    bgurl: https://132-1331126615.cos.ap-guangzhou.myqcloud.com/archivebanner.gif
+    banner_title: Here is my treasure chest
+    banner_text: Welcome to the archive
+
+highlight:
+  theme: true
+  title: mac
+  copy: true
+  lang: false
+  code_word_wrap: true
+  height_limit: 200 # 超出时，显示折叠按钮
+
+rightside:
+  readmode: true
+  aside: true
+
+about:
+  insert: before # 插入规则 before（插入在内容前） | after（插入在内容后） | none（不插入）
+  title: Something About Me and My Blog.
+  introduction: I'm an undergraduate majoring Computer Science in WHU, and love every thing
+  blog: This is a blog as my study corner and my life recorder.
+  privacy: Must ask to author for allowance to share or stream.
+
+
+
+icons:
+  # 主题切换图标
+  sun: icon-a-farfa-sun
+  moon: icon-fa-moon-line
+  # 首页视频播放
+  play: icon-play
+  # 邮箱
+  email: icon-envelop
+  # 分类进入图标
+  next: icon-fa-arrow-right
+  # 文章详情 日期
+  calendar: icon-th-list
+  # 文章详情 时间
+  clock: icon-farfa-clock
+  # 文章详情 作者
+  user: icon-a-zu394
+  # 返回顶部 v1.1.3+
+  back_top: icon-fa-arrow-up
+  # 查询 v1.1.5+
+  search: icon-fasfa-search
+  # 关闭 v1.1.5+
+  close: icon-a-fasfa-times
+  # 打赏 v1.1.7+
+  reward: icon-dashang
+  # 用户信息和文章目录切换 v1.2.10+
+  user_tag: icon-a-zu394
+  toc_tag: icon-th-list
+  # 右下角固定按钮 v1.2.11+
+  read: icon-book-reader
+  arrows: icon-arrows-alt-h
+  # 代码高亮折叠 v2.0.0+
+  double_arrows: icon-angle-double-down
+  # 代码复制
+  copy: icon-copy
+
+toc:
+  enable: true
+  list_number: true
+  post_title: false
+  max_depth: 3
+  min_depth: 1
+
+post_pagination:
+  enable: true
+  type: small
