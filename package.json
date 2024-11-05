@@ -12,6 +12,7 @@
     "version": "7.3.0"
   },
   "dependencies": {
+    "bluebird": "^3.7.2",
     "hexo": "^7.3.0",
     "hexo-asset-image": "^1.0.0",
     "hexo-deployer-git": "^4.0.0",
@@ -29,6 +30,7 @@
     "hexo-theme-landscape": "^1.0.0",
     "hexo-util": "^3.3.0",
     "install": "^0.13.0",
-    "picocolors": "^1.1.1"
+    "picocolors": "^1.1.1",
+    "tildify": "^3.0.0"
   }
 }
