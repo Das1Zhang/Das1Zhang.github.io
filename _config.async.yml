@@ -24,14 +24,14 @@ assets:
   icons:
     type: symbol
     css:
-    js: //at.alicdn.com/t/c/font_4729113_s83tz7zxo5.js
+    js: //at.alicdn.com/t/c/font_4729113_x0bmmauxlx.js
 
 sidebar:
   social: 
     - name: github
       icon: icon-github
       url: https://github.com/Das1Zhang
-    - name: twitter
+    - name: X
       icon: icon-TwitterX
       url: https://x.com/SihaoFlower
     - name: pinterest
@@ -46,6 +46,9 @@ sidebar:
     - name: youtube
       icon: icon-youtube
       rul: 
+    - name: steam
+      icon: icon-steam
+      rul: https://steamcommunity.com/profiles/76561199544278917
   info: 
     - key: address
       val: HubeiWuhan
