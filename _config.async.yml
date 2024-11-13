@@ -45,7 +45,7 @@ sidebar:
       url: https://www.xiaohongshu.com/user/profile/660a4195000000000b00c2b0
     - name: youtube
       icon: icon-youtube
-      rul: 
+      rul: https://www.youtube.com/feed/you
     - name: steam
       icon: icon-steam
       rul: https://steamcommunity.com/profiles/76561199544278917
