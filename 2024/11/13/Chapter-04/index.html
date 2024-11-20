@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="The datapath in COD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chapter_04 of COD">
+<meta property="og:url" content="https://das1zhang.github.io/2024/11/13/Chapter-04/index.html">
+<meta property="og:site_name" content="Das1&#39;s Blog">
+<meta property="og:description" content="The datapath in COD">
+<meta property="og:locale">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="article:published_time" content="2024-11-13T13:51:28.965Z">
+<meta property="article:modified_time" content="2024-11-13T13:51:28.966Z">
+<meta property="article:author" content="Das1">
+<meta property="article:tag" content="COD">
+<meta property="article:tag" content="CS-Learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://das1zhang.github.io/img/404.jpg">
+
+
+<title >Chapter_04 of COD</title>
+
+<!-- Favicon -->
+
+    <link href='/favicon-16x16.png?v=2.2.4' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/favicon-32x32.png?v=2.2.4' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.4' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+
+    
+<script src="//at.alicdn.com/t/c/font_4729113_x0bmmauxlx.js"></script>
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"das1zhang.github.io","author":"Das1","root":"/","typed_text":["an undergraduate in WHU"],"theme_version":"2.2.4","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/logo.jpg","icon16":"/favicon-16x16.png","icon32":"/favicon-32x32.png","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"/logo.jpg","show_text":"Das1's Blog.","hide_text":"Waiting for u."},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-a-farfa-sun","moon":"icon-fa-moon-line","play":"icon-play","email":"icon-envelop","next":"icon-fa-arrow-right","calendar":"icon-th-list","clock":"icon-farfa-clock","user":"icon-a-zu394","back_top":"icon-fa-arrow-up","close":"icon-a-fasfa-times","search":"icon-fasfa-search","reward":"icon-dashang","toc_tag":"icon-th-list","read":"icon-book-reader","arrows":"icon-arrows-alt-h","double_arrows":"icon-angle-double-down","copy":"icon-copy","user_tag":"icon-a-zu394"},"icontype":"symbol","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":false,"title":"mac","height_limit":200},"toc":{"post_title":false},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-11-13 21:51:28"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.4" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-a-farfa-sun"></use>
+</svg></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-moon-line"></use>
+</svg></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/logo.jpg">
+    
+    
+        <div class="trm-logo-text">
+            Zhang<span>Das1</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/" target="">
+                    home
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/archives/" target="">
+                    archives
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            tags
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/" target="">
+                            categories
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/links/" target="">
+                    
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/lifeguide/" target="">
+                    lifeguide
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/about/" target="">
+                    about
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-a-farfa-sun"></use>
+</svg>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-moon-line"></use>
+</svg>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/CODbanner.gif">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            Instruction in different format
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Chapter_04 of COD
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/logo.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        Das1
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/Das1Zhang" title="github" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-github"></use>
+</svg>
+        </a>
+    
+        <a href="https://x.com/SihaoFlower" title="X" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-TwitterX"></use>
+</svg>
+        </a>
+    
+        <a href="https://www.pinterest.com/sihao050721com/" title="pinterest" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-Pinterest"></use>
+</svg>
+        </a>
+    
+        <a href="https://space.bilibili.com/352757351" title="bilibili" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-bilibili-line"></use>
+</svg>
+        </a>
+    
+        <a href="https://www.xiaohongshu.com/user/profile/660a4195000000000b00c2b0" title="redbook" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-xiaohongshu"></use>
+</svg>
+        </a>
+    
+        <a href="/" title="youtube" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-youtube"></use>
+</svg>
+        </a>
+    
+        <a href="/" title="steam" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-steam"></use>
+</svg>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                address:
+            </div>
+            <div class="trm-label trm-label-light">
+                HubeiWuhan
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                age:
+            </div>
+            <div class="trm-label trm-label-light">
+                19
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                school:
+            </div>
+            <div class="trm-label trm-label-light">
+                WHU
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:sihao050721.com@gmail.com" class="trm-btn">
+            联系我
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-envelop"></use>
+</svg>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg><br>
+            11/13
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-farfa-clock"></use>
+</svg><br>
+            21:51
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-a-zu394"></use>
+</svg><br>
+            Das1
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <p>这一章主要是四个内容：</p>
+<ul>
+<li>简单的datapath</li>
+<li>流水线(pipeline)</li>
+<li>冒险及处理(hazard)</li>
+<li>例外及处理(exception)</li>
+</ul>
+<h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><ul>
+<li>CPU performance factors<ul>
+<li>IC</li>
+<li>CPI &amp; Cycle time</li>
+</ul>
+</li>
+<li>两个RISC-V的实现<ul>
+<li>简单版本</li>
+<li>更加流水的现代化版本</li>
+</ul>
+</li>
+<li>三种指令<ul>
+<li>访存指令 <code>lw</code>,<code>sw</code></li>
+<li>算数逻辑运算 <code>add</code>,<code>sub</code>,<code>and</code>,<code>or</code></li>
+<li>控制跳转<code>beq</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="指令执行"><a href="#指令执行" class="headerlink" title="指令执行"></a>指令执行</h2><ul>
+<li>PC -&gt; instruction memory, fetch instruction</li>
+<li>Register numbers -&gt; register file, read registers</li>
+<li>依赖于指令类型<ul>
+<li>使用 ALU 进行运算<ul>
+<li>算数结果</li>
+<li>用于访存的内存地址</li>
+<li>分支比较</li>
+</ul>
+</li>
+<li>为load&#x2F;store 访问data memory</li>
+<li>PC &lt;- target address 或 PC + 4</li>
+</ul>
+</li>
+</ul>
+<h2 id="CPU-的修炼之路"><a href="#CPU-的修炼之路" class="headerlink" title="CPU 的修炼之路"></a>CPU 的修炼之路</h2><h3 id="CPU-Overview-最简单版本"><a href="#CPU-Overview-最简单版本" class="headerlink" title="CPU Overview(最简单版本)"></a>CPU Overview(最简单版本)</h3><p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/CPU%20Overview%EF%BC%88%E6%9C%80%E7%AE%80%E5%8D%95%E7%89%88%E6%9C%AC%EF%BC%89.png" alt="CPU Overview（最简单版本）"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>对于上面的版本，某些地方不能仅仅是把线连在一起，对于不同的指令要进行不同的选择（<strong>选择数据来源和将要进行的操作</strong>）<br>比如<strong>PC 是 +4 还是进行 相对寻址</strong>，数据写回 Register files 的时候是<strong>写回算数运算结果还是data memory</strong>，在ALU进行运算的是<strong>rs2 还是 imme</strong>，都要进行选择，此时我们在以下三个地方加上<strong>复选器(Multiplexer)</strong>:</p>
+<ul>
+<li>ALU 的 rs2 与 imme （ <strong>add  or addi</strong> )</li>
+<li>写回的PC （选择是 <strong>PC + 4 还是 相对寻址</strong>）(PC + 4 or beq)</li>
+<li>写回register file 的data（选择是<strong>ALU运算结果 还是 data memory</strong>）(算数运算指令 or load)</li>
+</ul>
+<p>改进后为下面的版本</p>
+<h3 id="Control-加上复选器版本"><a href="#Control-加上复选器版本" class="headerlink" title="Control(加上复选器版本)"></a>Control(加上复选器版本)</h3><p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/CPU%20%E5%8A%A0%E4%B8%8A%E5%A4%8D%E9%80%89%E5%99%A8%E7%89%88%E6%9C%AC.png" alt="CPU 加上复选器版本"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h3 id="逻辑设计基础"><a href="#逻辑设计基础" class="headerlink" title="逻辑设计基础"></a>逻辑设计基础</h3><ul>
+<li>信息是以二进制进行编码的<ul>
+<li>低电平为0，高电平为1</li>
+<li>每个bit 为一条线</li>
+<li>多个bit 则在 多条线上编码</li>
+</ul>
+</li>
+<li>组合元件<ul>
+<li>在data上进行操作</li>
+<li>输出完全由输入决定（输出是输入的函数）</li>
+</ul>
+</li>
+<li>状态元件<ul>
+<li>存储信息</li>
+<li>输出不仅由输入决定，还由自身状态决定</li>
+</ul>
+</li>
+</ul>
+<h3 id="时钟同步方法"><a href="#时钟同步方法" class="headerlink" title="时钟同步方法"></a>时钟同步方法</h3><ul>
+<li>组合逻辑在时钟周期循环的时候处理data<ul>
+<li>组合逻辑单元的操作在一个时钟周期内完成</li>
+<li>从一个状态单元输入，再输出到一个状态单元</li>
+<li>最长的延迟决定了时钟周期<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E6%97%B6%E9%92%9F%E5%90%8C%E6%AD%A5%E6%96%B9%E6%B3%95.png" alt="时钟同步方法"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ul>
+</li>
+</ul>
+<h2 id="构建数据通路"><a href="#构建数据通路" class="headerlink" title="构建数据通路"></a>构建数据通路</h2><ul>
+<li>Datapath<ul>
+<li>在CPU中处理数据和地址的元件<ul>
+<li>register，ALU，mux‘s，memories</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>我们将逐步构建RISC-V的datapath<ul>
+<li>重构 overview版本</li>
+</ul>
+</li>
+</ul>
+<p><strong>处理指令的5步操作</strong>：</p>
+<ol>
+<li>Instruction Fetch（读取指令）<ol>
+<li>PC</li>
+<li>Instructor Memory</li>
+<li>Adder (对PC进行操作)</li>
+</ol>
+</li>
+<li>Instruction decode (对数据进行解码，对不同的指令采取不同的措施)<ol>
+<li>Reg</li>
+</ol>
+</li>
+<li>Execution（执行指令，进行算数操作）<ol>
+<li>ALU</li>
+</ol>
+</li>
+<li>Memory（进行访存）<ol>
+<li>Data Memory</li>
+</ol>
+</li>
+<li>Write Back（写回数据）<ol>
+<li>Reg<br>需要注意的是并不是所有的指令都要进行上述5步，比如addi不需要进行第四步，load需要进行所有步骤。（这里隐隐显示了单周期的一个弊端）</li>
+</ol>
+</li>
+</ol>
+<p>接下来我们对上述5步逐步构建所需要的元件，一步一步地构建出一个数据通路</p>
+<h3 id="Instruction-Fetch"><a href="#Instruction-Fetch" class="headerlink" title="Instruction Fetch"></a>Instruction Fetch</h3><p>读取指令需要从Instruction memory中进行读取，读取完毕之后还需要对PC + 4由此可以构建出以下元件![[Instruction fetch.png]]</p>
+<h3 id="算数-逻辑运算"><a href="#算数-逻辑运算" class="headerlink" title="算数&#x2F;逻辑运算"></a>算数&#x2F;逻辑运算</h3><h4 id="对于R-Format指令"><a href="#对于R-Format指令" class="headerlink" title="对于R-Format指令"></a>对于R-Format指令</h4><ul>
+<li>读取两个需要操作的寄存器</li>
+<li>执行算数&#x2F;逻辑操作</li>
+<li>写寄存器结果<br>这样来说有两个组件参与上述过程</li>
+</ul>
+<ol>
+<li>register files</li>
+<li>ALU<br>由此可以构建下面的元件（下面是针对I-Format指令，多一个立即数生成器同时进行sign extension）<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/R-format%E7%9A%84decode.png" alt="R-format的decode"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ol>
+<h3 id="访存指令（Load-Store）"><a href="#访存指令（Load-Store）" class="headerlink" title="访存指令（Load&#x2F;Store）"></a>访存指令（Load&#x2F;Store）</h3><ul>
+<li>读取操作寄存器</li>
+<li>用12位偏移量进行地址操作<ul>
+<li>使用ALU，并且是<strong>sign-extension</strong></li>
+</ul>
+</li>
+<li>Load：读取memory并且更新register</li>
+<li>Store：将register值写入memory<br>那再在上面算数运算元件的基础上，再补充上访存对于data memory 的操作<br><strong>对于Load</strong><br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/load%E7%9A%84decode.png" alt="load的decode"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br><strong>对于store</strong>：<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/store%E7%9A%84decode.png" alt="store的decode"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ul>
+<h2 id="将上面的元件组合起来"><a href="#将上面的元件组合起来" class="headerlink" title="将上面的元件组合起来"></a>将上面的元件组合起来</h2><ul>
+<li>单周期数据通路在一个时钟周期内只进行一条指令<ul>
+<li>每一个datapath一次只能执行一个函数</li>
+<li>因此我们需要讲instruction memory 和 data memory分开<ul>
+<li>具体一点来说是由于每个时钟周期只能执行一条指令，如果将date和instruction混在一起，对于一个单接口的memory是无法同时进行两个不同的访问的</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用multiplexer来选择数据来源和将要进行的操作。<br>于是我们可以对于R- Format&#x2F;Load&#x2F;Store 指令构建下面的数据通路<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/IF%20%26%20ID%20pipeline.png" alt="IF &amp; ID pipeline"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ul>
+<h3 id="跳转指令（Branch）"><a href="#跳转指令（Branch）" class="headerlink" title="跳转指令（Branch）"></a>跳转指令（Branch）</h3><ul>
+<li>读取操作寄存器</li>
+<li>比较两个操作数<ul>
+<li>使用ALU，相减然后与0进行比较</li>
+</ul>
+</li>
+<li>计算目标地址<ul>
+<li>sign-extension</li>
+<li>左移一位（以halfword为单位）</li>
+<li>加到PC上（PC相对寻址）<br>将上述功能加入到进行Instruction Fetch的组件中，可以构建下面的元件<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/pipeline%E4%B8%AD%E7%9A%84branch.png" alt="pipeline中的branch"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ul>
+</li>
+</ul>
+<h3 id="Full-Datapath"><a href="#Full-Datapath" class="headerlink" title="Full Datapath"></a>Full Datapath</h3><p>由此我们已经完成构建了完整的数据通路<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/full%20datapath.png" alt="full datapath"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>当然对于上面的数据通路还有一些使能端没有提及，在这里说明一下</p>
+<ul>
+<li>RegWrite（用于对写回寄存器堆进行使能）</li>
+<li>MemWrite，MemRead （对于读写内存进行使能）<br>在不同的指令执行时使能端也发生相应的变化。</li>
+</ul>
+<h2 id="ALU-Control"><a href="#ALU-Control" class="headerlink" title="ALU Control"></a>ALU Control</h2><p>ALU 会被用于以下操作</p>
+<ul>
+<li>Load&#x2F;Store：F &#x3D; add</li>
+<li>Branch: F &#x3D; subtract</li>
+<li>R-type: F depends on opcode<br>我们认为 ALUOp 由 opcode 衍生而来<br>通过解码指令的opcode，func3，func7 字段来得到ALU 的运算操作<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/ALU%E8%A7%A3%E7%A0%81.png" alt="ALU解码"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ul>
+<p>Control signals dirived from instruction<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E6%8E%A7%E5%88%B6%E4%BF%A1%E5%8F%B7%E5%AD%97%E6%AE%B5%E8%A1%A8.png" alt="控制信号字段表"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>引入Control之后，我们又可以将Instruction Decode这一步加入到datapath中了<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E5%BC%95%E5%85%A5ID%E7%9A%84pipeline.png" alt="引入ID的pipeline"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>上面的图中发现我们在Instruction Memory和register file之间多了一道对Instruction 进行解码的操作，根据不同的字段来对不同的接口进行操作</p>
+<ul>
+<li>操作寄存器（rs1，rs2， rd字段）</li>
+<li>操作立即数生成器（imme字段）</li>
+<li>操作ALU（func3 &amp; func7字段）</li>
+<li>操作multiplexer（opcode字段）</li>
+</ul>
+<p>至此，单周期数据通路的构建已经完成。<br>根据我们处理instruction的5步，我们构建数据通路的步骤却是不一样的</p>
+<ol>
+<li>Instruction Fetch(拿到指令)<ol>
+<li>Instruction memory</li>
+<li>register files</li>
+<li>PC（PC +4）</li>
+</ol>
+</li>
+<li>Execution（进行运算），WriteBack（将算数运算结果写回）<ol>
+<li>ALU（R-Format，I-Format，SB-Format）</li>
+<li>Adder（beq）</li>
+</ol>
+</li>
+<li>Memory（访存），WriteBack（将地址load回）<ol>
+<li>Data Memory（Load&#x2F;Store，</li>
+</ol>
+</li>
+<li>Instruction Decode（对指令进行解码）<ol>
+<li>Instruction memory</li>
+<li>register file</li>
+<li>ALU Control</li>
+<li>Immediate generator</li>
+<li>multiplexer control</li>
+</ol>
+</li>
+</ol>
+<h2 id="性能问题"><a href="#性能问题" class="headerlink" title="性能问题"></a>性能问题</h2><ul>
+<li>最长的延迟决定了周期时长<ul>
+<li>关键的path：load（5步都需要进行）</li>
+<li>Instruction Memory -&gt; register file -&gt; ALU -&gt; data memory -&gt; register file</li>
+</ul>
+</li>
+<li>对于不同的指令是不可变的</li>
+<li>违反了design principle<ul>
+<li>“ Making the Common Case Fast”</li>
+</ul>
+</li>
+<li>我们将要通过流水线(pipeline)来改进性能</li>
+</ul>
+<h2 id="流水线"><a href="#流水线" class="headerlink" title="流水线"></a>流水线</h2><h3 id="洗衣服"><a href="#洗衣服" class="headerlink" title="洗衣服"></a>洗衣服</h3><p>用洗衣服对流水线做类比，每次洗衣服有四个步骤</p>
+<ol>
+<li>洗衣服</li>
+<li>烘干</li>
+<li>叠衣服</li>
+<li>收纳<br>对于单周期而言，只有上面四个步骤都做完后才可以开始执行下一套流程，而对于流水线，在一个步骤执行完之后，这个步骤所需的工具不会停止工作，每个步骤所需的工具的工作状态是可重叠的，如下图：<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E6%B4%97%E8%A1%A3%E6%9C%8D%E7%9A%84%E6%B5%81%E6%B0%B4%E7%BA%BF.png" alt="洗衣服的流水线"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>这种<strong>流水线</strong>式的工作方式明显提高了性能，最后每个步骤的工具都在工作，相比单周期而言，流水线有多少步骤就提高了多少倍的速度</li>
+</ol>
+<h3 id="五个阶段"><a href="#五个阶段" class="headerlink" title="五个阶段"></a>五个阶段</h3><ul>
+<li>IF:Instruction fetch from memory</li>
+<li>ID:Instruction decode &amp; register read</li>
+<li>EX:Execute operation or calculate address</li>
+<li>MEM:Access memory operand</li>
+<li>WB:Write result back to register</li>
+</ul>
+<h3 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h3><p>假设每个阶段的时间</p>
+<ul>
+<li>100ps for register read or write</li>
+<li>200ps for other stages<br>通过下图可以看到单周期与流水线的性能差异：<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E5%8D%95%E5%91%A8%E6%9C%9F%E4%B8%8E%E6%B5%81%E6%B0%B4%E7%BA%BF%E6%80%A7%E8%83%BD%E5%B7%AE%E5%BC%82.png" alt="单周期与流水线性能差异"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>通过上图可以总结出以下几点：</li>
+<li>如果所有的stage花费同样的时间<ul>
+<li>那么pipelined time &#x3D; no pipelined time &#x2F; number of stages</li>
+</ul>
+</li>
+<li>如果stages不是balanced那么提速会少一些<ul>
+<li>因为pipeline的时钟周期根据最长的stage time而定，即使stage time &lt; cycle time实际上还是需要经过一个cycle time才会到下一个stage</li>
+</ul>
+</li>
+<li>因为有throughput才会有提速<ul>
+<li>而每个instruction的延迟没有减少</li>
+</ul>
+</li>
+</ul>
+<h3 id="ISA-design"><a href="#ISA-design" class="headerlink" title="ISA design"></a>ISA design</h3><ul>
+<li>RISC-V对于流水线的设计<ul>
+<li>所有指令都是32-bits<ul>
+<li>在一个cycle里面fetch和decode都更加容易</li>
+<li>x86甚至有少达1-bit 多达17-bit的指令也是时代的奇葩了</li>
+</ul>
+</li>
+<li>更少且更规整的格式<ul>
+<li>可以在一步内同时完成 decode 和 read register</li>
+</ul>
+</li>
+<li>Load&#x2F;Store 地址<ul>
+<li>可以在第三个stage计算地址，在第四个stage访问内存，将计算和访问分开</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Hazards"><a href="#Hazards" class="headerlink" title="Hazards"></a>Hazards</h3><ul>
+<li>阻挠在下个周期开始执行下一条指令的情形</li>
+<li>结构冒险<ul>
+<li>需要的资源繁忙</li>
+</ul>
+</li>
+<li>数据冒险<ul>
+<li>需要等待上一条指令完成data read&#x2F;write</li>
+<li>比如上一条addi 需要存入x5,而下一条指令又需要read x5，这时就会发生冒险</li>
+</ul>
+</li>
+<li>控制冒险<ul>
+<li>上一条指令决定了控制行为</li>
+<li>比如上一条为beq，那么如何判断下一条指令是PC + 4还是需要PC 相对寻址呢</li>
+</ul>
+</li>
+</ul>
+<h2 id="How-to-solve-Hazards"><a href="#How-to-solve-Hazards" class="headerlink" title="How to solve Hazards"></a>How to solve Hazards</h2><p>怎么解决流水线设计中出现的冒险问题是本章的重点</p>
+<h3 id="struct-hazard"><a href="#struct-hazard" class="headerlink" title="struct hazard"></a>struct hazard</h3><p>解决结构冒险没啥好说的，主要就是将一个memory 分为 instruction memory 和 data memory</p>
+<p>矛盾出现在资源的利用上，指令和地址</p>
+<p>在只有一个memory 的RISC-V流水线中</p>
+<ul>
+<li>load &#x2F; store需要访问data</li>
+<li>那么instruction fetch会造成阻塞<ul>
+<li>产生pipeline bubble</li>
+<li>必须要等取data完成之后再进行instruction fetch（one-ported）</li>
+</ul>
+</li>
+<li>因此流水线通路需要instruction和data 分离的memory<ul>
+<li>或者分离的instruction和data 内存</li>
+</ul>
+</li>
+</ul>
+<h3 id="data-hazard"><a href="#data-hazard" class="headerlink" title="data hazard"></a>data hazard</h3><p>后一条指令依赖于前一条指令的data access</p>
+<p>一种方式是直接使用bubble，阻塞直到上一条指令完成再执行下一条指令<br>当然这种方式在设计时是不可取的，极大的浪费了性能</p>
+<p>另一种方式被称为<strong>前递</strong>或<strong>旁路</strong>（Forwarding a.k.a Bypassing）<br>当需要的结果产生的时候就直接把它取过来使用</p>
+<ul>
+<li>不需要等到它被存储到register中</li>
+<li>在datapath中需要额外的connection来进行这个操作<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E6%97%81%E8%B7%AF.png" alt="旁路"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ul>
+<h4 id="Load-Use-Data-Hazard"><a href="#Load-Use-Data-Hazard" class="headerlink" title="Load-Use Data Hazard"></a>Load-Use Data Hazard</h4><p>当然通过上面这种方式也不一定每次都可以防止阻塞</p>
+<ul>
+<li>结果在需要的时候还没有被计算出来</li>
+<li>不能时间回溯（也就是上面蓝色的connection不能往时间轴的前面伸）</li>
+</ul>
+<p>在Load-Use指令执行的时候，我们只有在MEM访问内存的时候才能得到我们想要的（存在内存中的）结果，如果我们还是不插入阻塞的话，这个蓝色的connection就会往回链接，显然这是违背因果律的，因此我们还是需要插入bubble</p>
+<h5 id="代码规划来规避阻塞"><a href="#代码规划来规避阻塞" class="headerlink" title="代码规划来规避阻塞"></a>代码规划来规避阻塞</h5><p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E4%BB%A3%E7%A0%81%E8%B0%83%E5%BA%A6.png" alt="代码调度"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>在上面的RISC-V指令中我们可以看到，在这一条c代码中，本来是两条Load-Use指令，会产生两次阻塞，但是我们将Load-Use-Load-Use改进为Load1-Load2-Use1-Use2，改变了Load-Use结构，消除了阻塞，优化了性能。</p>
+<h3 id="Control-Hazards"><a href="#Control-Hazards" class="headerlink" title="Control Hazards"></a>Control Hazards</h3><ul>
+<li>分支决定了flow of control<ul>
+<li>fetch下一条指令取决于branch的结果</li>
+<li>流水线不一定每次都能fetch到正确的指令<ul>
+<li>还在instruction decoding的时候下一条指令就已经进入instruction fetch了</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>在RISC-V 流水线中<ul>
+<li>需要在流水线中早早地比较register并计算target</li>
+<li>添加硬件来在instruction decode的时候就完成这个工作</li>
+</ul>
+</li>
+</ul>
+<p>一种方式是直到branch outcome计算完成后再fetch，当然这种方式不可避免地会引入阻塞</p>
+<h4 id="Branch-Prediction"><a href="#Branch-Prediction" class="headerlink" title="Branch Prediction"></a>Branch Prediction</h4><ul>
+<li>更长的流水线不能完美的随意的早早决定branch outcome<ul>
+<li>阻塞惩罚也更加不可接受（长流水线的性能昂贵）</li>
+</ul>
+</li>
+<li>预测branch的结果<ul>
+<li>只有在预测错误的时候才会引入阻塞</li>
+</ul>
+</li>
+<li>在RISC-V流水线中<ul>
+<li>可以预测没有被take的branch</li>
+<li>在branch之后再fetch instruction，没有延迟</li>
+</ul>
+</li>
+</ul>
+<h4 id="更加现实的Branch-Prediction"><a href="#更加现实的Branch-Prediction" class="headerlink" title="更加现实的Branch Prediction"></a>更加现实的Branch Prediction</h4><ul>
+<li>静态branch 预测<ul>
+<li>基于典型的branch 行为</li>
+<li>比如：循环和if语句<ul>
+<li>一个是预测会向回跳转</li>
+<li>一个是预测branch没有执行，向前执行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>动态branch预测<ul>
+<li>硬件解决真正的branch behavior<ul>
+<li>比如记录下branch的跳转历史</li>
+</ul>
+</li>
+<li>假设未来的behavior会继续这个趋势<ul>
+<li>如果假设错误，那就加入阻塞并重新fetch，然后更新history</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>举个例子：<br>在一段代码中遇见循环时，我应该预测向回跳转，遇见其他情况我应该直接预测不跳转（因为但我们单独写一些if语句时，一般都是针对特殊情况），在未进入循环时，我们预测不跳转，刚进入循环时，仍然预测不跳转（因为硬件也不知道是否进入了循环），但是此时实际上会连续几次发生跳转，此时我们就要更改预测策略，预测会发生跳转，当循环结束后，仍然还会预测发生跳转（因为硬件也不知道循环已经结束了），实际上已经不发生跳转了，那么我们又要改变回我们原来的预测不发生跳转的策略，这就是动态branch prediction。（硬件会根据历史记录来假定未来趋势，其余仅仅是在执行指令，并不能立刻的判断出循环是否结束，也就是说，硬件是具有“惯性的”）</p>
+<h2 id="pipeline-总结"><a href="#pipeline-总结" class="headerlink" title="pipeline 总结"></a>pipeline 总结</h2><ul>
+<li>pipeline通过改进instruction throughput来提升性能<ul>
+<li>并行执行数量繁多的instruction</li>
+<li>每条指令具有相同的latency</li>
+</ul>
+</li>
+<li>受hazard的影响<ul>
+<li>structure，data，control</li>
+</ul>
+</li>
+<li>指令集的设计会影响pipeline实现的复杂度</li>
+</ul>
+<h2 id="pipeline-register-（流水线寄存器）"><a href="#pipeline-register-（流水线寄存器）" class="headerlink" title="pipeline register （流水线寄存器）"></a>pipeline register （流水线寄存器）</h2><p>在不同的stage之间需要寄存器-&gt;需要保持在上一个周期内产生的信息</p>
+<p>举例：<br>比如我们在第一个add指令中将x5作为rd，但是在这条指令执行完之前就开始执行下一条指令，假设下一条指令又将x7作为rd，而这时又register file中的rd只能存储一个rd（也就是正在进行ID的rd），我们需要将第一个add指令的rd信息给存储下来，让这个信息跟着这条add指令，这样在WB的时候才能找到正确的rd<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E6%B5%81%E6%B0%B4%E7%BA%BF%E5%AF%84%E5%AD%98%E5%99%A8.png" alt="流水线寄存器"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>#多周期流水线示意图<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E5%A4%9A%E5%91%A8%E6%9C%9F%E6%B5%81%E6%B0%B4%E7%BA%BF%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="多周期流水线示意图"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h2 id="pipeline-control"><a href="#pipeline-control" class="headerlink" title="pipeline control"></a>pipeline control</h2><p>控制信号由指令而来<br>在单周期实现中<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/pipeline%20control.png" alt="pipeline control"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>每经过一个步骤，该步骤所需要的control signal就不再需要，其余的control signal流向下一个步骤，控制后续步骤的执行</p>
+<p>将pipeline control替换我们之前在单周期的CPU图中的control可以得到下图<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/pipeline%20control%E6%9B%BF%E6%8D%A2%E5%8D%95%E5%91%A8%E6%9C%9Fcontrol.png" alt="pipeline control替换单周期control"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>我们将上图与原来单周期的CPU图的control进行比较</p>
+<ul>
+<li>单周期control<ul>
+<li>3个 multiplexer<ul>
+<li>ALU source</li>
+<li>WB</li>
+<li>PC source</li>
+</ul>
+</li>
+<li>3个 state elemetn<ul>
+<li>MemRead</li>
+<li>MemWrite</li>
+<li>RegWrite</li>
+</ul>
+</li>
+<li>1个 ALU op</li>
+</ul>
+</li>
+<li>pipeline control<ul>
+<li>control信号跟随processing流动<ul>
+<li>EXE 信号<ul>
+<li>ALU op</li>
+<li>ALU source</li>
+</ul>
+</li>
+<li>MEM 信号<ul>
+<li>MemRead</li>
+<li>MemWrite</li>
+<li>Branch （PC source）</li>
+</ul>
+</li>
+<li>WB 信号<ul>
+<li>MemtoReg</li>
+<li>RegWrite</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Forwarding-实例"><a href="#Forwarding-实例" class="headerlink" title="Forwarding 实例"></a>Forwarding 实例</h2><p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/forwarding%E5%AE%9E%E4%BE%8B.png" alt="forwarding实例"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h3 id="检测forwarding"><a href="#检测forwarding" class="headerlink" title="检测forwarding"></a>检测forwarding</h3><p>核心：上一条指令rd恰是下一条指令的rs</p>
+<ul>
+<li><p>随着流水线传递register number</p>
+<ul>
+<li>比如：ID&#x2F;EX rs1 &#x3D; register number for rs1 sitting in ID&#x2F;EX pipeline register</li>
+</ul>
+</li>
+<li><p>ALU 操作寄存器由 ID&#x2F;EX rs1，ID&#x2F;EX rs2 给出</p>
+</li>
+<li><p>Data hazard 发生于</p>
+<ul>
+<li>由EX&#x2F;MEM pipeline reg 发生forwarding （上一条指令rd）<ul>
+<li>1a. EX&#x2F;MEM.RegisterRd  &#x3D;  ID&#x2F;EX.RegisterRs1</li>
+<li>1b. EX&#x2F;MEM.RegisterRd  &#x3D;  ID&#x2F;EX.RegisterRs2</li>
+</ul>
+</li>
+<li>由MEM&#x2F;WB pipeline reg 发生forwarding（上上一条指令rd）<ul>
+<li>2a.MEM&#x2F;WB.RegisterRd  &#x3D;  ID&#x2F;EX.RegisterRs1</li>
+<li>2b.MEM&#x2F;WB.RegisterRd  &#x3D;  ID&#x2F;EX.RegisterRs2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>只有当要写入寄存器的时候才会发生forwarding</p>
+<ul>
+<li>EX&#x2F;MEM.RegWrite,MEM&#x2F;WB.RegWrite</li>
+<li>检测确实有写使能的信号</li>
+</ul>
+</li>
+<li><p>只有写入寄存器不为x0时才会发生forwarding（x0不能被写）</p>
+</li>
+<li><p>修改forwarding的情况</p>
+</li>
+<li><p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E4%BF%AE%E6%94%B9forwarding%E7%9A%84%E6%83%85%E5%86%B5.png" alt="修改forwarding的情况"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>也就是说，当出现双重冒险时，不再承认爷孙之间的旁路</p>
+</li>
+</ul>
+<h2 id="Load-Use-冒险检测"><a href="#Load-Use-冒险检测" class="headerlink" title="Load-Use 冒险检测"></a>Load-Use 冒险检测</h2><ul>
+<li>检测指令是否在ID阶段被编码</li>
+<li>ALU 操作数在ID阶段由<ul>
+<li>IF&#x2F;ID.RegisterRs1</li>
+<li>IF&#x2F;ID.RegisterRs2  给出</li>
+</ul>
+</li>
+<li>Load-Use Hazard when<ul>
+<li>ID&#x2F;EX.MemRead 有Mem读使能信号</li>
+<li>ID&#x2F;EX.RegisterRd&#x3D;IF&#x2F;ID.RegisterRs1或者</li>
+<li>ID&#x2F;EX.RegisterRd&#x3D;IF&#x2F;ID.RegisterRs2</li>
+<li>为什么这个寄存器的检测这么奇怪？<ul>
+<li>我们按照正常流水线的流程来进行设想，load-use hazard发生的核心在于，下一条指令需要的rs在load-use中在Mem-WB的时候才能得出结果，但是我们检测load-use hazard 只需要 load-use rd，下一条指令rs，和mem读使能信号，这些信息我们在解码的时候就可以得出，也就是在IF&#x2F;ID就可以得到了，而阻塞是如何发生的呢，当我们发出阻塞信号时，并不是流水线停止工作一个周期（流水线是不会停止的），而是我们将前面的阶段清零，如果我们检测 EX&#x2F;MEM.RegisterRd&#x3D;ID&#x2F;EX.RegisterRs，如果我们检测到需要阻塞，就会将ID和它之前的IF都清零（因为此时我们已经加载了两个指令），那么实际上会造成两个阻塞，比我们的分析多浪费一个周期，所以我们提早一个检测也就是ID&#x2F;EX.RegisterRd&#x3D;IF&#x2F;ID.RegisterRs</li>
+<li><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E6%80%AA%E7%9A%84%E5%AF%84%E5%AD%98%E5%99%A8%E6%A3%80%E6%B5%8B.png" alt="奇怪的寄存器检测"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如果检测到确实有load-use冒险，那就阻塞并插入一个bubble</li>
+</ul>
+<h3 id="怎样在流水线中进行阻塞"><a href="#怎样在流水线中进行阻塞" class="headerlink" title="怎样在流水线中进行阻塞"></a>怎样在流水线中进行阻塞</h3><ul>
+<li>强制ID&#x2F;EX register置为0<ul>
+<li>控制信号全部置0，让后面的阶段都nop</li>
+<li>EX，MEM，WB 不做操作</li>
+</ul>
+</li>
+<li>防止PC和IF&#x2F;ID register的更新<ul>
+<li>让PC停止更新，IF&#x2F;ID流水线寄存器不发生改变，可以造成一个时钟周期的滞留</li>
+<li>再一次使用已经被编码的指令</li>
+<li>下一条指令会再一次被fetch</li>
+<li>一个周期的阻塞可以让MEM为ld读取数据<ul>
+<li>可以forward到EX阶段</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="带有冒险检测的流水线"><a href="#带有冒险检测的流水线" class="headerlink" title="带有冒险检测的流水线"></a>带有冒险检测的流水线</h3><p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E5%B8%A6%E5%86%92%E9%99%A9%E6%A3%80%E6%B5%8B%E7%9A%84%E6%B5%81%E6%B0%B4%E7%BA%BF.png" alt="带冒险检测的流水线"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h3 id="性能方面"><a href="#性能方面" class="headerlink" title="性能方面"></a>性能方面</h3><ul>
+<li>阻塞一定会降低性能<ul>
+<li>但是保证了正确性</li>
+</ul>
+</li>
+<li>编译器可以通过调度代码来避免冒险和阻塞的发生（code schedule）<ul>
+<li>需要流水线结构的知识</li>
+</ul>
+</li>
+</ul>
+<h2 id="Branch-Hazards"><a href="#Branch-Hazards" class="headerlink" title="Branch Hazards"></a>Branch Hazards</h2><p>如果我们在MEM才决定是否要进行分支跳转：<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E5%A6%82%E6%9E%9C%E5%9C%A8MEM%E5%86%B3%E5%AE%9Abranch.png" alt="如果在MEM决定branch"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>可以看到我们将前面已经加载的指令全都冲掉了，非常浪费时钟周期</p>
+<h3 id="削减分支跳转的延迟"><a href="#削减分支跳转的延迟" class="headerlink" title="削减分支跳转的延迟"></a>削减分支跳转的延迟</h3><ul>
+<li>添加硬件，使其在ID阶段就得出是否要跳转的结果<ul>
+<li>目标地址adder（PC相对寻址）</li>
+<li>register comparator （用于逻辑运算，决定是否跳转）</li>
+</ul>
+</li>
+<li><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E5%89%8A%E5%87%8F%E5%88%86%E6%94%AF%E8%B7%B3%E8%BD%AC%E7%9A%84%E5%BB%B6%E8%BF%9F.png" alt="削减分支跳转的延迟"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>上面的流水线图我们可以看到：</li>
+<li>在ID阶段就已经计算出了target address，并将rs1，rs2进行了比较</li>
+<li>如果判断出需要跳转，IF.Flush控制信号将IF&#x2F;ID寄存器冲掉，也就是将下一个CC获取到的指令置0</li>
+</ul>
+<p>注意我们要将comparator提前放置会带来很多设计上的巨大挑战</p>
+<ul>
+<li>这里既然是一个算数逻辑运算那么就完全有可能发生data hazard</li>
+</ul>
+<h2 id="动态分支预测"><a href="#动态分支预测" class="headerlink" title="动态分支预测"></a>动态分支预测</h2><ul>
+<li>使用动态预测<ul>
+<li>分支预测缓冲（也叫分支历史表）</li>
+<li>由branch指令地址进行索引（lower bits）</li>
+<li>存储结果（是否发生跳转）</li>
+<li>to 执行跳转<ul>
+<li>检查table，预测是相同结果</li>
+<li>从fall-through或者target来取指令</li>
+<li>如果预测错误，则冲跳流水线并翻转预测</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-bit-预测的缺点"><a href="#1-bit-预测的缺点" class="headerlink" title="1-bit 预测的缺点"></a>1-bit 预测的缺点</h3><p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/1-bit%E9%A2%84%E6%B5%8B%E7%BC%BA%E7%82%B9.png" alt="1-bit预测缺点"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<ul>
+<li>在inner loop的最后一次迭代的时候预测会跳结果没跳</li>
+<li>在inner loop第一次迭代预测没跳结果又跳了</li>
+<li>每一个分支都有它自己的分支历史表</li>
+</ul>
+<p>于是我们就设计了一个 2-bit 预测<br>只有当连续两次发生预测错误的时候才会发生翻转<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/2-bit%E9%A2%84%E6%B5%8B.png" alt="2-bit预测"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h3 id="计算branch-target"><a href="#计算branch-target" class="headerlink" title="计算branch target"></a>计算branch target</h3><ul>
+<li>即使有预测存在，仍然需要计算target address<ul>
+<li>如果发生了branch那也只会发生一个周期的panalty</li>
+</ul>
+</li>
+<li>分支目标缓冲<ul>
+<li>存储target address（时刻准备着）</li>
+<li>fetch 指令的时候由PC进行索引<ul>
+<li>如果发生了分支跳转，可以立刻进行目标地址索引</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Exception-and-Interrupts（例外与中断）"><a href="#Exception-and-Interrupts（例外与中断）" class="headerlink" title="Exception and Interrupts（例外与中断）"></a>Exception and Interrupts（例外与中断）</h2><ul>
+<li>未预料到的事情在control flow过程中发生需要更改</li>
+<li>Exception<ul>
+<li>一般是由CPU引起的</li>
+<li>例如没有定义的操作码，系统调用等</li>
+</ul>
+</li>
+<li>Interrupt<ul>
+<li>从外部I&#x2F;O controller引起</li>
+</ul>
+</li>
+<li>不牺牲性能是很难的</li>
+</ul>
+<h3 id="处理例外"><a href="#处理例外" class="headerlink" title="处理例外"></a>处理例外</h3><ul>
+<li>将被打断的指令的PC保存下来</li>
+<li>将问题的指示保存下来（原因）<ul>
+<li>Supervisor Exception Cause Register（系统例外寄存器）</li>
+<li>64bit，但是大多数都没用上</li>
+</ul>
+</li>
+<li>跳到handler</li>
+</ul>
+<h4 id="一种选择性机制"><a href="#一种选择性机制" class="headerlink" title="一种选择性机制"></a>一种选择性机制</h4><ul>
+<li>向量式中断<ul>
+<li>handler的地址由原因决定</li>
+</ul>
+</li>
+<li>基址寄存器加上例外原因作为目标地址</li>
+<li>指令要么处理中断要么跳到handler</li>
+</ul>
+<h4 id="handler-的行为"><a href="#handler-的行为" class="headerlink" title="handler 的行为"></a>handler 的行为</h4><ul>
+<li>读取原因，然后跳到最相关的handler</li>
+<li>决定所需的行为</li>
+<li>如果可以重新开始<ul>
+<li>采取正确的行为</li>
+<li>使用SEPC返回到program中</li>
+</ul>
+</li>
+<li>否则<ul>
+<li>终止程序</li>
+<li>使用SEPC和SCAUSE报告错误</li>
+</ul>
+</li>
+</ul>
+<h3 id="流水线中的例外"><a href="#流水线中的例外" class="headerlink" title="流水线中的例外"></a>流水线中的例外</h3><ul>
+<li>另一种形式的control hazard</li>
+<li>考虑<code>addi x1, x2, x1</code>在EX阶段出现例外<ul>
+<li>防止x1被更新</li>
+<li>将前面的指令正常执行完</li>
+<li>将该指令和随后的指令都flush掉</li>
+<li>写入SEPC和SCAUSE寄存器的值</li>
+<li>将控制权移交给handler</li>
+</ul>
+</li>
+<li>与错误预测的branch很相似<ul>
+<li>用了很多相同的硬件<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E6%B5%81%E6%B0%B4%E7%BA%BF%E4%B8%AD%E7%9A%84%E4%BE%8B%E5%A4%96.png" alt="流水线中的例外"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ul>
+</li>
+</ul>
+<h3 id="例外的性质"><a href="#例外的性质" class="headerlink" title="例外的性质"></a>例外的性质</h3><ul>
+<li>可重开的例外<ul>
+<li>流水线可以冲掉指令</li>
+<li>handler执行之后，返回到该指令<ul>
+<li>重新fetch并执行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>PC在SEPC中被保存</li>
+<li>查明causing instruction</li>
+</ul>
+<h3 id="例外举例"><a href="#例外举例" class="headerlink" title="例外举例"></a>例外举例</h3><p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E4%BE%8B%E5%A4%96%E4%B8%BE%E4%BE%8B.png" alt="例外举例"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>假如在上面的4c add指令发生例外，让我们看看流水线会发生什么变化<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E5%A4%84%E7%90%86%E4%BE%8B%E5%A4%96.png" alt="处理例外"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>上面是发生例外时进行处理，下面可以看到处理后的流水线发生了什么变化<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E5%A4%84%E7%90%86%E4%BE%8B%E5%A4%96%E4%B8%AD.png" alt="处理例外中"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>可以看到已经进行加载的指令全部flush变为bubble，并且handler中的sd指令进入流水线，也就是将控制权交给handler，执行例外处理。</p>
+<h3 id="多重例外"><a href="#多重例外" class="headerlink" title="多重例外"></a>多重例外</h3><ul>
+<li>流水线会重载多个指令<ul>
+<li>可能会同时发生多个例外</li>
+</ul>
+</li>
+<li>简单的方法：从最早的指令进行处理<ul>
+<li>将后续的指令全部冲掉</li>
+<li>“精准的”例外</li>
+</ul>
+</li>
+<li>在复杂流水线中<ul>
+<li>每个CC中出现多个指令</li>
+<li>乱序的完成</li>
+<li>保持“精准的”例外是很难的</li>
+</ul>
+</li>
+</ul>
+<h4 id="模糊例外"><a href="#模糊例外" class="headerlink" title="模糊例外"></a>模糊例外</h4><ul>
+<li>停止流水线并保存状态<ul>
+<li>包括例外原因</li>
+</ul>
+</li>
+<li>让handler 开始工作<ul>
+<li>哪些指令有例外</li>
+<li>哪些需要完成或者冲掉<ul>
+<li>可能需要手动完成</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>简化硬件，但是复杂化软件</li>
+<li>对于复杂多重问题的乱序流水线是不可行的</li>
+</ul>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2024/11/13/Chapter_01/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/CODcover.jpg">
+                </span>
+                <h6 class="trm-op-title">Chapter_01 of COD</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/13</li>
+                <li>21:51</li>
+                <li>计算机组成原理</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2024/11/13/Chapter-03/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/CODcover.jpg">
+                </span>
+                <h6 class="trm-op-title">Chapter_03 of COD</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/11/13</li>
+                <li>21:51</li>
+                <li>计算机组成原理</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <div class="trm-counter-up trm-scroll-animation">
+    <div class="trm-counter-number">
+        <span class="trm-counter">140</span>
+        <span class="trm-counter-symbol">+</span>
+    </div>
+    <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+    <div class="trm-label">Honors and Awards</div>
+</div>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="Intro"><a rel="nofollow" class="trm-toc-link" href="#Intro"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">Intro</span></a></li><li class="trm-toc-item trm-toc-level-2" title="指令执行"><a rel="nofollow" class="trm-toc-link" href="#指令执行"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">指令执行</span></a></li><li class="trm-toc-item trm-toc-level-2" title="CPU 的修炼之路"><a rel="nofollow" class="trm-toc-link" href="#CPU-的修炼之路"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">CPU 的修炼之路</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="CPU Overview(最简单版本)"><a rel="nofollow" class="trm-toc-link" href="#CPU-Overview-最简单版本"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">CPU Overview(最简单版本)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Control(加上复选器版本)"><a rel="nofollow" class="trm-toc-link" href="#Control-加上复选器版本"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">Control(加上复选器版本)</span></a></li><li class="trm-toc-item trm-toc-level-3" title="逻辑设计基础"><a rel="nofollow" class="trm-toc-link" href="#逻辑设计基础"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">逻辑设计基础</span></a></li><li class="trm-toc-item trm-toc-level-3" title="时钟同步方法"><a rel="nofollow" class="trm-toc-link" href="#时钟同步方法"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">时钟同步方法</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="构建数据通路"><a rel="nofollow" class="trm-toc-link" href="#构建数据通路"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">构建数据通路</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Instruction Fetch"><a rel="nofollow" class="trm-toc-link" href="#Instruction-Fetch"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">Instruction Fetch</span></a></li><li class="trm-toc-item trm-toc-level-3" title="算数&#x2F;逻辑运算"><a rel="nofollow" class="trm-toc-link" href="#算数-逻辑运算"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">算数&#x2F;逻辑运算</span></a></li><li class="trm-toc-item trm-toc-level-3" title="访存指令（Load&#x2F;Store）"><a rel="nofollow" class="trm-toc-link" href="#访存指令（Load-Store）"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">访存指令（Load&#x2F;Store）</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="将上面的元件组合起来"><a rel="nofollow" class="trm-toc-link" href="#将上面的元件组合起来"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">将上面的元件组合起来</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="跳转指令（Branch）"><a rel="nofollow" class="trm-toc-link" href="#跳转指令（Branch）"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">跳转指令（Branch）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Full Datapath"><a rel="nofollow" class="trm-toc-link" href="#Full-Datapath"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">Full Datapath</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="ALU Control"><a rel="nofollow" class="trm-toc-link" href="#ALU-Control"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">ALU Control</span></a></li><li class="trm-toc-item trm-toc-level-2" title="性能问题"><a rel="nofollow" class="trm-toc-link" href="#性能问题"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">性能问题</span></a></li><li class="trm-toc-item trm-toc-level-2" title="流水线"><a rel="nofollow" class="trm-toc-link" href="#流水线"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">流水线</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="洗衣服"><a rel="nofollow" class="trm-toc-link" href="#洗衣服"><span class="trm-toc-number">8.1.</span> <span class="trm-toc-text">洗衣服</span></a></li><li class="trm-toc-item trm-toc-level-3" title="五个阶段"><a rel="nofollow" class="trm-toc-link" href="#五个阶段"><span class="trm-toc-number">8.2.</span> <span class="trm-toc-text">五个阶段</span></a></li><li class="trm-toc-item trm-toc-level-3" title="性能分析"><a rel="nofollow" class="trm-toc-link" href="#性能分析"><span class="trm-toc-number">8.3.</span> <span class="trm-toc-text">性能分析</span></a></li><li class="trm-toc-item trm-toc-level-3" title="ISA design"><a rel="nofollow" class="trm-toc-link" href="#ISA-design"><span class="trm-toc-number">8.4.</span> <span class="trm-toc-text">ISA design</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Hazards"><a rel="nofollow" class="trm-toc-link" href="#Hazards"><span class="trm-toc-number">8.5.</span> <span class="trm-toc-text">Hazards</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="How to solve Hazards"><a rel="nofollow" class="trm-toc-link" href="#How-to-solve-Hazards"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">How to solve Hazards</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="struct hazard"><a rel="nofollow" class="trm-toc-link" href="#struct-hazard"><span class="trm-toc-number">9.1.</span> <span class="trm-toc-text">struct hazard</span></a></li><li class="trm-toc-item trm-toc-level-3" title="data hazard"><a rel="nofollow" class="trm-toc-link" href="#data-hazard"><span class="trm-toc-number">9.2.</span> <span class="trm-toc-text">data hazard</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Control Hazards"><a rel="nofollow" class="trm-toc-link" href="#Control-Hazards"><span class="trm-toc-number">9.3.</span> <span class="trm-toc-text">Control Hazards</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="pipeline 总结"><a rel="nofollow" class="trm-toc-link" href="#pipeline-总结"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">pipeline 总结</span></a></li><li class="trm-toc-item trm-toc-level-2" title="pipeline register （流水线寄存器）"><a rel="nofollow" class="trm-toc-link" href="#pipeline-register-（流水线寄存器）"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">pipeline register （流水线寄存器）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="pipeline control"><a rel="nofollow" class="trm-toc-link" href="#pipeline-control"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">pipeline control</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Forwarding 实例"><a rel="nofollow" class="trm-toc-link" href="#Forwarding-实例"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">Forwarding 实例</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="检测forwarding"><a rel="nofollow" class="trm-toc-link" href="#检测forwarding"><span class="trm-toc-number">13.1.</span> <span class="trm-toc-text">检测forwarding</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Load-Use 冒险检测"><a rel="nofollow" class="trm-toc-link" href="#Load-Use-冒险检测"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">Load-Use 冒险检测</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="怎样在流水线中进行阻塞"><a rel="nofollow" class="trm-toc-link" href="#怎样在流水线中进行阻塞"><span class="trm-toc-number">14.1.</span> <span class="trm-toc-text">怎样在流水线中进行阻塞</span></a></li><li class="trm-toc-item trm-toc-level-3" title="带有冒险检测的流水线"><a rel="nofollow" class="trm-toc-link" href="#带有冒险检测的流水线"><span class="trm-toc-number">14.2.</span> <span class="trm-toc-text">带有冒险检测的流水线</span></a></li><li class="trm-toc-item trm-toc-level-3" title="性能方面"><a rel="nofollow" class="trm-toc-link" href="#性能方面"><span class="trm-toc-number">14.3.</span> <span class="trm-toc-text">性能方面</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Branch Hazards"><a rel="nofollow" class="trm-toc-link" href="#Branch-Hazards"><span class="trm-toc-number">15.</span> <span class="trm-toc-text">Branch Hazards</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="削减分支跳转的延迟"><a rel="nofollow" class="trm-toc-link" href="#削减分支跳转的延迟"><span class="trm-toc-number">15.1.</span> <span class="trm-toc-text">削减分支跳转的延迟</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="动态分支预测"><a rel="nofollow" class="trm-toc-link" href="#动态分支预测"><span class="trm-toc-number">16.</span> <span class="trm-toc-text">动态分支预测</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1-bit 预测的缺点"><a rel="nofollow" class="trm-toc-link" href="#1-bit-预测的缺点"><span class="trm-toc-number">16.1.</span> <span class="trm-toc-text">1-bit 预测的缺点</span></a></li><li class="trm-toc-item trm-toc-level-3" title="计算branch target"><a rel="nofollow" class="trm-toc-link" href="#计算branch-target"><span class="trm-toc-number">16.2.</span> <span class="trm-toc-text">计算branch target</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Exception and Interrupts（例外与中断）"><a rel="nofollow" class="trm-toc-link" href="#Exception-and-Interrupts（例外与中断）"><span class="trm-toc-number">17.</span> <span class="trm-toc-text">Exception and Interrupts（例外与中断）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="处理例外"><a rel="nofollow" class="trm-toc-link" href="#处理例外"><span class="trm-toc-number">17.1.</span> <span class="trm-toc-text">处理例外</span></a></li><li class="trm-toc-item trm-toc-level-3" title="流水线中的例外"><a rel="nofollow" class="trm-toc-link" href="#流水线中的例外"><span class="trm-toc-number">17.2.</span> <span class="trm-toc-text">流水线中的例外</span></a></li><li class="trm-toc-item trm-toc-level-3" title="例外的性质"><a rel="nofollow" class="trm-toc-link" href="#例外的性质"><span class="trm-toc-number">17.3.</span> <span class="trm-toc-text">例外的性质</span></a></li><li class="trm-toc-item trm-toc-level-3" title="例外举例"><a rel="nofollow" class="trm-toc-link" href="#例外举例"><span class="trm-toc-number">17.4.</span> <span class="trm-toc-text">例外举例</span></a></li><li class="trm-toc-item trm-toc-level-3" title="多重例外"><a rel="nofollow" class="trm-toc-link" href="#多重例外"><span class="trm-toc-number">17.5.</span> <span class="trm-toc-text">多重例外</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-book-reader"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-arrows-alt-h"></use>
+</svg>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-arrow-up"></use>
+</svg>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.4"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.4"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
