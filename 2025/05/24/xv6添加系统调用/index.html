@@ -7,23 +7,27 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="An ordinary day 25-05-22">
+<meta name="description" content="add a system call to xv6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="25-05-22">
-<meta property="og:url" content="https://das1zhang.github.io/2025/05/23/250522/index.html">
+<meta property="og:title" content="为risc-v xv6添加系统调用">
+<meta property="og:url" content="https://das1zhang.github.io/2025/05/24/xv6%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/index.html">
 <meta property="og:site_name" content="Das1&#39;s Blog">
-<meta property="og:description" content="An ordinary day 25-05-22">
+<meta property="og:description" content="add a system call to xv6">
 <meta property="og:locale">
 <meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
-<meta property="article:published_time" content="2025-05-22T19:34:17.000Z">
-<meta property="article:modified_time" content="2025-05-23T18:48:12.209Z">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="article:published_time" content="2025-05-23T18:08:51.767Z">
+<meta property="article:modified_time" content="2025-05-23T18:46:43.790Z">
 <meta property="article:author" content="Das1">
-<meta property="article:tag" content="日记">
+<meta property="article:tag" content="OS">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://das1zhang.github.io/img/404.jpg">
 
 
-<title >25-05-22</title>
+<title >为risc-v xv6添加系统调用</title>
 
 <!-- Favicon -->
 
@@ -66,7 +70,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"das1zhang.github.io","author":"Das1","root":"/","typed_text":["an undergraduate in WHU"],"theme_version":"2.2.4","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/logo.jpg","icon16":"/favicon-16x16.png","icon32":"/favicon-32x32.png","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"/logo.jpg","show_text":"Das1's Blog.","hide_text":"Waiting for u."},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-a-farfa-sun","moon":"icon-fa-moon-line","play":"icon-play","email":"icon-envelop","next":"icon-fa-arrow-right","calendar":"icon-th-list","clock":"icon-farfa-clock","user":"icon-a-zu394","back_top":"icon-fa-arrow-up","close":"icon-a-fasfa-times","search":"icon-fasfa-search","reward":"icon-dashang","toc_tag":"icon-th-list","read":"icon-book-reader","arrows":"icon-arrows-alt-h","double_arrows":"icon-angle-double-down","copy":"icon-copy","user_tag":"icon-a-zu394"},"icontype":"symbol","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":false,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-05-24 02:48:12"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-05-24 02:46:43"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.4" id="trm-switch-style">
@@ -241,7 +245,7 @@
     <div class="trm-banner">
     
     <!-- banner cover -->
-    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/diary.gif">
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/hexobanner.jpg">
     <!-- banner cover end -->
     
 
@@ -257,10 +261,10 @@
                     <!-- banner title -->
                     <div class="trm-banner-text ">
                         <div class="trm-label trm-mb-20">
-                            很高兴你能来看看我平淡生活的一角
+                            Add a System Call to xv6.
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            25-05-22
+                            为risc-v xv6添加系统调用
                         </h1>
 
                         
@@ -427,7 +431,7 @@
             <svg class="symbol-icon trm-icon" aria-hidden="true">
     <use xlink:href="#icon-th-list"></use>
 </svg><br>
-            05/23
+            05/24
         </div>
     </div>
     <div class="col-sm-4">
@@ -435,7 +439,7 @@
             <svg class="symbol-icon trm-icon" aria-hidden="true">
     <use xlink:href="#icon-farfa-clock"></use>
 </svg><br>
-            03:34
+            02:08
         </div>
     </div>
     <div class="col-sm-4">
@@ -450,30 +454,59 @@
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
     <blockquote>
-<p>自救系列第1集，持续日更中。。。</p>
+<p>本教程针对riscv版本的xv6，其部分文件有出入，某些网上的文章并不适用该xv6系统（比如usys.S文件在该版本下为usys.pl经过make之后产生的汇编语言文件，不可以直接进行修改），具体参考：<a target="_blank" rel="noopener" href="https://github.com/mit-pdos/xv6-riscv">riscv xv6源码</a></p>
 </blockquote>
-<h2 id="流水账"><a href="#流水账" class="headerlink" title="流水账"></a>流水账</h2><p>本来定的 7:00 闹钟，结果赖床到八点才勉强醒来， 九点才下床，但是相比以前一睡睡到下午来说，好了不少，感觉自己更有能量了。</p>
-<p>本来前一天的想法是，今天必须去图书馆，结果感觉肚子很饿，想泡泡面吃，加上洗了个澡，九点半了，外面还下雨了，结果又是在宿舍呆了一上午。</p>
-<p>但是感觉上午的效率还可以，没有做很多浪费时间的事情，把操作系统的希冀平台评测给通过了，发现是系统调用没有添加到Makefile中。<br>然后用美区id把手机和ipad的软件都更新了一下，随后又干操作系统实验干到中午。</p>
-<p>早中餐就是泡面，1:10 左右去青楼上形策，仍然做OS实验。<br>搞了半天电脑没电了，期间刷刷手机，复习OS关于互斥并发的内容，感觉需要做做复习笔记，那就明天干吧。</p>
-<p>下午回来吃个铁板烧，以后不会再点舌尖大师的热干面了，面和菜混成一坨，面还吸汤汁，整个是一坨非牛顿流体的诡异状态。</p>
-<p>吃完大概六点半（还真是吃了够久的T_T），然后好像也没做什么，一直在搞OS的实验，话说做到现在还没干完，也是神人了，应该没这么难搞吧。</p>
-<p>搞得烦了，出去买了杯古茗（古茗奶茶永远的经典），然后回来浅浅搞了一会儿，又去打瓦了，打完倍感疲惫，遂上床（虽然后面又爬下来吃泡面。。。。）</p>
-<h2 id="有趣的事情"><a href="#有趣的事情" class="headerlink" title="有趣的事情"></a>有趣的事情</h2><h3 id="电梯里的鱼"><a href="#电梯里的鱼" class="headerlink" title="电梯里的鱼"></a>电梯里的鱼</h3><p>今天武汉下了超超超大的雨，很多地方都被淹了，甚至车都被淹了，电梯里还有鱼，特别的难绷。<br><video width="720" height="400" controls poster="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/preview.jpg"><br>  <source src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/250522_fun2.mp4" type="video/mp4"><br></video></p>
-<h3 id="海王"><a href="#海王" class="headerlink" title="海王"></a>海王</h3><p>甚至还有海王（字面意义上）<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/250522_fun.jpg" alt="海王"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>还好的是，从青楼到九舍的路上没有很大的积水潭，还是安全回到宿舍<code>（^_^）</code></p>
-<h2 id="今天干了啥"><a href="#今天干了啥" class="headerlink" title="今天干了啥"></a>今天干了啥</h2><ul>
-<li>OS实验</li>
-<li>查了一下oscomp和OSCP的一些东西</li>
-<li>写了博客，重新捡起来</li>
-<li>复习OS并发PPT</li>
-</ul>
-<h2 id="明天要干啥"><a href="#明天要干啥" class="headerlink" title="明天要干啥"></a>明天要干啥</h2><ul>
-<li><input checked="" disabled="" type="checkbox"> 把计组第五章补充到博客上来</li>
-<li><input checked="" disabled="" type="checkbox"> 把OS实验干完，然后写个小总结</li>
-<li><input disabled="" type="checkbox"> 学最优化方法，看能不能写完一半作业</li>
-<li><input checked="" disabled="" type="checkbox"> 继续日更</li>
-<li><input disabled="" type="checkbox"> 学一下图论，把算法的实验做完</li>
-</ul>
+<h2 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h2><ol>
+<li>【添加内核接口】在kernel目录下修改 syscall.c和syscall.h（以添加psstate系统调用为例）<ol>
+<li>kernel&#x2F;syscall.c 中添加 <code>[SYS_psstate]   sys_psstate</code></li>
+<li>kernel&#x2F;syscall.h 中添加<code>#define SYS_psstate 22</code></li>
+</ol>
+</li>
+<li>【实现】在sysproc.c中增加系统调用的实现</li>
+<li>【增加用户入口】在usys.pl文件中添加系统调用入口<code>entry(&quot;psstate&quot;);</code></li>
+<li>【修改Makefile】在makefile中添加命令&#96;$U&#x2F;_hello\</li>
+<li>【添加源文件】在user.c命令下添加源文件 psstate.c</li>
+<li>【函数声明】在user.h中声明函数 <code>psstate(int state_flag)</code></li>
+</ol>
+<h2 id="原理解析（最自然的添加过程）"><a href="#原理解析（最自然的添加过程）" class="headerlink" title="原理解析（最自然的添加过程）"></a>原理解析（最自然的添加过程）</h2><blockquote>
+<p>对于OS初学者来说（本人T~T），直接上手接触xv6源码添加系统调用会对各种文件感到一头雾水，只会傻乎乎地跟着教程做，这里会解释添加一个系统调用的原理以及各个文件之间的联系。<br>这里我会从“用户-&gt;内核-&gt;用户”的系统调用过程来解释一下这个系统调用是如何实现的。</p>
+</blockquote>
+<h3 id="声明函数调用"><a href="#声明函数调用" class="headerlink" title="声明函数调用"></a>声明函数调用</h3><p>找到user&#x2F;user.h，声明我们需要添加的函数，对于用户态来说，系统调用其实就是函数，没啥两样<br>添加下面这一行</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">psstate</span><span class="params">(<span class="type">int</span> state_flag)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="添加用户态的入口"><a href="#添加用户态的入口" class="headerlink" title="添加用户态的入口"></a>添加用户态的入口</h3><p>我们声明需要的函数之后，接下来是不是要跳转到内核态来执行系统调用了呢？<br>所以我们找到user&#x2F;usys.pl添加下面这一行</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">enter</span>(<span class="string">&quot;psstate&quot;</span>);</span><br></pre></td></tr></table></figure>
+<p>这样我们的入口就添加好了</p>
+<h3 id="如何“用户-内核”？？"><a href="#如何“用户-内核”？？" class="headerlink" title="如何“用户-&gt;内核”？？"></a>如何“用户-&gt;内核”？？</h3><p>按照我们教科书上的说法是，<strong>“用户-&gt;内核”是一个“陷入陷阱”的过程</strong><br>我们仔细阅读一下usys.pl就会发现，在entry上面有这样一段代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sub entry &#123;</span><br><span class="line">    my $name = shift;</span><br><span class="line">    print <span class="string">&quot;.global $name\n&quot;</span>;</span><br><span class="line">    print <span class="string">&quot;$&#123;name&#125;:\n&quot;</span>;</span><br><span class="line">    print <span class="string">&quot; li a7, SYS_$&#123;name&#125;\n&quot;</span>;</span><br><span class="line">    print <span class="string">&quot; ecall\n&quot;</span>;</span><br><span class="line">    print <span class="string">&quot; ret\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码实际上就是一个用于产生汇编程序的代码（很明显的汇编语言），在我们进行make之后，可以发现新产生了一个usys.S文件，里面的内容就是由上面代码产生的汇编语言程序。<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/usys%E6%B1%87%E7%BC%96.png" alt="usys汇编"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>那么这段汇编又是什么意思呢？<br><code>li a7, SYS_psstate</code> 就是说将 <strong>SYS_psstate放入 a7 寄存器</strong>中<br>欸，这个ecall又是啥呀？这给人看蒙了，也没有说跳转到哪个函数中啊？<br>而这就是我们从用户态到内核态的关键<br>我们可以在kernel&#x2F;trap.c中的<code>usertrap(void)</code>中看到这么一段<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/uesrtrap.png" alt="usertrap"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>看到这个<code>r_scause() == 8</code>和下面我们心心念念的system call了吗，说明如果r_scause() &#x3D;&#x3D; 8 就捕获到了触发系统调用的入口，这就是我们的ecall的来源</p>
+<h3 id="触发系统调用"><a href="#触发系统调用" class="headerlink" title="触发系统调用"></a>触发系统调用</h3><p>调用syscall()之后，我们转到kernel&#x2F;syscall.c中<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/syscall.png" alt="syscall"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>发现这里会创建一个进程 p，而num则会从该进程的 trapframe中取 a7寄存器的值，然后该系统调用的返回值会放回到该进程 trapframe 的 a0寄存器<br>根据下面的注释我们就知道，通过<strong>这个num值来查表</strong>，看哪个系统调用应该被调用<br>这个系统调用的表也就是 syscalls，同样的也在kernel&#x2F;syscall.c中</p>
+<p>那么我们现在就可以在这个表中添加我们需要的系统调用，让<code>syscalls[num]</code>可以正确索引，如下所示：<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/syscalls%E8%A1%A8.png" alt="syscalls表"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>左边的索引就是我们从a7中取出来的num，映射到对应的系统调用。</p>
+<p>这里另外提一嘴c语言特性，<strong>这个<code>syscalls[num]</code>实际上是一个函数指针</strong>，这样就可以解释为什么我们可以直接跳到sysproc.c中进行函数的实现了。<br>实际上这个说法也不严谨，我们的<strong>系统调用实际上已经在sysproc.c中实现好了</strong>，只是通过<code>syscall[num]()</code>进行调用而已</p>
+<h3 id="实现系统调用"><a href="#实现系统调用" class="headerlink" title="实现系统调用"></a>实现系统调用</h3><p>现在既然我们的系统调用已经可以被正确的找到并调用了，那么让我们来实现一下该系统调用，这里就是正常的函数实现逻辑<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E5%AE%9E%E7%8E%B0%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8.png" alt="实现系统调用"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>注意这里这里是内核态的实现，我们查查<code>argint()</code>函数，其定义如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span></span><br><span class="line"><span class="title function_">argint</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> *ip)</span></span><br><span class="line">&#123;</span><br><span class="line">  *ip = argraw(n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个函数取an寄存器的值，放到ip指针里，而an是参数寄存器<br>该系统调用取a0寄存器中的值作为state_flag，然后根据state_flag 做出对应的操作。</p>
+<h4 id="系统调用和用户态的声明"><a href="#系统调用和用户态的声明" class="headerlink" title="系统调用和用户态的声明"></a>系统调用和用户态的声明</h4><p>这里又有一个疑点了，欸我们在用户态的系统调用声明不是说有一个参数就是state_flag吗？<strong>实际上我们进行函数调用时，各个参数就会放到对应的寄存器中准备进行调用</strong>，我们在sysproc.c中的实现的系统调用就要从各寄存器中把需要的参数拿过来<br>这个过程可以这样理解：</p>
+<ol>
+<li>用户态触发系统调用，各个参数被放到对应的寄存器中，准备进行系统调用</li>
+<li>陷入内核态</li>
+<li>系统调用从对应的寄存器中把参数拿过来，然后使用</li>
+</ol>
+<p>系统调用结束后我们的返回值又放在a0了，这样<code>syscall()</code>就结束了，然后调用<code>usertrapret()</code>返回用户态</p>
+<h2 id="用户程序"><a href="#用户程序" class="headerlink" title="用户程序"></a>用户程序</h2><p>我们最后不是还编写了一个用户程序 psstate.c 吗？<br>实际上我们在命令行输入psstate之后，调用的就是这个程序，所有的运行逻辑都是按照这个程序实现的。</p>
+<p>这时候又有疑问了：欸我们的系统调用不是在前面实现过了吗，为什么不是按照那个来运行的呢？</p>
+<p><strong>实际上这个psstate.c 可以看作一个测试程序</strong>，我们在命令行输入psstate之后，xv6实际上为我们<strong>exec了一个按照psstate.c执行的程序</strong>。</p>
+<p>而如果我们把名字变为foo.c，那么在命令行中输入psstate就无法实现正确的调用了，这时候我们又要在命令行中输入 foo 来正确调用了。</p>
+<h2 id="关于makefile"><a href="#关于makefile" class="headerlink" title="关于makefile"></a>关于makefile</h2><p>而makefile，实际上<strong>和我们的系统调用没啥关系</strong>，他管理的是哪些文件编译进用户空间，哪些文件编译进内核，如何链接。<br>我们在makefile中添加<code>$U/_psstate\</code>是让psstate.c可以正确地编译，并生成可执行的 psstate 文件</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>实际上我们添加系统调用的过程，很好地遵循了操作系统对程序的操作规则，<strong>“用户(.c用户程序) -&gt; 内核(系统调用) -&gt; 用户(继续执行.c程序)”</strong><br>执行系统调用的基本流程如下：</p>
+<ol>
+<li>.c用户程序执行系统调用函数（提前在 user&#x2F;user.h 中声明）</li>
+<li>user&#x2F;usys.pl 生成 user&#x2F;usys.S 发出ecall，发出要陷入内核的信号（usys.pl中声明入口）</li>
+<li>kernel&#x2F;trap.c 中 <code>usertrap()</code> 捕捉 ecall信号，执行<code>syscall()</code></li>
+<li>kernel&#x2F;syscall.c 中 <code>syscall()</code> 从当前进程帧的a7寄存器中取出值num，并在<code>syscalls[num]</code> 进行映射调用</li>
+<li>kernel&#x2F;sysproc.c 中进行函数的调用实现，返回到kernel&#x2F;syscall.c将返回值存在当前进程帧的a0寄存器中</li>
+<li><code>syscall()</code>调用完毕，返回到kernel&#x2F;trap的<code>usertrap()</code>，然后调用<code>usertrapret()</code>返回用户态</li>
+<li>至此系统调用完毕，继续执行.c用户程序</li>
+</ol>
 
 </article>
     
@@ -493,17 +526,17 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2025/05/23/VScode%20%E9%85%8D%E7%BD%AEc&c++%20%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/">
+            <a class="trm-op-top trm-anima-link" href="/2025/05/24/250523/">
                 <span class="trm-op-cover">
-                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/vscodecpp.jpg">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/wukong.gif">
                 </span>
-                <h6 class="trm-op-title">VScode配置c&amp;c++运行环境(win)</h6>
+                <h6 class="trm-op-title">25-05-23</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
-                <li>25/05/23</li>
-                <li>17:44</li>
-                <li>CS工具</li>
+                <li>25/05/24</li>
+                <li>02:19</li>
+                <li>日记</li>
             </ul>
         </div>
     </div>
@@ -514,17 +547,17 @@
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2025/05/23/HowtoJourney/">
+            <a class="trm-op-top trm-anima-link" href="/2025/05/23/SHELL%20%E5%9F%BA%E7%A1%80%E4%BB%A5%E5%8F%8A%20CLI%E5%B7%A5%E5%85%B7/">
                 <span class="trm-op-cover">
-                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Snooze-%20SZA.jpg">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/shellcover.jpg">
                 </span>
-                <h6 class="trm-op-title">How to Journal</h6>
+                <h6 class="trm-op-title">SHELL基础以及CLI工具</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
                 <li>25/05/23</li>
-                <li>03:20</li>
-                <li>杂谈</li>
+                <li>19:21</li>
+                <li>CS工具</li>
             </ul>
         </div>
     </div>
@@ -566,7 +599,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="流水账"><a rel="nofollow" class="trm-toc-link" href="#流水账"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">流水账</span></a></li><li class="trm-toc-item trm-toc-level-2" title="有趣的事情"><a rel="nofollow" class="trm-toc-link" href="#有趣的事情"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">有趣的事情</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="电梯里的鱼"><a rel="nofollow" class="trm-toc-link" href="#电梯里的鱼"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">电梯里的鱼</span></a></li><li class="trm-toc-item trm-toc-level-3" title="海王"><a rel="nofollow" class="trm-toc-link" href="#海王"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">海王</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="今天干了啥"><a rel="nofollow" class="trm-toc-link" href="#今天干了啥"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">今天干了啥</span></a></li><li class="trm-toc-item trm-toc-level-2" title="明天要干啥"><a rel="nofollow" class="trm-toc-link" href="#明天要干啥"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">明天要干啥</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="基本流程"><a rel="nofollow" class="trm-toc-link" href="#基本流程"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">基本流程</span></a></li><li class="trm-toc-item trm-toc-level-2" title="原理解析（最自然的添加过程）"><a rel="nofollow" class="trm-toc-link" href="#原理解析（最自然的添加过程）"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">原理解析（最自然的添加过程）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="声明函数调用"><a rel="nofollow" class="trm-toc-link" href="#声明函数调用"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">声明函数调用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="添加用户态的入口"><a rel="nofollow" class="trm-toc-link" href="#添加用户态的入口"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">添加用户态的入口</span></a></li><li class="trm-toc-item trm-toc-level-3" title="如何“用户-&gt;内核”？？"><a rel="nofollow" class="trm-toc-link" href="#如何“用户-内核”？？"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">如何“用户-&gt;内核”？？</span></a></li><li class="trm-toc-item trm-toc-level-3" title="触发系统调用"><a rel="nofollow" class="trm-toc-link" href="#触发系统调用"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">触发系统调用</span></a></li><li class="trm-toc-item trm-toc-level-3" title="实现系统调用"><a rel="nofollow" class="trm-toc-link" href="#实现系统调用"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">实现系统调用</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="用户程序"><a rel="nofollow" class="trm-toc-link" href="#用户程序"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">用户程序</span></a></li><li class="trm-toc-item trm-toc-level-2" title="关于makefile"><a rel="nofollow" class="trm-toc-link" href="#关于makefile"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">关于makefile</span></a></li><li class="trm-toc-item trm-toc-level-2" title="总结"><a rel="nofollow" class="trm-toc-link" href="#总结"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">总结</span></a></li></ol>
       </div>
     </div>
 
