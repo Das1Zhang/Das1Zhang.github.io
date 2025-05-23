@@ -7,16 +7,21 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Das1&#39;s Blog">
-<meta property="og:url" content="https://das1zhang.github.io/archives/2024/11/index.html">
+<meta name="description" content="Configuration of vscode for c&#x2F;cpp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VScode配置c&amp;c++运行环境(win)">
+<meta property="og:url" content="https://das1zhang.github.io/2025/05/23/VScode%20%E9%85%8D%E7%BD%AEc&c++%20%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/index.html">
 <meta property="og:site_name" content="Das1&#39;s Blog">
+<meta property="og:description" content="Configuration of vscode for c&#x2F;cpp">
 <meta property="og:locale">
+<meta property="article:published_time" content="2025-05-23T09:44:35.755Z">
+<meta property="article:modified_time" content="2025-05-23T11:10:00.207Z">
 <meta property="article:author" content="Das1">
+<meta property="article:tag" content="CS工具">
 <meta name="twitter:card" content="summary">
 
 
-<title >Das1's Blog</title>
+<title >VScode配置c&c++运行环境(win)</title>
 
 <!-- Favicon -->
 
@@ -59,7 +64,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"das1zhang.github.io","author":"Das1","root":"/","typed_text":["an undergraduate in WHU"],"theme_version":"2.2.4","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/logo.jpg","icon16":"/favicon-16x16.png","icon32":"/favicon-32x32.png","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"/logo.jpg","show_text":"Das1's Blog.","hide_text":"Waiting for u."},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-a-farfa-sun","moon":"icon-fa-moon-line","play":"icon-play","email":"icon-envelop","next":"icon-fa-arrow-right","calendar":"icon-th-list","clock":"icon-farfa-clock","user":"icon-a-zu394","back_top":"icon-fa-arrow-up","close":"icon-a-fasfa-times","search":"icon-fasfa-search","reward":"icon-dashang","toc_tag":"icon-th-list","read":"icon-book-reader","arrows":"icon-arrows-alt-h","double_arrows":"icon-angle-double-down","copy":"icon-copy","user_tag":"icon-a-zu394"},"icontype":"symbol","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":false,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":false,"postUpdate":"2025-05-23 19:28:37"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-05-23 19:10:00"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.4" id="trm-switch-style">
@@ -234,7 +239,7 @@
     <div class="trm-banner">
     
     <!-- banner cover -->
-    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/archivebanner.gif">
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/studybanner.gif">
     <!-- banner cover end -->
     
 
@@ -250,10 +255,10 @@
                     <!-- banner title -->
                     <div class="trm-banner-text ">
                         <div class="trm-label trm-mb-20">
-                            Welcome to the archive
+                            Configuration of vscode for c/cpp
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            Here is my treasure chest
+                            VScode配置c&c++运行环境(win)
                         </h1>
 
                         
@@ -263,7 +268,7 @@
                                 </li>
                                 <li>
                                     <span>
-                                        archives
+                                        2025
                                     </span>
                                 </li>
                             </ul>
@@ -414,229 +419,105 @@
             
             <div class="trm-page-content col-lg-8">
                 <div id="trm-content" class="trm-content">
-                    <div class="row">
-    <div class="col-lg-12">
-        <div class="trm-card">
-            <div style="padding: 0 20px;">
-                
-                    <ul class="trm-tag-list"><li class="trm-tag-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">（7）</span></li><li class="trm-tag-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">（7）</span></li></ul>
-                
-            </div>
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg><br>
+            05/23
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-farfa-clock"></use>
+</svg><br>
+            17:44
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-a-zu394"></use>
+</svg><br>
+            Das1
         </div>
     </div>
 </div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="参考视频"><a href="#参考视频" class="headerlink" title="参考视频"></a>参考视频</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1tyAtetEd1/?spm_id_from=333.337.search-card.all.click&vd_source=1365bc20e6f6575f5f1cfb2ee106eb3e">vscode配置c&#x2F;c++环境</a></p>
+<h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><ul>
+<li>安装拓展：C&#x2F;C++</li>
+<li><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/seh/">安装MinGW</a>（安装解压后需配置环境变量）</li>
+</ul>
+<h2 id="关键步骤"><a href="#关键步骤" class="headerlink" title="关键步骤"></a>关键步骤</h2><h3 id="配置C-C-插件"><a href="#配置C-C-插件" class="headerlink" title="配置C&#x2F;C++插件"></a>配置C&#x2F;C++插件</h3><p>创建文件夹编写好一个c&#x2F;cpp文件，此时按下<code>ctrl+shift+p</code>调出命令输入窗口，搜索C&#x2F;C++ Edit Configuration(UI)。</p>
+<p>点开后，找到编译器路径，将其修改为我们安装的MinGW的bin文件夹路径中的需要的编译器，例如<code>D:/MinGW64/mingw64/bin/g++.exe</code>(这里g++适用cpp环境，如果是c环境，则改为gcc.exe否则会导致链接错误)。</p>
+<p>再往下翻找到IntelliSense模式，改为<code>windows-gcc-x64</code></p>
+<p>到这里C&#x2F;C++插件就配置完成了</p>
+<h3 id="任务配置"><a href="#任务配置" class="headerlink" title="任务配置"></a>任务配置</h3><p>上面一栏“转到”后面的省略号，然后终端-&gt;配置任务，可以看到我们的项目文件夹中自动生成了一个<code>.vscode</code>并带有<code>.json</code>文件的文件夹。</p>
+<p>然后同样的，终端-&gt;生成运行任务(或者ctrl+shift+b)，这时会看到我们需要选择的编译器，c-&gt;gcc.exe，cpp-&gt;g++.exe</p>
+<p>如果编译完成，就会看到项目文件夹中多出了一个.exe文件，这就是我们的可执行文件。在终端中输入<code>./test.exe</code>或<code>.\test.exe</code>都可以运行这个文件。至此我们的项目就正常运行了。</p>
 
-<!-- history -->
+</article>
+    
+    
 
-<div class="row">
+</div>
+<div class="trm-post-next-prev row">
     <div class="col-lg-12">
         <!-- title -->
         <h5 class="trm-title-with-divider">
-            
-                2024 年的归档
-            
-            <span data-number="01"></span>
+            其他文章
+            <span data-number="02"></span>
         </h5>
     </div>
-    <div class="col-lg-12">
-        <!-- timeline -->
-        <div class="trm-timeline">
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
             
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2024/11/20/ReviewPlan2-1/" class="trm-anima-link">
-                                        WHU AI 大二上期末自救计划
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">11/20</li>
-                                        <li class="trm-accent-color">19:12</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2024/11/13/hexo/" class="trm-anima-link">
-                                        Hexo搭建 &amp; 关键命令
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">11/13</li>
-                                        <li class="trm-accent-color">21:51</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2024/11/13/COD-Chap-02/" class="trm-anima-link">
-                                        Chapter_02 of COD
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">11/13</li>
-                                        <li class="trm-accent-color">21:51</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2024/11/13/COD-Chap-01/" class="trm-anima-link">
-                                        Chapter_01 of COD
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">11/13</li>
-                                        <li class="trm-accent-color">21:51</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2024/11/13/COD-Chap-04/" class="trm-anima-link">
-                                        Chapter_04 of COD
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">11/13</li>
-                                        <li class="trm-accent-color">21:51</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2024/11/13/COD-Chap-03/" class="trm-anima-link">
-                                        Chapter_03 of COD
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">11/13</li>
-                                        <li class="trm-accent-color">21:51</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2024/11/13/git/" class="trm-anima-link">
-                                        git
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">11/13</li>
-                                        <li class="trm-accent-color">21:37</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
+            <a class="trm-op-top trm-anima-link" href="/2025/05/23/%E5%85%B3%E4%BA%8EKMP%E7%AE%97%E6%B3%95%E7%9A%84%E5%9B%9E%E9%80%80%E6%80%9D%E8%80%83/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/DS.jpg">
+                </span>
+                <h6 class="trm-op-title">关于KMP算法的回退思考</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/05/23</li>
+                <li>18:50</li>
+                <li>数据结构</li>
+            </ul>
         </div>
-        <!-- timeline end -->
     </div>
 </div>
-
-<!-- history end -->
-
-
-    <div class="trm-pagination">
-        <span class="page-number current">1</span>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2025/05/23/250522/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/wukong.gif">
+                </span>
+                <h6 class="trm-op-title">25-05-22</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/05/23</li>
+                <li>03:34</li>
+                <li>日记</li>
+            </ul>
+        </div>
     </div>
+</div>
+    
+</div>
 
-
+    
 
 
 
@@ -662,9 +543,33 @@
 
             
 
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="参考视频"><a rel="nofollow" class="trm-toc-link" href="#参考视频"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">参考视频</span></a></li><li class="trm-toc-item trm-toc-level-2" title="前置条件"><a rel="nofollow" class="trm-toc-link" href="#前置条件"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">前置条件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="关键步骤"><a rel="nofollow" class="trm-toc-link" href="#关键步骤"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">关键步骤</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="配置C&#x2F;C++插件"><a rel="nofollow" class="trm-toc-link" href="#配置C-C-插件"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">配置C&#x2F;C++插件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="任务配置"><a rel="nofollow" class="trm-toc-link" href="#任务配置"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">任务配置</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
             
 <div class="trm-fixed-container">
     
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-book-reader"></use>
+</svg>
+        </div>
     
     
         <div class="trm-fixed-btn hidden-md" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
@@ -707,6 +612,10 @@
     
 
     <!-- 评论插件 -->
+    
+        
+
+        
     
 
 		

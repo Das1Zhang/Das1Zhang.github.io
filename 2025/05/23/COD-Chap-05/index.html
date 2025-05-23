@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="The Memory Hierarchy in COD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chapter_05 of COD">
+<meta property="og:url" content="https://das1zhang.github.io/2025/05/23/COD-Chap-05/index.html">
+<meta property="og:site_name" content="Das1&#39;s Blog">
+<meta property="og:description" content="The Memory Hierarchy in COD">
+<meta property="og:locale">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="article:published_time" content="2025-05-23T10:59:29.105Z">
+<meta property="article:modified_time" content="2025-05-23T11:10:30.013Z">
+<meta property="article:author" content="Das1">
+<meta property="article:tag" content="COD">
+<meta property="article:tag" content="CS-Learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://das1zhang.github.io/img/404.jpg">
+
+
+<title >Chapter_05 of COD</title>
+
+<!-- Favicon -->
+
+    <link href='/favicon-16x16.png?v=2.2.4' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/favicon-32x32.png?v=2.2.4' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.4' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+
+    
+<script src="//at.alicdn.com/t/c/font_4729113_2ipfdlgy0mc.js"></script>
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"das1zhang.github.io","author":"Das1","root":"/","typed_text":["an undergraduate in WHU"],"theme_version":"2.2.4","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/logo.jpg","icon16":"/favicon-16x16.png","icon32":"/favicon-32x32.png","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"/logo.jpg","show_text":"Das1's Blog.","hide_text":"Waiting for u."},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-a-farfa-sun","moon":"icon-fa-moon-line","play":"icon-play","email":"icon-envelop","next":"icon-fa-arrow-right","calendar":"icon-th-list","clock":"icon-farfa-clock","user":"icon-a-zu394","back_top":"icon-fa-arrow-up","close":"icon-a-fasfa-times","search":"icon-fasfa-search","reward":"icon-dashang","toc_tag":"icon-th-list","read":"icon-book-reader","arrows":"icon-arrows-alt-h","double_arrows":"icon-angle-double-down","copy":"icon-copy","user_tag":"icon-a-zu394"},"icontype":"symbol","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":false,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-05-23 19:10:30"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.4" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-a-farfa-sun"></use>
+</svg></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-moon-line"></use>
+</svg></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/logo.jpg">
+    
+    
+        <div class="trm-logo-text">
+            Zhang<span>Das1</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/" target="">
+                    home
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/archives/" target="">
+                    archives
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            tags
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/" target="">
+                            categories
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/links/" target="">
+                    
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/lifeguide/" target="">
+                    lifeguide
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/about/" target="">
+                    about
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-a-farfa-sun"></use>
+</svg>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-moon-line"></use>
+</svg>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/CODbanner.gif">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            Instruction in different format
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Chapter_05 of COD
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2025
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/logo.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        Das1
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/Das1Zhang" title="github" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-github"></use>
+</svg>
+        </a>
+    
+        <a href="https://x.com/SihaoFlower" title="X" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-TwitterX"></use>
+</svg>
+        </a>
+    
+        <a href="https://www.pinterest.com/sihao050721com/" title="pinterest" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-Pinterest"></use>
+</svg>
+        </a>
+    
+        <a href="https://space.bilibili.com/352757351" title="bilibili" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-bilibili-line"></use>
+</svg>
+        </a>
+    
+        <a href="https://www.xiaohongshu.com/user/profile/660a4195000000000b00c2b0" title="redbook" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-xiaohongshu"></use>
+</svg>
+        </a>
+    
+        <a href="http://youtube.com/@Sihao-q3o" title="youtube" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-youtube"></use>
+</svg>
+        </a>
+    
+        <a href="https://steamcommunity.com/profiles/76561199544278917/" title="steam" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-steam"></use>
+</svg>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                address:
+            </div>
+            <div class="trm-label trm-label-light">
+                Wuhan
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                age:
+            </div>
+            <div class="trm-label trm-label-light">
+                19
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                school:
+            </div>
+            <div class="trm-label trm-label-light">
+                WHU
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:sihao050721.com@gmail.com" class="trm-btn">
+            联系我
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-envelop"></use>
+</svg>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg><br>
+            05/23
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-farfa-clock"></use>
+</svg><br>
+            18:59
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-a-zu394"></use>
+</svg><br>
+            Das1
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="局限性原则"><a href="#局限性原则" class="headerlink" title="局限性原则"></a>局限性原则</h2><h3 id="时间局限性"><a href="#时间局限性" class="headerlink" title="时间局限性"></a>时间局限性</h3><ul>
+<li>被访问的 item 在近期很可能会再次被访问</li>
+<li>例如循环中的指令</li>
+</ul>
+<h3 id="空间局限性"><a href="#空间局限性" class="headerlink" title="空间局限性"></a>空间局限性</h3><ul>
+<li>被访问的item相邻的item后续也可能被访问</li>
+<li>例如数组</li>
+</ul>
+<h2 id="利用局限性"><a href="#利用局限性" class="headerlink" title="利用局限性"></a>利用局限性</h2><ul>
+<li>使用 memory hierarchy</li>
+<li>将所有东西全都存在disk中</li>
+<li>将所有经常访问的或者其近邻的元素从disk复制到更小的DRAM memory中<ul>
+<li>main memory</li>
+</ul>
+</li>
+<li>将访问更加频繁的从DRAM复制到更小的SRAM memory中<ul>
+<li>与 CPU 密切贴合的 Cache memory</li>
+</ul>
+</li>
+</ul>
+<h2 id="存储层次等级"><a href="#存储层次等级" class="headerlink" title="存储层次等级"></a>存储层次等级</h2><p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E5%AD%98%E5%82%A8%E5%B1%82%E6%AC%A1%E7%AD%89%E7%BA%A7.png" alt="存储层次等级.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<ul>
+<li>Block（块）：复制的单元<ul>
+<li>可能会有很多 word</li>
+</ul>
+</li>
+<li>如果被访问的数据存在于在更高的等级<ul>
+<li>Hit：满足高等级访问<ul>
+<li>hit ratio：hits &#x2F; accesses</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如果要访问的数据不存在<ul>
+<li>Miss：从低等级copy block过来<ul>
+<li>花费时间：miss penalty</li>
+<li>Miss ratio：misses &#x2F; accesses &#x3D; 1- hit ratio</li>
+</ul>
+</li>
+<li>然后再从高等级访问数据</li>
+</ul>
+</li>
+</ul>
+<h2 id="硬盘存储"><a href="#硬盘存储" class="headerlink" title="硬盘存储"></a>硬盘存储</h2><ul>
+<li>非易失性，旋转的磁性存储</li>
+</ul>
+<h3 id="sector-和-访问"><a href="#sector-和-访问" class="headerlink" title="sector 和 访问"></a>sector 和 访问</h3><ul>
+<li>每个sector 记录<ul>
+<li>sector ID</li>
+<li>数据大小</li>
+<li>纠错代码<ul>
+<li>用于隐藏缺陷（hide defects）并记录错误</li>
+</ul>
+</li>
+<li>同步字段</li>
+</ul>
+</li>
+<li>访问一个 sector 包含：<ul>
+<li>排队延迟（如果有其他访问正在进行）</li>
+<li>寻找（移动机械头）</li>
+<li>旋转延迟</li>
+<li>传输数据</li>
+<li>控制器开销<br>举例：<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E7%A1%AC%E7%9B%98%E8%AE%BF%E9%97%AE%E5%AE%9E%E4%BE%8B.png" alt="硬盘访问实例.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>在上面的的计算中包含以下部分</li>
+</ul>
+</li>
+<li>机械头寻找的实践 seek time</li>
+<li><strong>期望</strong>的旋转延迟（所以要乘以 1&#x2F;2）rotational latency</li>
+<li>数据传输时间</li>
+<li>控制器开销</li>
+</ul>
+<h2 id="Cache-Memory"><a href="#Cache-Memory" class="headerlink" title="Cache Memory"></a>Cache Memory</h2><ul>
+<li>在存储层次中最接近CPU的部分</li>
+</ul>
+<p>问题：</p>
+<ul>
+<li>怎么放？</li>
+<li>该放在那里？<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Cache%20%E9%97%AE%E9%A2%98.png" alt="Cache 问题.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ul>
+<h3 id="直接映射"><a href="#直接映射" class="headerlink" title="直接映射"></a>直接映射</h3><ul>
+<li>存放的位置由address决定</li>
+<li>直接映射：只有一个选择<ul>
+<li>用block的address 对 block的数量进行取模运算（也就是取地位地址）</li>
+</ul>
+</li>
+</ul>
+<h3 id="tags-和-Valid-Bits"><a href="#tags-和-Valid-Bits" class="headerlink" title="tags 和 Valid Bits"></a>tags 和 Valid Bits</h3><ul>
+<li>我们怎么直到特定的block被存在了cache中呢（明显的是，直接映射是会发生冲突的）<ul>
+<li>将block address也存储起来</li>
+<li>事实上只需要高位地址（我们之前取模去掉的那部分）</li>
+<li>将其称为tag</li>
+</ul>
+</li>
+<li>那如果cache的这个地方没有数据呢？<ul>
+<li>引入Valid bit：1表示有，0表示无</li>
+<li>初始为0</li>
+</ul>
+</li>
+</ul>
+<h3 id="Cache的一般步骤"><a href="#Cache的一般步骤" class="headerlink" title="Cache的一般步骤"></a>Cache的一般步骤</h3><ol>
+<li>得到要读取的数据address</li>
+<li>先看对应的cache block中是否有数据<ol>
+<li>有 &#x3D;&gt; 核对tag <ol>
+<li>tag 正确 &#x3D;&gt; Hit</li>
+<li>否则 miss</li>
+</ol>
+</li>
+<li>无 &#x3D;&gt; Miss</li>
+</ol>
+</li>
+<li>访问数据，或者将数据复制到对应cache块中</li>
+</ol>
+<h3 id="Address-Subdivision"><a href="#Address-Subdivision" class="headerlink" title="Address Subdivision"></a>Address Subdivision</h3><p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E5%9C%B0%E5%9D%80%E7%9A%84%E7%BB%86%E5%88%86.png" alt="地址的细分.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>举例：更大的block size</p>
+<ul>
+<li>64个block ，每个block 有 16 个byte<ul>
+<li>地址1200 会映射到哪个block number？</li>
+</ul>
+</li>
+<li>Block address &#x3D; 1200 &#x2F; 16 &#x3D; 75（第75个block）</li>
+<li>Block number &#x3D; 75 % 64 &#x3D; 11（在cache中放在11中）</li>
+<li><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E5%9C%B0%E5%9D%80%E7%BB%86%E5%88%86%E4%B8%BE%E4%BE%8B.png" alt="地址细分举例.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>关于上面的offset：<br>由于我们将block作为cache 的基本单元，但实际上我们的指令操作单元或数据单元是以字节作为单位的，所以再将block进行cache之后我们还需要再cache内部进行索引，在上面的硬件电路图中，Data只有一个word，所以我们的byte offset为两位，可以对这个word中的4个字节进行索引。<br>而如果这个data有多个字节，比如8个，那么我们的offset 就会分为 word offset 和 byte offset两部分，word offset为3位（对8个word中的哪个进行索引），byte offset为2 位（对1个word中的哪个字节进行索引）<br>而一个word一定是4个字节，所以byte offset 位数是固定的（一定为2位），而word offset位数则根据data的字节数发生变化</li>
+</ul>
+<h3 id="Block-Size的思考"><a href="#Block-Size的思考" class="headerlink" title="Block Size的思考"></a>Block Size的思考</h3><ul>
+<li>更大的 block size 可以降低miss rate<ul>
+<li>由于空间局限性，我们可以更方便的访问近邻元素</li>
+</ul>
+</li>
+<li>但是在一个一定size的cache中<ul>
+<li>更大的block size 会导致 更少的block 数量<ul>
+<li>这就会导致更多的block竞争 &#x3D;&gt; 提高 miss rate</li>
+<li>太大的块会导致各个字之间的空间局部性降低</li>
+<li>miss rate 降低带来的益处也会相应减少</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>更大的miss penalty<ul>
+<li>会覆盖掉降低miss rate带来的好处</li>
+<li>从memory中取出block并放到cache中的时间决定了 miss penalty<ul>
+<li>第一个字的延迟时间</li>
+<li>剩余部分block的传输时间</li>
+<li>传输时间就是miss penalty，会随着block 的增大而增大，如果 miss penalty 的增大 超过了miss rate的降低，cache的性能反而会减低</li>
+<li>而如果能设计得能更有效的传输较大的block时就能增加 block size 并进一步改善 cache 性能</li>
+</ul>
+</li>
+<li>early restart 和 critical-word-first 可以改善<ul>
+<li>early restart<ul>
+<li>block 中所需要的 word 一旦返回了就可以立刻执行，不需要等到整个block 全部传输完毕</li>
+</ul>
+</li>
+<li>critical-word-first<ul>
+<li>先传输所需要的 word，该word传输完毕后直接开始 early restart</li>
+<li><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E5%85%B3%E9%94%AE%E5%AD%97%E5%85%88%E8%A1%8C.png" alt="关键字先行.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="cache-miss"><a href="#cache-miss" class="headerlink" title="cache miss"></a>cache miss</h3><ul>
+<li>如果 hit ，那么CPU 正常进行</li>
+<li>如果 miss<ul>
+<li>将CPU 流水线进行阻塞</li>
+<li>将block 从memory fetch上来</li>
+<li>Instruction cache miss<ul>
+<li>重新开始instruction fetch</li>
+</ul>
+</li>
+<li>data cache miss<ul>
+<li>继续完成data 访存</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="write-through"><a href="#write-through" class="headerlink" title="write-through"></a>write-through</h2><ul>
+<li>data-write hit需要更新在cache 的block<ul>
+<li>但是这样会造成cache和memory的block不统一</li>
+</ul>
+</li>
+<li>write through（写直达）：同时更新memory</li>
+<li>但是会造成写操作耗费更长的时间（因为访问memory的时间往往是访问cache的几个数量级）</li>
+<li>solution：写缓存（write buffer）<ul>
+<li>在cache中留一块区域将需要写回memory的数据全部存起来，稍后再一起写回</li>
+<li>CPU 可以正常执行<ul>
+<li>只有当这个buffer 满的时候才会发生阻塞</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>alternative：如果data-write hit，只更新 block in cache中的值<ul>
+<li>设置一个dirty bit来跟踪哪个block发生了更新</li>
+<li>当这个dirty block 需要被替换的时候，再写回</li>
+<li>在这个dirty block 被替换的时候又可以使用 buffer 让这个新的block 被读，而不需要等待dirtyblock 写回完毕</li>
+</ul>
+</li>
+</ul>
+<h2 id="write-Allocation"><a href="#write-Allocation" class="headerlink" title="write-Allocation"></a>write-Allocation</h2><ul>
+<li>当write Miss的时候会发生什么呢<ol>
+<li>写分配法（write-allocation）：fetch block 再进行写回</li>
+<li>写不分配法（write around）：不fetch block ，直接将其写回memory<ol>
+<li>多用在大量初始化的时候，在读一个数据之前会写入一整个block<br> <img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/%E5%86%99%E5%88%86%E9%85%8D.png" alt="写分配.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="评估-cache-性能"><a href="#评估-cache-性能" class="headerlink" title="评估 cache 性能"></a>评估 cache 性能</h2><ul>
+<li>CPU性能的几个组成部分<ul>
+<li>执行execution 周期<ul>
+<li>包括 cache hit 的时间</li>
+</ul>
+</li>
+<li>memory 阻塞周期<ul>
+<li>主要是cache miss 的情况</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>memory stall cycles<ul>
+<li>&#x3D; memory的访问比例 * miss rate * miss penalty</li>
+</ul>
+</li>
+<li>cache分为 D-cache 和 I-cache，其中D-cache考虑load和store指令</li>
+<li>actual CPI &#x3D; 理想CPI（不存在miss penalty）+ I-cache miss penalty + D-cache miss penalty<ul>
+<li>这里要注意一点是，所有的指令都属于I-cache，而D-cache则只考虑load 和 store指令，所以I-cache计算的时候不需要乘以一个比例数，而D-cache penalty计算的时候则要乘上load &amp; store指令的所占比例</li>
+</ul>
+</li>
+<li>Average Access Time<ul>
+<li>平均memory 访问时间（AMAT） &#x3D; Hit time + miss rate * miss penalty</li>
+</ul>
+</li>
+</ul>
+<h3 id="关于性能总结"><a href="#关于性能总结" class="headerlink" title="关于性能总结"></a>关于性能总结</h3><ul>
+<li>当CPU 性能提升的时候，miss penalty 就越来越显得重要了</li>
+<li>减小CPI &#x3D; 提升CPU 性能 -&gt; 更大比例的时间花费在memory 阻塞上</li>
+<li>增大clock 频率 -&gt; memory 阻塞会花费更多的CPU 周期数<ul>
+<li>因为提高 clock 频率 只是CPU变快了，但是memory access的时间没有变化</li>
+</ul>
+</li>
+<li>在评估系统性能的时候不能忽略cache的行为</li>
+</ul>
+<h2 id="Associative-Caches"><a href="#Associative-Caches" class="headerlink" title="Associative Caches"></a>Associative Caches</h2><ul>
+<li>全相联<ul>
+<li>允许一个block 可以填入cache中的任意位置</li>
+<li>允许所有的entry 一次性被搜索</li>
+<li>每个entry都进行比较（昂贵的）</li>
+</ul>
+</li>
+<li>n路组相联<ul>
+<li>每一个 set 都有n个entry</li>
+<li>block number 决定了应该填入哪个set<ul>
+<li>（block number) modulo （#sets in cache）</li>
+</ul>
+</li>
+<li>在一个set中搜索所有的entry</li>
+<li>n 次比较（稍微便宜点）</li>
+</ul>
+</li>
+</ul>
+<h3 id="关于相联性"><a href="#关于相联性" class="headerlink" title="关于相联性"></a>关于相联性</h3><ul>
+<li>提高相联性能够减小miss rate<ul>
+<li>但是同时会带来回报率降低（斜率降低）</li>
+</ul>
+</li>
+</ul>
+<h2 id="置换的策略"><a href="#置换的策略" class="headerlink" title="置换的策略"></a>置换的策略</h2><ul>
+<li>直接映射 -&gt; 不需要选择性置换</li>
+<li>相联<ul>
+<li>首选non-valid entry</li>
+<li>否则就在set中的有效的entry做选择</li>
+</ul>
+</li>
+<li>LRU机制（Least-Recently used）<ul>
+<li>选择最长时间最少被用到的进行置换（50岁以上的出列！）</li>
+</ul>
+</li>
+<li>随机置换<ul>
+<li>如果我们相联中一个组内的entry很多，我们用LRU机制反而会更加繁琐，这时使用随机置换并不会造成很多的浪费</li>
+</ul>
+</li>
+</ul>
+<h2 id="多级cache"><a href="#多级cache" class="headerlink" title="多级cache"></a>多级cache</h2><ul>
+<li>primary cache 与 cpu相连<ul>
+<li>小但非常快</li>
+</ul>
+</li>
+<li>2级cache 用于服务 primary cache misses 的情况<ul>
+<li>更大更慢但是仍然要比memory要快的多了</li>
+</ul>
+</li>
+<li>main memory 服务 2级cache miss 的情况</li>
+</ul>
+<h3 id="多级-cache-Considerations"><a href="#多级-cache-Considerations" class="headerlink" title="多级 cache Considerations"></a>多级 cache Considerations</h3><ul>
+<li>primary cache -&gt; 关注于最小的hit time</li>
+<li>二级cache<ul>
+<li>关注于低miss rate来避免访问 main memory</li>
+<li>hit time有更更小的全局影响</li>
+</ul>
+</li>
+<li>结果<ul>
+<li>一级缓存常常比单独的内存更小</li>
+<li>一级缓存的block size比二级缓存的block size更小</li>
+</ul>
+</li>
+</ul>
+<h2 id="鲁棒性（dependability）"><a href="#鲁棒性（dependability）" class="headerlink" title="鲁棒性（dependability）"></a>鲁棒性（dependability）</h2><p>系统会在两个状态——正常运行 &amp; 故障修复——来回运行</p>
+<ul>
+<li>Fault：某个组件的失效<ul>
+<li>可能会导致系统的失效</li>
+</ul>
+</li>
+</ul>
+<h3 id="鲁棒性的评估"><a href="#鲁棒性的评估" class="headerlink" title="鲁棒性的评估"></a>鲁棒性的评估</h3><ul>
+<li>可靠性：到达failure的平均时间（MTTF，mean time to failure）</li>
+<li>服务中断：平均到达修理的时间（MTTR，mean time to repair）</li>
+<li>failure之间的平均时间（MTBF，Mean time between failures）<ul>
+<li>MTBF &#x3D; MTTF + MTTR</li>
+</ul>
+</li>
+<li>可用性availability &#x3D; MTTF &#x2F; (MTTF + MTTR)</li>
+<li>提高可用性<ul>
+<li>增加MTTF：fault aboidance, fault tolerance, fault forecasting</li>
+<li>减少MTTR：改进诊断和修理的tools and processes</li>
+</ul>
+</li>
+</ul>
+<h2 id="虚拟内存（VM-virtual-memory"><a href="#虚拟内存（VM-virtual-memory" class="headerlink" title="虚拟内存（VM, virtual memory)"></a>虚拟内存（VM, virtual memory)</h2><ul>
+<li>将main memory 作为一个“cache”来进行次要存储<ul>
+<li>由CPU 硬件和操作系统(OS)共同完成</li>
+</ul>
+</li>
+<li>programs 会共享main memory<ul>
+<li>每个program会得到一个私有的保存着常用的代码和数据的地址空间</li>
+<li>由其他program进行保护</li>
+</ul>
+</li>
+<li>CPU 和 OS 将虚拟地址转化为物理地址<ul>
+<li>VM “block” 被称为page</li>
+<li>VM translation “miss”被称为 page fault</li>
+</ul>
+</li>
+</ul>
+<h2 id="Address-translation"><a href="#Address-translation" class="headerlink" title="Address translation"></a>Address translation</h2><p>动机：memory 其实还是太小了，不够用<br>映射原理：</p>
+<ul>
+<li>CPU 会生成一个VA 来访问主存但是在访问之前需要将VA 转化为 PA</li>
+<li>通过内存管理单元上的地址翻译硬件，利用存储在主存上的PT来翻译VA</li>
+</ul>
+<h2 id="Page-Translation"><a href="#Page-Translation" class="headerlink" title="Page Translation"></a>Page Translation</h2><p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/page%20translation.png" alt="page translation.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>对虚拟地址进行翻译，将虚拟地址切分为VPN 和 VPO两个部分，然后通过VPN在page_table中进行查表，VPO不变，组合成一个物理地址再映射到Physical memory中</p>
+<h2 id="Page-Fault-Penalty"><a href="#Page-Fault-Penalty" class="headerlink" title="Page Fault Penalty"></a>Page Fault Penalty</h2><ul>
+<li>在page fault发生时，page就需要从disk中fetch<ul>
+<li>要花费millions级别的时钟周期！</li>
+<li>由OS代码处理</li>
+</ul>
+</li>
+<li>尽力最小化page fault rate<ul>
+<li>进行全相联</li>
+<li>用最聪明的置换策略</li>
+</ul>
+</li>
+</ul>
+<h2 id="Page-Tables"><a href="#Page-Tables" class="headerlink" title="Page Tables"></a>Page Tables</h2><ul>
+<li>存储置换信息<ul>
+<li>有很多列的page table entry，由VPN进行索引</li>
+<li>CPU 中的 Page table register 会指向physical memory中的 page table</li>
+</ul>
+</li>
+<li>如果page是在memory中存在的<ul>
+<li>PTE存储 PPN（physical page number）和其他的状态位（referenced（用于LRU），dirty（用于write back））</li>
+</ul>
+</li>
+<li>如果page在memory中不存在<ul>
+<li>那么PTE就要查询disk中的位置进行交换</li>
+</ul>
+</li>
+<li>使用page table进行translation的过程<img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/page%20table%20translation.png" alt="page table translation.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+<li>将pages映射到存储<img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/page%20to%20memory.png" alt="page to memory"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ul>
+<h2 id="置换和写策略"><a href="#置换和写策略" class="headerlink" title="置换和写策略"></a>置换和写策略</h2><ul>
+<li>为了降低 page fault rate，会更加青睐LRU置换策略<ul>
+<li>当访问page的时候，reference bit会置为1</li>
+<li>OS会周期性的将所有reference bit全部置为0</li>
+<li>一个reference bit为0的page 最近没有被使用过</li>
+</ul>
+</li>
+<li>写disk会花费million级别的周期数<ul>
+<li>一次要写一个block而不是单独的位置</li>
+<li>写直达是不切实际的</li>
+<li>使用 write-back策略</li>
+<li>page被写的时候PTE中的dirty bit会被置位</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用TLB-的快速translation"><a href="#使用TLB-的快速translation" class="headerlink" title="使用TLB 的快速translation"></a>使用TLB 的快速translation</h2><ul>
+<li>address translation需要做两遍<ul>
+<li>一次在访问PTE</li>
+<li>一次在访问真正的memory access</li>
+</ul>
+</li>
+<li>但是在访问page table的时候会有很好的局限性<ul>
+<li>所以在CPU中使用一小块cache来缓存PTE（这和cache的机制非常像，也就是利用locality）</li>
+<li>这一个小cache被称为Translation Look-aside Buffer(TLB)</li>
+<li>miss会被硬软件所处理</li>
+</ul>
+</li>
+<li>TLB例子<img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/TLB%E5%8F%98%E6%8D%A2%E5%8E%9F%E7%90%86.png" alt="TLB变换原理.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><ul>
+<li>TLB中的项被分为tag、TLB addr、offset三个部分</li>
+<li>其中tag用于检查TLB是否命中，也就是核对其是否在VM中</li>
+<li>TLB addr则用于索引TLB条目</li>
+<li>如果tag命中则提取该条目中物理地址，并与offset进行拼接</li>
+<li>否则则需要查找page table 然后进行TLB的更新</li>
+</ul>
+</li>
+<li><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/TLB%20fast%20translation.png" alt="TLB fast translation.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ul>
+<h3 id="TLB-misses"><a href="#TLB-misses" class="headerlink" title="TLB misses"></a>TLB misses</h3><ul>
+<li>如果page在memory中<ul>
+<li>从PTE中加载然后重试</li>
+<li>可以被硬件处理</li>
+<li>或者用软件<ul>
+<li>提出一个exception，使用优化的handler</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>如果page不在memory中（page fault）<ul>
+<li>OS处理fetch page然后更新page table</li>
+<li>然后重试faulting instruction</li>
+</ul>
+</li>
+</ul>
+<h3 id="TLB-miss-handler"><a href="#TLB-miss-handler" class="headerlink" title="TLB miss handler"></a>TLB miss handler</h3><ul>
+<li>TLB miss <ul>
+<li>page 存在但是PTE不在TLB中</li>
+<li>page 不存在</li>
+</ul>
+</li>
+<li>目的寄存器被重写之前必须要识别TLB miss<ul>
+<li>提出一个exception</li>
+</ul>
+</li>
+<li>handler 从memory中复制PTE到TLB中<ul>
+<li>然后重新执行指令</li>
+<li>如果page不存在那就会触发 page fault</li>
+</ul>
+</li>
+</ul>
+<h3 id="Page-fault-handler"><a href="#Page-fault-handler" class="headerlink" title="Page fault handler"></a>Page fault handler</h3><ul>
+<li>使用一个 faulting virtual address来找到PTE</li>
+<li>在disk中定位page</li>
+<li>选择一个page 来进行置换<ul>
+<li>如果dirty了，那么先写回disk</li>
+</ul>
+</li>
+<li>将page读入memory然后更新page table</li>
+<li>使程序重新执行<ul>
+<li>从faulting instruction重新开始</li>
+</ul>
+</li>
+</ul>
+<h2 id="TLB和cache的交互"><a href="#TLB和cache的交互" class="headerlink" title="TLB和cache的交互"></a>TLB和cache的交互</h2><ul>
+<li>如果cache tag 使用物理地址<ul>
+<li>需要在cache lookup之前进行查询</li>
+</ul>
+</li>
+<li>使用虚拟地址<ul>
+<li>进行映射带来的复杂度<ul>
+<li>不同的virtual address 会共享相同的physical address</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="memory-保护"><a href="#memory-保护" class="headerlink" title="memory 保护"></a>memory 保护</h2><ul>
+<li>不同的进程会共享他们的一部分虚拟地址空间<ul>
+<li>但是需要对错误的访问进行保护</li>
+<li>需要OS</li>
+</ul>
+</li>
+<li>OS保护支持的硬件<ul>
+<li>管理模式</li>
+<li>管理模式指令</li>
+<li>只可由管理级别代码访问的page table和其他状态信息</li>
+<li>系统调用exception</li>
+</ul>
+</li>
+</ul>
+<h2 id="memory-hierarchy"><a href="#memory-hierarchy" class="headerlink" title="memory hierarchy"></a>memory hierarchy</h2><ul>
+<li>在每一级hierarchy<ul>
+<li>块可以被放在何处</li>
+<li>如何找到块</li>
+<li>缺失时如何替换</li>
+<li>写操作如何处理</li>
+</ul>
+</li>
+</ul>
+<h3 id="Block-Placement"><a href="#Block-Placement" class="headerlink" title="Block Placement"></a>Block Placement</h3><ul>
+<li>由相联性决定<ul>
+<li>直接映射</li>
+<li>n路组相联</li>
+<li>全相联</li>
+</ul>
+</li>
+<li>更高的相联性会降低miss rate<ul>
+<li>但是会提高复杂度，成本，访问时间</li>
+</ul>
+</li>
+</ul>
+<h3 id="找块"><a href="#找块" class="headerlink" title="找块"></a>找块</h3><p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/finding%20block.png" alt="finding block.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<ul>
+<li>硬件caches<ul>
+<li>减少比较次数来将此花销</li>
+</ul>
+</li>
+<li>虚拟地址<ul>
+<li>完全的table lookup使得全相联是可行的</li>
+<li>降低miss rate的好处</li>
+</ul>
+</li>
+</ul>
+<h3 id="置换"><a href="#置换" class="headerlink" title="置换"></a>置换</h3><ul>
+<li>在miss时的置换选择<ul>
+<li>LRU策略<ul>
+<li>复杂并且对于高相联性会有大花销</li>
+</ul>
+</li>
+<li>Random<ul>
+<li>更易实现</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>虚拟内存<ul>
+<li>通过硬件支持近似实现LRU</li>
+</ul>
+</li>
+</ul>
+<h3 id="写策略"><a href="#写策略" class="headerlink" title="写策略"></a>写策略</h3><ul>
+<li>写直达<ul>
+<li>简化了置换但是需要write buffer</li>
+</ul>
+</li>
+<li>写返回<ul>
+<li>只更新高级</li>
+<li>当block被置换的时候再更新低级</li>
+<li>需要保存更多的状态</li>
+</ul>
+</li>
+<li>VM<ul>
+<li>只有写返回是可行的，disk write 太贵了</li>
+</ul>
+</li>
+</ul>
+<h2 id="Source-of-misses（3C模型）"><a href="#Source-of-misses（3C模型）" class="headerlink" title="Source of misses（3C模型）"></a>Source of misses（3C模型）</h2><ul>
+<li>Compulsory misses<ul>
+<li>对一个block的首次访问</li>
+</ul>
+</li>
+<li>Capacity misses<ul>
+<li>有限的cache size 导致</li>
+<li>一个被置换的block在随后会被再次访问到</li>
+</ul>
+</li>
+<li>Conflict misses<ul>
+<li>在非全相联cache中出现</li>
+<li>由于set中entry的竞争</li>
+<li>不会在全相联中出现</li>
+</ul>
+</li>
+</ul>
+<h2 id="cache-设计平衡"><a href="#cache-设计平衡" class="headerlink" title="cache 设计平衡"></a>cache 设计平衡</h2><p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/cache%E8%AE%BE%E8%AE%A1%E5%B9%B3%E8%A1%A1.png" alt="cache设计平衡.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2025/05/23/SHELL%20%E5%9F%BA%E7%A1%80%E4%BB%A5%E5%8F%8A%20CLI%E5%B7%A5%E5%85%B7/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/shellcover.jpg">
+                </span>
+                <h6 class="trm-op-title">SHELL基础以及CLI工具</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/05/23</li>
+                <li>19:21</li>
+                <li>CS工具</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2025/05/23/%E5%85%B3%E4%BA%8EKMP%E7%AE%97%E6%B3%95%E7%9A%84%E5%9B%9E%E9%80%80%E6%80%9D%E8%80%83/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/DS.jpg">
+                </span>
+                <h6 class="trm-op-title">关于KMP算法的回退思考</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/05/23</li>
+                <li>18:50</li>
+                <li>数据结构</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <div class="trm-counter-up trm-scroll-animation">
+    <div class="trm-counter-number">
+        <span class="trm-counter">140</span>
+        <span class="trm-counter-symbol">+</span>
+    </div>
+    <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+    <div class="trm-label">Honors and Awards</div>
+</div>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="局限性原则"><a rel="nofollow" class="trm-toc-link" href="#局限性原则"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">局限性原则</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="时间局限性"><a rel="nofollow" class="trm-toc-link" href="#时间局限性"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">时间局限性</span></a></li><li class="trm-toc-item trm-toc-level-3" title="空间局限性"><a rel="nofollow" class="trm-toc-link" href="#空间局限性"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">空间局限性</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="利用局限性"><a rel="nofollow" class="trm-toc-link" href="#利用局限性"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">利用局限性</span></a></li><li class="trm-toc-item trm-toc-level-2" title="存储层次等级"><a rel="nofollow" class="trm-toc-link" href="#存储层次等级"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">存储层次等级</span></a></li><li class="trm-toc-item trm-toc-level-2" title="硬盘存储"><a rel="nofollow" class="trm-toc-link" href="#硬盘存储"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">硬盘存储</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="sector 和 访问"><a rel="nofollow" class="trm-toc-link" href="#sector-和-访问"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">sector 和 访问</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Cache Memory"><a rel="nofollow" class="trm-toc-link" href="#Cache-Memory"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">Cache Memory</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="直接映射"><a rel="nofollow" class="trm-toc-link" href="#直接映射"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">直接映射</span></a></li><li class="trm-toc-item trm-toc-level-3" title="tags 和 Valid Bits"><a rel="nofollow" class="trm-toc-link" href="#tags-和-Valid-Bits"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">tags 和 Valid Bits</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Cache的一般步骤"><a rel="nofollow" class="trm-toc-link" href="#Cache的一般步骤"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">Cache的一般步骤</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Address Subdivision"><a rel="nofollow" class="trm-toc-link" href="#Address-Subdivision"><span class="trm-toc-number">5.4.</span> <span class="trm-toc-text">Address Subdivision</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Block Size的思考"><a rel="nofollow" class="trm-toc-link" href="#Block-Size的思考"><span class="trm-toc-number">5.5.</span> <span class="trm-toc-text">Block Size的思考</span></a></li><li class="trm-toc-item trm-toc-level-3" title="cache miss"><a rel="nofollow" class="trm-toc-link" href="#cache-miss"><span class="trm-toc-number">5.6.</span> <span class="trm-toc-text">cache miss</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="write-through"><a rel="nofollow" class="trm-toc-link" href="#write-through"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">write-through</span></a></li><li class="trm-toc-item trm-toc-level-2" title="write-Allocation"><a rel="nofollow" class="trm-toc-link" href="#write-Allocation"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">write-Allocation</span></a></li><li class="trm-toc-item trm-toc-level-2" title="评估 cache 性能"><a rel="nofollow" class="trm-toc-link" href="#评估-cache-性能"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">评估 cache 性能</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="关于性能总结"><a rel="nofollow" class="trm-toc-link" href="#关于性能总结"><span class="trm-toc-number">8.1.</span> <span class="trm-toc-text">关于性能总结</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Associative Caches"><a rel="nofollow" class="trm-toc-link" href="#Associative-Caches"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">Associative Caches</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="关于相联性"><a rel="nofollow" class="trm-toc-link" href="#关于相联性"><span class="trm-toc-number">9.1.</span> <span class="trm-toc-text">关于相联性</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="置换的策略"><a rel="nofollow" class="trm-toc-link" href="#置换的策略"><span class="trm-toc-number">10.</span> <span class="trm-toc-text">置换的策略</span></a></li><li class="trm-toc-item trm-toc-level-2" title="多级cache"><a rel="nofollow" class="trm-toc-link" href="#多级cache"><span class="trm-toc-number">11.</span> <span class="trm-toc-text">多级cache</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="多级 cache Considerations"><a rel="nofollow" class="trm-toc-link" href="#多级-cache-Considerations"><span class="trm-toc-number">11.1.</span> <span class="trm-toc-text">多级 cache Considerations</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="鲁棒性（dependability）"><a rel="nofollow" class="trm-toc-link" href="#鲁棒性（dependability）"><span class="trm-toc-number">12.</span> <span class="trm-toc-text">鲁棒性（dependability）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="鲁棒性的评估"><a rel="nofollow" class="trm-toc-link" href="#鲁棒性的评估"><span class="trm-toc-number">12.1.</span> <span class="trm-toc-text">鲁棒性的评估</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="虚拟内存（VM, virtual memory)"><a rel="nofollow" class="trm-toc-link" href="#虚拟内存（VM-virtual-memory"><span class="trm-toc-number">13.</span> <span class="trm-toc-text">虚拟内存（VM, virtual memory)</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Address translation"><a rel="nofollow" class="trm-toc-link" href="#Address-translation"><span class="trm-toc-number">14.</span> <span class="trm-toc-text">Address translation</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Page Translation"><a rel="nofollow" class="trm-toc-link" href="#Page-Translation"><span class="trm-toc-number">15.</span> <span class="trm-toc-text">Page Translation</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Page Fault Penalty"><a rel="nofollow" class="trm-toc-link" href="#Page-Fault-Penalty"><span class="trm-toc-number">16.</span> <span class="trm-toc-text">Page Fault Penalty</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Page Tables"><a rel="nofollow" class="trm-toc-link" href="#Page-Tables"><span class="trm-toc-number">17.</span> <span class="trm-toc-text">Page Tables</span></a></li><li class="trm-toc-item trm-toc-level-2" title="置换和写策略"><a rel="nofollow" class="trm-toc-link" href="#置换和写策略"><span class="trm-toc-number">18.</span> <span class="trm-toc-text">置换和写策略</span></a></li><li class="trm-toc-item trm-toc-level-2" title="使用TLB 的快速translation"><a rel="nofollow" class="trm-toc-link" href="#使用TLB-的快速translation"><span class="trm-toc-number">19.</span> <span class="trm-toc-text">使用TLB 的快速translation</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="TLB misses"><a rel="nofollow" class="trm-toc-link" href="#TLB-misses"><span class="trm-toc-number">19.1.</span> <span class="trm-toc-text">TLB misses</span></a></li><li class="trm-toc-item trm-toc-level-3" title="TLB miss handler"><a rel="nofollow" class="trm-toc-link" href="#TLB-miss-handler"><span class="trm-toc-number">19.2.</span> <span class="trm-toc-text">TLB miss handler</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Page fault handler"><a rel="nofollow" class="trm-toc-link" href="#Page-fault-handler"><span class="trm-toc-number">19.3.</span> <span class="trm-toc-text">Page fault handler</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="TLB和cache的交互"><a rel="nofollow" class="trm-toc-link" href="#TLB和cache的交互"><span class="trm-toc-number">20.</span> <span class="trm-toc-text">TLB和cache的交互</span></a></li><li class="trm-toc-item trm-toc-level-2" title="memory 保护"><a rel="nofollow" class="trm-toc-link" href="#memory-保护"><span class="trm-toc-number">21.</span> <span class="trm-toc-text">memory 保护</span></a></li><li class="trm-toc-item trm-toc-level-2" title="memory hierarchy"><a rel="nofollow" class="trm-toc-link" href="#memory-hierarchy"><span class="trm-toc-number">22.</span> <span class="trm-toc-text">memory hierarchy</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Block Placement"><a rel="nofollow" class="trm-toc-link" href="#Block-Placement"><span class="trm-toc-number">22.1.</span> <span class="trm-toc-text">Block Placement</span></a></li><li class="trm-toc-item trm-toc-level-3" title="找块"><a rel="nofollow" class="trm-toc-link" href="#找块"><span class="trm-toc-number">22.2.</span> <span class="trm-toc-text">找块</span></a></li><li class="trm-toc-item trm-toc-level-3" title="置换"><a rel="nofollow" class="trm-toc-link" href="#置换"><span class="trm-toc-number">22.3.</span> <span class="trm-toc-text">置换</span></a></li><li class="trm-toc-item trm-toc-level-3" title="写策略"><a rel="nofollow" class="trm-toc-link" href="#写策略"><span class="trm-toc-number">22.4.</span> <span class="trm-toc-text">写策略</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Source of misses（3C模型）"><a rel="nofollow" class="trm-toc-link" href="#Source-of-misses（3C模型）"><span class="trm-toc-number">23.</span> <span class="trm-toc-text">Source of misses（3C模型）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="cache 设计平衡"><a rel="nofollow" class="trm-toc-link" href="#cache-设计平衡"><span class="trm-toc-number">24.</span> <span class="trm-toc-text">cache 设计平衡</span></a></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-book-reader"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-arrows-alt-h"></use>
+</svg>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-arrow-up"></use>
+</svg>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.4"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.4"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
