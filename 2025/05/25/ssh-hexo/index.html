@@ -7,21 +7,22 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="An ordinary day 25-05-23">
+<meta name="description" content="deploy hexo by ssh">
 <meta property="og:type" content="article">
-<meta property="og:title" content="25-05-23">
-<meta property="og:url" content="https://das1zhang.github.io/2025/05/24/250523/index.html">
+<meta property="og:title" content="使用ssh部署hexo">
+<meta property="og:url" content="https://das1zhang.github.io/2025/05/25/ssh-hexo/index.html">
 <meta property="og:site_name" content="Das1&#39;s Blog">
-<meta property="og:description" content="An ordinary day 25-05-23">
+<meta property="og:description" content="deploy hexo by ssh">
 <meta property="og:locale">
-<meta property="article:published_time" content="2025-05-23T18:19:14.000Z">
-<meta property="article:modified_time" content="2025-05-23T18:48:12.209Z">
+<meta property="article:published_time" content="2025-05-24T19:18:53.000Z">
+<meta property="article:modified_time" content="2025-05-24T19:24:01.393Z">
 <meta property="article:author" content="Das1">
-<meta property="article:tag" content="日记">
+<meta property="article:tag" content="CS工具">
+<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
 
 
-<title >25-05-23</title>
+<title >使用ssh部署hexo</title>
 
 <!-- Favicon -->
 
@@ -64,7 +65,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"das1zhang.github.io","author":"Das1","root":"/","typed_text":["an undergraduate in WHU"],"theme_version":"2.2.4","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/logo.jpg","icon16":"/favicon-16x16.png","icon32":"/favicon-32x32.png","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"/logo.jpg","show_text":"Das1's Blog.","hide_text":"Waiting for u."},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-a-farfa-sun","moon":"icon-fa-moon-line","play":"icon-play","email":"icon-envelop","next":"icon-fa-arrow-right","calendar":"icon-th-list","clock":"icon-farfa-clock","user":"icon-a-zu394","back_top":"icon-fa-arrow-up","close":"icon-a-fasfa-times","search":"icon-fasfa-search","reward":"icon-dashang","toc_tag":"icon-th-list","read":"icon-book-reader","arrows":"icon-arrows-alt-h","double_arrows":"icon-angle-double-down","copy":"icon-copy","user_tag":"icon-a-zu394"},"icontype":"symbol","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":false,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-05-24 02:48:12"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-05-25 03:24:01"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.4" id="trm-switch-style">
@@ -239,7 +240,7 @@
     <div class="trm-banner">
     
     <!-- banner cover -->
-    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/diary.gif">
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/hexobanner.jpg">
     <!-- banner cover end -->
     
 
@@ -255,10 +256,10 @@
                     <!-- banner title -->
                     <div class="trm-banner-text ">
                         <div class="trm-label trm-mb-20">
-                            很高兴你能来看看我平淡生活的一角
+                            Deploy hexo by ssh
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            25-05-23
+                            使用ssh部署hexo
                         </h1>
 
                         
@@ -425,7 +426,7 @@
             <svg class="symbol-icon trm-icon" aria-hidden="true">
     <use xlink:href="#icon-th-list"></use>
 </svg><br>
-            05/24
+            05/25
         </div>
     </div>
     <div class="col-sm-4">
@@ -433,7 +434,7 @@
             <svg class="symbol-icon trm-icon" aria-hidden="true">
     <use xlink:href="#icon-farfa-clock"></use>
 </svg><br>
-            02:19
+            03:18
         </div>
     </div>
     <div class="col-sm-4">
@@ -448,34 +449,32 @@
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
     <blockquote>
-<p>自救系列第2集，持续日更中。。。。。</p>
+<p>我们使用https进行部署时，经常会发生连接不稳定，也就是经典的网络问题，本文介绍了使用ssh密钥来部署hexo从而避免网络连接不稳定的问题</p>
 </blockquote>
-<h2 id="流水账"><a href="#流水账" class="headerlink" title="流水账"></a>流水账</h2><p>昨晚本来说的是上床了，结果后来又开始捣鼓博客来了，对着配置文档捣鼓半天，搞到五点才上床，刷刷手机又是六点了，谁懂听到鸟叫的救赎感。</p>
-<p>一觉睡到下午三点，而且是梦中吓醒，刷手机刷到四点下床（感觉起床后刷手机的时间长的离谱了）。</p>
-<p>起床后把博客整理了一下，一些把一些零散的文章都发到博客上去了，然后把之前遗落的计组第五章给发上去了，也算是一个系列的完结了。</p>
-<p>我又搞了一天的OS实验，谁懂！这个实验怎么这么恶心！但是还是学到了一点东西，疯狂地压榨GPT之后，终于是把整个过程给搞清楚了，虽然最后测试的时候CPU多核的问题会搞得输出结果千奇百怪，但是也是至少完结了。</p>
-<p>然后把这个实验的内容写了个文章进行整理，终于是弄完了。</p>
-<p>晚餐（实际上是第一餐）点了俩外卖，都快吃吐了，以后再也不会点两份外卖了，还是高估了自己的肚子啊。。。</p>
-<p>然后就到现在了，已经2:32了。。。。怎么时间这么快。。。。。准备上床睡觉了</p>
-<h2 id="有趣的事情"><a href="#有趣的事情" class="headerlink" title="有趣的事情"></a>有趣的事情</h2><h3 id="失去知觉的左手"><a href="#失去知觉的左手" class="headerlink" title="失去知觉的左手"></a>失去知觉的左手</h3><p>今天是怎么醒来的呢，本来做了一个战斗爽的梦，非常的沉醉，不知天地为何物了，但是左手在睡梦中失去了知觉，不知怎么的搭在了熟睡的本人脸上，本人还沉浸在睡梦的战斗爽中，还以为是梦里的，拿手拨了一下，发现还在脸上，还似乎是个肉体，吓了一跳，直接梦境中断，醒来发现是自己睡到失去知觉的左手搭在脸上，但是战斗爽的梦已经回不去了(T皿T)</p>
-<h2 id="今天干了啥"><a href="#今天干了啥" class="headerlink" title="今天干了啥"></a>今天干了啥</h2><ul>
-<li>OS实验完结，并写文章总结</li>
-<li>整理之前的文章，并发到博客上</li>
-<li>没了（怎么一天啥都没干就没了。。。）</li>
-</ul>
-<hr>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 把计组第五章补充到博客上来</li>
-<li><input checked="" disabled="" type="checkbox"> 把OS实验干完，然后写个小总结</li>
-<li><input checked="" disabled="" type="checkbox"> 继续日更</li>
-<li><input disabled="" type="checkbox"> 学最优化方法，看能不能写完一半作业</li>
-<li><input disabled="" type="checkbox"> 学一下图论，把算法的实验干了！</li>
-</ul>
-<h2 id="明天要干啥"><a href="#明天要干啥" class="headerlink" title="明天要干啥"></a>明天要干啥</h2><ul>
-<li><input disabled="" type="checkbox"> 复习OSppt内容</li>
-<li><input disabled="" type="checkbox"> 持续日更</li>
-<li><input disabled="" type="checkbox"> 跑个步（我要自律了！！）</li>
-</ul>
+<h2 id="更改deploy部分"><a href="#更改deploy部分" class="headerlink" title="更改deploy部分"></a>更改deploy部分</h2><p>找到_config.yaml文件，然后找到deploy部分修改为类似以下的内容（以我的博客仓库<code>Das1Zhang.github.io</code>为例：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:Das1Zhang/Das1Zhang.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">gh-pages</span></span><br></pre></td></tr></table></figure>
+<p>主要是更改repo部分</p>
+<h2 id="配置-SSH-密钥"><a href="#配置-SSH-密钥" class="headerlink" title="配置 SSH 密钥"></a>配置 SSH 密钥</h2><h3 id="生成-SSH-密钥"><a href="#生成-SSH-密钥" class="headerlink" title="生成 SSH 密钥"></a>生成 SSH 密钥</h3><p>打开 git bash 输入下面的内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;your_email@example.com&quot;</span></span><br></pre></td></tr></table></figure>
+<p>上面对应地填你的git邮箱</p>
+<p>然后会出现让你填写保存key的路径：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/c/Users/Vodka/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
+<p>我们直接按下回车，使用默认路径即可，方便git自动识别</p>
+<p>然后会看到两步提示：设置密钥密码和确认密码<br>我们也是直接按回车，不设置密码，这样每次使用git都不需要输入密码了<br>完成后会看到下面的信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Your identification has been saved <span class="keyword">in</span> /c/Users/Vodka/.ssh/id_rsa</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> /c/Users/Vodka/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看公钥内容"><a href="#查看公钥内容" class="headerlink" title="查看公钥内容"></a>查看公钥内容</h3><p>接下来我们要做的就是查看公钥内容，输入下面这段：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>我们把整段以 <code>ssh-rsa</code> 开头的内容复制下来</p>
+<h2 id="添加到Github"><a href="#添加到Github" class="headerlink" title="添加到Github"></a>添加到Github</h2><p>在GitHub中按照以下步骤查找：<strong>Settings → SSH and GPG keys → New SSH key</strong><br>Title可以随意填，Key则填写我们刚刚复制的公钥内容，然后点击 <code>Add SSH key</code> 即可</p>
+<h2 id="测试ssh连接是否成功"><a href="#测试ssh连接是否成功" class="headerlink" title="测试ssh连接是否成功"></a>测试ssh连接是否成功</h2><p>git bash 中输入以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>如果看到：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi Das1Zhang! You<span class="string">&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure>
+<p>就说明配置已经成功了</p>
+<h2 id="重新部署"><a href="#重新部署" class="headerlink" title="重新部署"></a>重新部署</h2><p>最后我们再次运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>应该就可以看到部署成功了</p>
 
 </article>
     
@@ -490,6 +489,7 @@
             <span data-number="02"></span>
         </h5>
     </div>
+    
     
         <div class="col-lg-6">
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
@@ -506,27 +506,6 @@
                 <li>25/05/25</li>
                 <li>03:01</li>
                 <li>日记</li>
-            </ul>
-        </div>
-    </div>
-</div>
-    
-    
-        <div class="col-lg-6">
-    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
-        <div class="trm-older-publication">
-            
-            <a class="trm-op-top trm-anima-link" href="/2025/05/24/xv6%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/">
-                <span class="trm-op-cover">
-                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/hmmmm.jpg">
-                </span>
-                <h6 class="trm-op-title">为risc-v xv6添加系统调用</h6>
-            </a>
-            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
-            <ul class="trm-card-data trm-label">
-                <li>25/05/24</li>
-                <li>02:08</li>
-                <li>OS</li>
             </ul>
         </div>
     </div>
@@ -568,7 +547,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="流水账"><a rel="nofollow" class="trm-toc-link" href="#流水账"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">流水账</span></a></li><li class="trm-toc-item trm-toc-level-2" title="有趣的事情"><a rel="nofollow" class="trm-toc-link" href="#有趣的事情"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">有趣的事情</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="失去知觉的左手"><a rel="nofollow" class="trm-toc-link" href="#失去知觉的左手"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">失去知觉的左手</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="今天干了啥"><a rel="nofollow" class="trm-toc-link" href="#今天干了啥"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">今天干了啥</span></a></li><li class="trm-toc-item trm-toc-level-2" title="明天要干啥"><a rel="nofollow" class="trm-toc-link" href="#明天要干啥"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">明天要干啥</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="更改deploy部分"><a rel="nofollow" class="trm-toc-link" href="#更改deploy部分"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">更改deploy部分</span></a></li><li class="trm-toc-item trm-toc-level-2" title="配置 SSH 密钥"><a rel="nofollow" class="trm-toc-link" href="#配置-SSH-密钥"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">配置 SSH 密钥</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="生成 SSH 密钥"><a rel="nofollow" class="trm-toc-link" href="#生成-SSH-密钥"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">生成 SSH 密钥</span></a></li><li class="trm-toc-item trm-toc-level-3" title="查看公钥内容"><a rel="nofollow" class="trm-toc-link" href="#查看公钥内容"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">查看公钥内容</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="添加到Github"><a rel="nofollow" class="trm-toc-link" href="#添加到Github"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">添加到Github</span></a></li><li class="trm-toc-item trm-toc-level-2" title="测试ssh连接是否成功"><a rel="nofollow" class="trm-toc-link" href="#测试ssh连接是否成功"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">测试ssh连接是否成功</span></a></li><li class="trm-toc-item trm-toc-level-2" title="重新部署"><a rel="nofollow" class="trm-toc-link" href="#重新部署"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">重新部署</span></a></li></ol>
       </div>
     </div>
 
