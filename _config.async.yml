@@ -3,7 +3,7 @@ user:
   first_name: Das1
   last_name: Zhang
   email: sihao050721.com@gmail.com
-  domain: https://www.imalun.com
+  domain: https://das1zhang.github.io
   avatar: /logo.jpg
   describe: Das1's Blog for recording notes and life.
   rule_text: A real good blog, only accessible for personal blog.
@@ -24,7 +24,7 @@ assets:
   icons:
     type: symbol
     css:
-    js: //at.alicdn.com/t/c/font_4729113_x0bmmauxlx.js
+    js: //at.alicdn.com/t/c/font_4729113_2ipfdlgy0mc.js
 
 sidebar:
   social: 
@@ -45,13 +45,13 @@ sidebar:
       url: https://www.xiaohongshu.com/user/profile/660a4195000000000b00c2b0
     - name: youtube
       icon: icon-youtube
-      rul: https://www.youtube.com/feed/you
+      url: http://youtube.com/@Sihao-q3o
     - name: steam
       icon: icon-steam
-      rul: https://steamcommunity.com/profiles/76561199544278917
+      url: https://steamcommunity.com/profiles/76561199544278917/
   info: 
     - key: address
-      val: HubeiWuhan
+      val: Wuhan
     - key: age
       val: 19
     - key: school
@@ -157,7 +157,7 @@ icons:
 toc:
   enable: true
   list_number: true
-  post_title: false
+  post_title: true
   max_depth: 3
   min_depth: 1
 

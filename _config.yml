@@ -102,5 +102,5 @@ theme: async
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/Das1Zhang/Das1Zhang.github.io
+  repo: git@github.com:Das1Zhang/Das1Zhang.github.io.git
   branch: gh-pages

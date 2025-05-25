@@ -6,7 +6,7 @@ categories: 期末自救计划
 banner:
   type: img
   bgurl: https://132-1331126615.cos.ap-guangzhou.myqcloud.com/CODbanner.gif
-  banner_text: The most popular version control system 
+  banner_text: The plans about saving my GPA.
 toc: true
 cover: [https://132-1331126615.cos.ap-guangzhou.myqcloud.com/reviewCover.jpg]
 author: Das1
@@ -126,8 +126,10 @@ TODO：
 
 ## 复习之高数篇
 大一上学期其实已经学了这学期高数的内容，只是有许多的知识有所遗忘，初步规划是高倍速刷一遍宋浩老师的网课，进行公式和概念总结然后直接开始刷题，总学时应该不会很长
+
 课程资源：
 - [宋浩老师的高数课](https://www.bilibili.com/video/BV1Eb411u7Fw/?spm_id_from=333.337.search-card.all.click)
+
 复习规划暂时可以搁置，可以进行突击，但是之前的作业需要补一补
 
 ## 复习之AI导论篇
