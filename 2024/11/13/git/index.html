@@ -16,7 +16,7 @@
 <meta property="og:locale">
 <meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
 <meta property="article:published_time" content="2024-11-13T13:37:59.000Z">
-<meta property="article:modified_time" content="2025-03-19T09:29:28.815Z">
+<meta property="article:modified_time" content="2025-05-26T19:17:04.065Z">
 <meta property="article:author" content="Das1">
 <meta property="article:tag" content="CS工具">
 <meta property="article:tag" content="git">
@@ -67,7 +67,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"das1zhang.github.io","author":"Das1","root":"/","typed_text":["an undergraduate in WHU"],"theme_version":"2.2.4","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/logo.jpg","icon16":"/favicon-16x16.png","icon32":"/favicon-32x32.png","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"/logo.jpg","show_text":"Das1's Blog.","hide_text":"Waiting for u."},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-a-farfa-sun","moon":"icon-fa-moon-line","play":"icon-play","email":"icon-envelop","next":"icon-fa-arrow-right","calendar":"icon-th-list","clock":"icon-farfa-clock","user":"icon-a-zu394","back_top":"icon-fa-arrow-up","close":"icon-a-fasfa-times","search":"icon-fasfa-search","reward":"icon-dashang","toc_tag":"icon-th-list","read":"icon-book-reader","arrows":"icon-arrows-alt-h","double_arrows":"icon-angle-double-down","copy":"icon-copy","user_tag":"icon-a-zu394"},"icontype":"symbol","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":false,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-03-19 17:29:28"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-05-27 03:17:04"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.4" id="trm-switch-style">
@@ -450,7 +450,10 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <h2 id="本地git-操作流"><a href="#本地git-操作流" class="headerlink" title="本地git 操作流"></a>本地git 操作流</h2><p><code>git init</code>:<br>在该文件夹本地创建一个 .git 仓库，相当于初始化，这将一个普普通通的文件夹进化成一个repo，可以进行各种git操作啦！</p>
+    <blockquote>
+<p>如果是纯小白可以参考这个视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Hkr7YYEh8/?spm_id_from=333.337.search-card.all.click&vd_source=8203c64d4bd9585209745df0d3b001f2">给傻子的git教程</a></p>
+</blockquote>
+<h2 id="本地git-操作流"><a href="#本地git-操作流" class="headerlink" title="本地git 操作流"></a>本地git 操作流</h2><p><code>git init</code>:<br>在该文件夹本地创建一个 .git 仓库，相当于初始化，这将一个普普通通的文件夹进化成一个repo，可以进行各种git操作啦！</p>
 <p><code>git add</code>：<br><code>git add</code> 用于将本地发生修改的文件（包括删除或者添加的文件）放入staging area，用于后续的commit</p>
 <p><code>git commit</code>:<br>一般命令为 <code>git commit -m &quot;MESSAGE&quot;</code>，用于提交当前的commit，本质上是将上一个commit 复制过来并将staging area中的内容合并进去。同时<code>git commit</code>操作会移动本地的HEAD poingter 和 master pointer</p>
 <p><code>git status</code>:<br>显示目前的git状态，可以显示你有哪些文件修改之后是否放入staging area。<br>记住 git 可以自动识别你对文件的操作，这就是<code>git status</code>的奥义所在</p>
@@ -476,6 +479,14 @@
 <p>多个远程仓库协作：<br><code>git remote add &lt;second_name&gt; &lt;second_url&gt;</code></p>
 <p>从远程仓库拉取更新：<br><code>git fetch &lt;name&gt;</code> </p>
 <h2 id="在多个仓库之间进行协作"><a href="#在多个仓库之间进行协作" class="headerlink" title="在多个仓库之间进行协作"></a>在多个仓库之间进行协作</h2><p>关键是搞清楚每个仓库当前的master pointer，当我们进行<code>pull</code>和<code>push</code>操作时的逻辑也是一样的。</p>
+<h2 id="配置git代理"><a href="#配置git代理" class="headerlink" title="配置git代理"></a>配置git代理</h2><blockquote>
+<p>因为一些不可抗力，即使是开了系统代理，仍然会遇到网络问题，这时候就需要我们进行一些代理配置了<br>具体可以参考这篇文章：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/783811/getting-git-to-work-with-a-proxy-server-fails-with-request-timed-out">Getting Git to work with a proxy server - fails with “Request timed out”</a><br>接下来我们看看如何查看自己的代理地址</p>
+</blockquote>
+<h3 id="Windows系统（win11为例）"><a href="#Windows系统（win11为例）" class="headerlink" title="Windows系统（win11为例）"></a>Windows系统（win11为例）</h3><p>按照“控制中心-&gt;网络和Internet-&gt;Internet选项”看到跳出来的Internet属性窗口之后，点击“连接”选项卡-&gt;局域网设置，这样就可以在“代理服务器”看到自己的代理地址和端口了。</p>
+<h3 id="Linux系统（Ubuntu-24-04为例）"><a href="#Linux系统（Ubuntu-24-04为例）" class="headerlink" title="Linux系统（Ubuntu 24.04为例）"></a>Linux系统（Ubuntu 24.04为例）</h3><p>打开终端在home目录下输入下面的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">env</span> | grep -i proxy</span><br></pre></td></tr></table></figure>
+<p>就可以看到自己的http和https代理地址了</p>
+<h3 id="另外提一点"><a href="#另外提一点" class="headerlink" title="另外提一点"></a>另外提一点</h3><p>在配置时，需要把http和https都进行配置。</p>
 
 </article>
     
@@ -548,7 +559,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="本地git 操作流"><a rel="nofollow" class="trm-toc-link" href="#本地git-操作流"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">本地git 操作流</span></a></li><li class="trm-toc-item trm-toc-level-2" title="进行版本控制"><a rel="nofollow" class="trm-toc-link" href="#进行版本控制"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">进行版本控制</span></a></li><li class="trm-toc-item trm-toc-level-2" title="使用 git 进行协作"><a rel="nofollow" class="trm-toc-link" href="#使用-git-进行协作"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">使用 git 进行协作</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="关于 git remote -v补充："><a rel="nofollow" class="trm-toc-link" href="#关于-git-remote-v补充："><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">关于 git remote -v补充：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="在多个仓库之间进行协作"><a rel="nofollow" class="trm-toc-link" href="#在多个仓库之间进行协作"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">在多个仓库之间进行协作</span></a></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="本地git 操作流"><a rel="nofollow" class="trm-toc-link" href="#本地git-操作流"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">本地git 操作流</span></a></li><li class="trm-toc-item trm-toc-level-2" title="进行版本控制"><a rel="nofollow" class="trm-toc-link" href="#进行版本控制"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">进行版本控制</span></a></li><li class="trm-toc-item trm-toc-level-2" title="使用 git 进行协作"><a rel="nofollow" class="trm-toc-link" href="#使用-git-进行协作"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">使用 git 进行协作</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="关于 git remote -v补充："><a rel="nofollow" class="trm-toc-link" href="#关于-git-remote-v补充："><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">关于 git remote -v补充：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="在多个仓库之间进行协作"><a rel="nofollow" class="trm-toc-link" href="#在多个仓库之间进行协作"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">在多个仓库之间进行协作</span></a></li><li class="trm-toc-item trm-toc-level-2" title="配置git代理"><a rel="nofollow" class="trm-toc-link" href="#配置git代理"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">配置git代理</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="Windows系统（win11为例）"><a rel="nofollow" class="trm-toc-link" href="#Windows系统（win11为例）"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">Windows系统（win11为例）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Linux系统（Ubuntu 24.04为例）"><a rel="nofollow" class="trm-toc-link" href="#Linux系统（Ubuntu-24-04为例）"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">Linux系统（Ubuntu 24.04为例）</span></a></li><li class="trm-toc-item trm-toc-level-3" title="另外提一点"><a rel="nofollow" class="trm-toc-link" href="#另外提一点"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">另外提一点</span></a></li></ol></li></ol>
       </div>
     </div>
 
