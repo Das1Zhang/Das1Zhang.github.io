@@ -7,16 +7,24 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Das1&#39;s Blog">
-<meta property="og:url" content="https://das1zhang.github.io/archives/2025/page/2/index.html">
+<meta name="description" content="How to build a easy cpp project">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C&amp;Cpp项目构建流程">
+<meta property="og:url" content="https://das1zhang.github.io/2025/06/16/C&Cpp%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Das1&#39;s Blog">
+<meta property="og:description" content="How to build a easy cpp project">
 <meta property="og:locale">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="article:published_time" content="2025-06-16T13:15:42.000Z">
+<meta property="article:modified_time" content="2025-06-16T13:20:17.172Z">
 <meta property="article:author" content="Das1">
+<meta property="article:tag" content="CS工具">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://das1zhang.github.io/img/404.jpg">
 
 
-<title >Das1's Blog</title>
+<title >C&Cpp项目构建流程</title>
 
 <!-- Favicon -->
 
@@ -59,7 +67,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"das1zhang.github.io","author":"Das1","root":"/","typed_text":["an undergraduate in WHU"],"theme_version":"2.2.4","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/logo.jpg","icon16":"/favicon-16x16.png","icon32":"/favicon-32x32.png","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"/logo.jpg","show_text":"Das1's Blog.","hide_text":"Waiting for u."},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-a-farfa-sun","moon":"icon-fa-moon-line","play":"icon-play","email":"icon-envelop","next":"icon-fa-arrow-right","calendar":"icon-th-list","clock":"icon-farfa-clock","user":"icon-a-zu394","back_top":"icon-fa-arrow-up","close":"icon-a-fasfa-times","search":"icon-fasfa-search","reward":"icon-dashang","toc_tag":"icon-th-list","read":"icon-book-reader","arrows":"icon-arrows-alt-h","double_arrows":"icon-angle-double-down","copy":"icon-copy","user_tag":"icon-a-zu394"},"icontype":"symbol","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":false,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":false,"postUpdate":"2025-06-16 21:20:23"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-06-16 21:20:17"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.4" id="trm-switch-style">
@@ -234,7 +242,7 @@
     <div class="trm-banner">
     
     <!-- banner cover -->
-    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/archivebanner.gif">
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/cpp_banner.jpg">
     <!-- banner cover end -->
     
 
@@ -250,10 +258,10 @@
                     <!-- banner title -->
                     <div class="trm-banner-text ">
                         <div class="trm-label trm-mb-20">
-                            Welcome to the archive
+                            How to build your first cpp project
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            Here is my treasure chest
+                            C&Cpp项目构建流程
                         </h1>
 
                         
@@ -263,7 +271,7 @@
                                 </li>
                                 <li>
                                     <span>
-                                        archives
+                                        2025
                                     </span>
                                 </li>
                             </ul>
@@ -414,229 +422,129 @@
             
             <div class="trm-page-content col-lg-8">
                 <div id="trm-content" class="trm-content">
-                    <div class="row">
-    <div class="col-lg-12">
-        <div class="trm-card">
-            <div style="padding: 0 20px;">
-                
-                    <ul class="trm-tag-list"><li class="trm-tag-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">（17）</span></li><li class="trm-tag-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">（7）</span></li></ul>
-                
-            </div>
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg><br>
+            06/16
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-farfa-clock"></use>
+</svg><br>
+            21:15
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-a-zu394"></use>
+</svg><br>
+            Das1
         </div>
     </div>
 </div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <blockquote>
+<p>很多小白在在第一次接触CPP项目时，不知道如何运行一个完整的CPP项目，本文介绍了如何构建一个CPP项目，注意本文不提及<code>CMakeList.txt</code>,只针对CMakeLists.txt文件已经给出的情况下，如何构建CPP项目</p>
+</blockquote>
+<h1 id="项目构建"><a href="#项目构建" class="headerlink" title="项目构建"></a>项目构建</h1><h2 id="项目构建工具链"><a href="#项目构建工具链" class="headerlink" title="项目构建工具链"></a>项目构建工具链</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/llvm/llvm-project/releases/">clang</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ninja-build/ninja/releases">ninja</a></li>
+<li><a target="_blank" rel="noopener" href="https://cmake.org/download/">cmake</a><br>安装完毕后一定一定要添加环境变量，clang和cmake在安装引导中勾选即可，Ninja则需要自己手动添加系统变量。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>作用</th>
+<th>类似的工具</th>
+<th>举例说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Clang</strong></td>
+<td>编译器</td>
+<td>g++, MSVC</td>
+<td>把 <code>.cpp</code> 编成 <code>.exe</code></td>
+</tr>
+<tr>
+<td><strong>CMake</strong></td>
+<td>生成构建系统文件</td>
+<td>qmake, autotools</td>
+<td>把 <code>CMakeLists.txt</code> 变成 <code>Makefile</code>&#x2F;<code>.sln</code></td>
+</tr>
+<tr>
+<td><strong>Ninja</strong></td>
+<td>实际的构建工具</td>
+<td>make, MSBuild</td>
+<td>按 <code>build.ninja</code> 快速构建代码</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="项目构建流程"><a href="#项目构建流程" class="headerlink" title="项目构建流程"></a>项目构建流程</h2><h3 id="创建构建系统文件目录"><a href="#创建构建系统文件目录" class="headerlink" title="创建构建系统文件目录"></a>创建构建系统文件目录</h3><p>安装好上述工具链后，在项目根目录下新建一个<code>build</code>目录，并进入该目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> build</span><br><span class="line"><span class="built_in">cd</span> build</span><br></pre></td></tr></table></figure>
 
-<!-- history -->
+<h3 id="生成构建系统文件"><a href="#生成构建系统文件" class="headerlink" title="生成构建系统文件"></a>生成构建系统文件</h3><p>然后使用这条命令，使用<code>cmake</code>识别在根目录下的<code>cmakelists.txt</code>，并指定构建工具<code>ninja</code>和编译器<code>clang</code>（对于C语言使用<code>clang</code>，CPP则为<code>clang++</code>）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake .. -G <span class="string">&quot;Ninja&quot;</span> -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++</span><br></pre></td></tr></table></figure>
+<p>稍微等待一会儿，会在终端看到输出的构建信息，如果看到下面这样的信息，说明构建成功：<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Pasted%20image%2020250615210747.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>上面会出现一条<code>Cmake Warning</code>，表示我们有一条手动指定的变量在这个项目中没有被用到，就是我们指定的对于C语言的编译器，也就是<code>clang</code>，因为我们的项目中都是CPP文件，不需要用到对于C语言的编译器，这个无伤大雅。<br>最后一条我们看到，构建文件已经被写入build文件夹中了，说明构建文件已经成功生成。</p>
+<h3 id="项目可执行文件构建"><a href="#项目可执行文件构建" class="headerlink" title="项目可执行文件构建"></a>项目可执行文件构建</h3><p>在<code>build</code>目录下运行下面命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake --build . </span><br></pre></td></tr></table></figure>
+<p>然后会看见项目构建进程，构建完毕后我们可以在build目录下看见对应的可执行文件<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Pasted%20image%2020250616173124.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>比如我这里就可以看到两个测试可执行文件，说明文件构建成功</p>
+<h3 id="关于CmakeLists-txt编译选项"><a href="#关于CmakeLists-txt编译选项" class="headerlink" title="关于CmakeLists.txt编译选项"></a>关于CmakeLists.txt编译选项</h3><p>在<code>build</code>目录下生成构建系统文件后，如果我们不修改<code>CmakeLists.txt</code>文件，直接构建项目：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake --build . </span><br></pre></td></tr></table></figure>
+<p>可能会看见如下的报错信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:/Users/Vodka/Desktop/ass1-master/ass1-master/src/word_break.cpp:52:12:</span><br><span class="line">error: comparison of integers of different signs: <span class="string">&#x27;unsigned long long&#x27;</span> and <span class="string">&#x27;const int&#x27;</span> [-Werror,-Wsign-compare] 52 | <span class="keyword">if</span> (dp[0] &gt;= INF) &#123; | ~~~~~ ^ ~~~ 14 errors generated. [2/7] Linking CXX static library catch2_main.lib ninja: build stopped: subcommand failed.</span><br></pre></td></tr></table></figure>
+<p>这个错误信息说明代码在编译时被开启了<strong>非常严格的警告作为错误（<code>-Werror</code>）</strong>。<br>这是因为我们在编写的源文件中，有<strong>类型不匹配</strong>的问题，比如我们直接将 int 类型和 size_t 类型进行比较，产生警告，而因为我们开启了<code>-Werror</code>，<strong>将警告直接视为报错</strong>，终止项目构建。<br>为了避免对我们的源代码进行大篇幅的修改，我们可以将<strong>放宽编译警告</strong>，在<code>CmakeLists.txt</code>中将<code>Werror</code>项注释掉，然后重新构建即可。</p>
 
-<div class="row">
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
     <div class="col-lg-12">
         <!-- title -->
         <h5 class="trm-title-with-divider">
-            
-                2025 年的归档
-            
-            <span data-number="01"></span>
+            其他文章
+            <span data-number="02"></span>
         </h5>
     </div>
-    <div class="col-lg-12">
-        <!-- timeline -->
-        <div class="trm-timeline">
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
             
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/05/23/SHELL%20%E5%9F%BA%E7%A1%80%E4%BB%A5%E5%8F%8A%20CLI%E5%B7%A5%E5%85%B7/" class="trm-anima-link">
-                                        SHELL基础以及CLI工具
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">05/23</li>
-                                        <li class="trm-accent-color">19:21</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/05/23/COD-Chap-05/" class="trm-anima-link">
-                                        Chapter_05 of COD
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">05/23</li>
-                                        <li class="trm-accent-color">18:59</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/05/23/%E5%85%B3%E4%BA%8EKMP%E7%AE%97%E6%B3%95%E7%9A%84%E5%9B%9E%E9%80%80%E6%80%9D%E8%80%83/" class="trm-anima-link">
-                                        关于KMP算法的回退思考
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">05/23</li>
-                                        <li class="trm-accent-color">18:50</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/05/23/VScode%20%E9%85%8D%E7%BD%AEc&c++%20%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/" class="trm-anima-link">
-                                        VScode配置c&amp;c++运行环境(win)
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">05/23</li>
-                                        <li class="trm-accent-color">17:44</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/05/23/25-05-22/" class="trm-anima-link">
-                                        25-05-22
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">05/23</li>
-                                        <li class="trm-accent-color">03:34</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/05/23/HowtoJourney/" class="trm-anima-link">
-                                        How to Journal
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">05/23</li>
-                                        <li class="trm-accent-color">03:20</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/03/19/makefile/" class="trm-anima-link">
-                                        About Makefile
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">03/19</li>
-                                        <li class="trm-accent-color">17:16</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
+            <a class="trm-op-top trm-anima-link" href="/2025/06/13/25-06-13/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/250613.jpg">
+                </span>
+                <h6 class="trm-op-title">25-06-13</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/06/13</li>
+                <li>23:27</li>
+                <li>日记</li>
+            </ul>
         </div>
-        <!-- timeline end -->
     </div>
 </div>
+    
+</div>
 
-<!-- history end -->
-
-
-    <div class="trm-pagination">
-        <a class="page-number" href="/archives/2025/">1</a><span class="page-number current">2</span>
-    </div>
-
-
+    
 
 
 
@@ -662,9 +570,33 @@
 
             
 
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="项目构建"><a rel="nofollow" class="trm-toc-link" href="#项目构建"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">项目构建</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="项目构建工具链"><a rel="nofollow" class="trm-toc-link" href="#项目构建工具链"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">项目构建工具链</span></a></li><li class="trm-toc-item trm-toc-level-2" title="项目构建流程"><a rel="nofollow" class="trm-toc-link" href="#项目构建流程"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">项目构建流程</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="创建构建系统文件目录"><a rel="nofollow" class="trm-toc-link" href="#创建构建系统文件目录"><span class="trm-toc-number">1.2.1.</span> <span class="trm-toc-text">创建构建系统文件目录</span></a></li><li class="trm-toc-item trm-toc-level-3" title="生成构建系统文件"><a rel="nofollow" class="trm-toc-link" href="#生成构建系统文件"><span class="trm-toc-number">1.2.2.</span> <span class="trm-toc-text">生成构建系统文件</span></a></li><li class="trm-toc-item trm-toc-level-3" title="项目可执行文件构建"><a rel="nofollow" class="trm-toc-link" href="#项目可执行文件构建"><span class="trm-toc-number">1.2.3.</span> <span class="trm-toc-text">项目可执行文件构建</span></a></li><li class="trm-toc-item trm-toc-level-3" title="关于CmakeLists.txt编译选项"><a rel="nofollow" class="trm-toc-link" href="#关于CmakeLists-txt编译选项"><span class="trm-toc-number">1.2.4.</span> <span class="trm-toc-text">关于CmakeLists.txt编译选项</span></a></li></ol></li></ol></li></ol>
+      </div>
+    </div>
+
             
 <div class="trm-fixed-container">
     
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-book-reader"></use>
+</svg>
+        </div>
     
     
         <div class="trm-fixed-btn hidden-md" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
@@ -707,6 +639,10 @@
     
 
     <!-- 评论插件 -->
+    
+        
+
+        
     
 
 		
