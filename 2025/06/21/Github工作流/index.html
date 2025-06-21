@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="The work flow of git and Github">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Github工作流的正确打开方式">
+<meta property="og:url" content="https://das1zhang.github.io/2025/06/21/Github%E5%B7%A5%E4%BD%9C%E6%B5%81/index.html">
+<meta property="og:site_name" content="Das1&#39;s Blog">
+<meta property="og:description" content="The work flow of git and Github">
+<meta property="og:locale">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="article:published_time" content="2025-06-21T04:24:11.000Z">
+<meta property="article:modified_time" content="2025-06-21T04:43:43.868Z">
+<meta property="article:author" content="Das1">
+<meta property="article:tag" content="CS工具">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://das1zhang.github.io/img/404.jpg">
+
+
+<title >Github工作流的正确打开方式</title>
+
+<!-- Favicon -->
+
+    <link href='/favicon-16x16.png?v=2.2.4' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/favicon-32x32.png?v=2.2.4' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.4' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+
+    
+<script src="//at.alicdn.com/t/c/font_4729113_2ipfdlgy0mc.js"></script>
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"das1zhang.github.io","author":"Das1","root":"/","typed_text":["an undergraduate in WHU"],"theme_version":"2.2.4","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/logo.jpg","icon16":"/favicon-16x16.png","icon32":"/favicon-32x32.png","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"/logo.jpg","show_text":"Das1's Blog.","hide_text":"Waiting for u."},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-a-farfa-sun","moon":"icon-fa-moon-line","play":"icon-play","email":"icon-envelop","next":"icon-fa-arrow-right","calendar":"icon-th-list","clock":"icon-farfa-clock","user":"icon-a-zu394","back_top":"icon-fa-arrow-up","close":"icon-a-fasfa-times","search":"icon-fasfa-search","reward":"icon-dashang","toc_tag":"icon-th-list","read":"icon-book-reader","arrows":"icon-arrows-alt-h","double_arrows":"icon-angle-double-down","copy":"icon-copy","user_tag":"icon-a-zu394"},"icontype":"symbol","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":false,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-06-21 12:43:43"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.4" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-a-farfa-sun"></use>
+</svg></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-moon-line"></use>
+</svg></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/logo.jpg">
+    
+    
+        <div class="trm-logo-text">
+            Zhang<span>Das1</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/" target="">
+                    home
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/archives/" target="">
+                    archives
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            tags
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a  href="/categories/" target="">
+                            categories
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/links/" target="">
+                    
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/lifeguide/" target="">
+                    lifeguide
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/about/" target="">
+                    about
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-a-farfa-sun"></use>
+</svg>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-moon-line"></use>
+</svg>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/githubbanner.jpg">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            The work flow of git and Github
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Github工作流的正确打开方式
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2025
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/logo.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        Das1
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/Das1Zhang" title="github" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-github"></use>
+</svg>
+        </a>
+    
+        <a href="https://x.com/SihaoFlower" title="X" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-TwitterX"></use>
+</svg>
+        </a>
+    
+        <a href="https://www.pinterest.com/sihao050721com/" title="pinterest" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-Pinterest"></use>
+</svg>
+        </a>
+    
+        <a href="https://space.bilibili.com/352757351" title="bilibili" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-bilibili-line"></use>
+</svg>
+        </a>
+    
+        <a href="https://www.xiaohongshu.com/user/profile/660a4195000000000b00c2b0" title="redbook" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-xiaohongshu"></use>
+</svg>
+        </a>
+    
+        <a href="http://youtube.com/@Sihao-q3o" title="youtube" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-youtube"></use>
+</svg>
+        </a>
+    
+        <a href="https://steamcommunity.com/profiles/76561199544278917/" title="steam" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-steam"></use>
+</svg>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                address:
+            </div>
+            <div class="trm-label trm-label-light">
+                Wuhan
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                age:
+            </div>
+            <div class="trm-label trm-label-light">
+                19
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                school:
+            </div>
+            <div class="trm-label trm-label-light">
+                WHU
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:sihao050721.com@gmail.com" class="trm-btn">
+            联系我
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-envelop"></use>
+</svg>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg><br>
+            06/21
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-farfa-clock"></use>
+</svg><br>
+            12:24
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-a-zu394"></use>
+</svg><br>
+            Das1
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <blockquote>
+<p>该文章参考大佬@码农高天的视频<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=uj8hjLyEBmU">十分钟学会正确的github工作流，和开源作者们使用同一套流程</a>，如果有想看视频讲解的可以看看</p>
+</blockquote>
+<h2 id="梦开始的地方"><a href="#梦开始的地方" class="headerlink" title="梦开始的地方"></a>梦开始的地方</h2><table>
+<thead>
+<tr>
+<th>【remote】main</th>
+<th>【Local】</th>
+<th>【Disk】</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Init</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>首先我们有上面的三个工作区，分别是 <strong>Remote（GitHub云端）</strong>、<strong>Local（本地git状态）</strong>、<strong>Disk（硬盘状态）</strong>，最开始时只有云端有Init这个状态。</p>
+<p>我们通过<code>git clone</code>命令克隆远程仓库到本地：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> &lt;repo-url&gt;</span><br></pre></td></tr></table></figure>
+
+<p>由此我们的状态变为：</p>
+<table>
+<thead>
+<tr>
+<th>【remote】main</th>
+<th>【Local】main</th>
+<th>【Disk】main</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>三个状态是一样的，因为我们没有做出任何改动，且远程仓库也没有发生更新。</p>
+<h2 id="创建我们自己的一个branch"><a href="#创建我们自己的一个branch" class="headerlink" title="创建我们自己的一个branch"></a>创建我们自己的一个branch</h2><p>在我们需要对代码进行改动时，首先需要<strong>建立一个属于我们自己的新分支</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git check out -b my-feature</span><br></pre></td></tr></table></figure>
+
+<p>这样我们有一个新的分支为 <strong>my-feature</strong></p>
+<p>这个分支会<strong>保存在我们的本地 git 状态中</strong>，但同时我们的Disk状态会<strong>同步更新为 my-feature</strong> ，而如果我们切换分支，Disk 的内容也会切换到对应的分支</p>
+<p>实际上 Disk 对于源文件来自于哪个 branch 是一无所知的，他只知道源文件长啥样，当我们使用<code>git checkout &lt;branch&gt;</code> 来切换分支时，<strong>git 会把对应的源文件同步给硬盘</strong></p>
+<p>现在我们的状态为：</p>
+<table>
+<thead>
+<tr>
+<th>【remote】main</th>
+<th>【Local】main</th>
+<th>【Local】my-feature</th>
+<th>【Disk】my-feature</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="为什么要建立我们的feature-branch-？"><a href="#为什么要建立我们的feature-branch-？" class="headerlink" title="为什么要建立我们的feature branch ？"></a>为什么要建立我们的feature branch ？</h3><p>这样可以<strong>确保我们的主分支不会被我们的代码改动搞得不能工作</strong>，同时也非常利于多人合作（相当于我们<strong>新开了一个副本</strong>进行修改，而不是直接在源代码上进行改动）</p>
+<h2 id="开始修改代码"><a href="#开始修改代码" class="headerlink" title="开始修改代码"></a>开始修改代码</h2><h3 id="查看修改状态"><a href="#查看修改状态" class="headerlink" title="查看修改状态"></a>查看修改状态</h3><p>我们进行代码修改之后，我们得到一个新的状态叫 f-commit</p>
+<p>但是此时我们的改动只在 Disk 上是知道的，而<strong>git对此一无所知</strong>（因为git并不是一个实时追踪更新的软件），此时我们可以通过输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git diff</span><br></pre></td></tr></table></figure>
+
+<p>来查看我们的<strong>git状态与本地 Disk 状态差异</strong></p>
+<p>比如我这里修改了 makefile 文件，输入<code>git diff</code> 后会看到：</p>
+<p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/git-diff.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>如果想要退出查看<code>git diff</code> ，输入<code>q</code> 即可退出。</p>
+<h3 id="代码修改完成"><a href="#代码修改完成" class="headerlink" title="代码修改完成"></a>代码修改完成</h3><p>在我们把所有的文件全部修改完毕后，在我们更新 git 状态之前，还要<strong>将修改的文件保存到暂存区中</strong>，只有保存到暂存区中，我们后续的 commit 才会将暂存区中的文件状态推送给 git </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add &lt;changed_file&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后我们使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &lt;comment&gt;</span><br></pre></td></tr></table></figure>
+
+<p>来将我们<strong>暂存区中的文件状态推送到 Local git 中</strong></p>
+<p>现在我们的状态为</p>
+<table>
+<thead>
+<tr>
+<th>【remote】main</th>
+<th>【Local】main</th>
+<th>【Local】my-feature</th>
+<th>【Disk】my-feature</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>f-commit</td>
+<td>f-commit</td>
+</tr>
+</tbody></table>
+<h3 id="推送到云端分支中"><a href="#推送到云端分支中" class="headerlink" title="推送到云端分支中"></a>推送到云端分支中</h3><p>然后我们使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin my-feature</span><br></pre></td></tr></table></figure>
+
+<p>来把我们的代码改动推送到云端中，这时我们会发现 GitHub 中<strong>多出一个分支为 my-feature</strong>，这个branch中保存着我们的代码改动</p>
+<table>
+<thead>
+<tr>
+<th>【remote】main</th>
+<th>【remote】my-feature</th>
+<th>【Local】main</th>
+<th>【Local】my-feature</th>
+<th>【Disk】my-feature</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+</tr>
+<tr>
+<td></td>
+<td>f-commit</td>
+<td></td>
+<td>f-commit</td>
+<td>f-commit</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="当修改过程中，主分支有了更新"><a href="#当修改过程中，主分支有了更新" class="headerlink" title="当修改过程中，主分支有了更新"></a>当修改过程中，主分支有了更新</h2><p>如果我们在代码修改过程中，主分支发生了更新，我们想看看我们的代码在这个新的更新下好不好使，首先我们需要把这个新更新的版本同步到我们的 main 中</p>
+<p>我们通过 <code>checkout</code> 来切换分支</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout main</span><br></pre></td></tr></table></figure>
+
+<p>这样我们的Local git 切换到 main 分支中，同时 Disk 中也被git同步为 main 分支状态。</p>
+<table>
+<thead>
+<tr>
+<th>【remote】main</th>
+<th>【remote】my-feature</th>
+<th>【Local】main</th>
+<th>【Local】my-feature</th>
+<th>【Disk】main</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+</tr>
+<tr>
+<td></td>
+<td>f-commit</td>
+<td></td>
+<td>f-commit</td>
+<td>f-commit</td>
+</tr>
+</tbody></table>
+<p>然后我们通过<code>pull</code> 来拉取主分支中的更新</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+
+<p>这样我们就把<strong>主分支拉取到我 Local 的 main</strong> 中</p>
+<table>
+<thead>
+<tr>
+<th>【remote】main</th>
+<th>【remote】my-feature</th>
+<th>【Local】main</th>
+<th>【Local】my-feature</th>
+<th>【Disk】main</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+</tr>
+<tr>
+<td>update</td>
+<td>f-commit</td>
+<td>update</td>
+<td>f-commit</td>
+<td>update</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>这样我们的 Local git 和 Disk 就和远端 GitHub 是一致的了</p>
+<p>现在我们切换回 my-feature 这个分支中</p>
+<table>
+<thead>
+<tr>
+<th>【remote】main</th>
+<th>【remote】my-feature</th>
+<th>【Local】main</th>
+<th>【Local】my-feature</th>
+<th>【Disk】my-feature</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+</tr>
+<tr>
+<td>update</td>
+<td>f-commit</td>
+<td>update</td>
+<td>f-commit</td>
+<td>f-commit</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>但是我们现在的 my-feature 中并没有主分支现在的新版本，仍然是旧版本</p>
+<p>接下来我们<strong>通过<code>rebase</code> 来同步这个主分支改变</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase main</span><br></pre></td></tr></table></figure>
+
+<p>这句的意思是，先把我的所有修改扔到一边，把这个main给同步上，然后再在同步后的基础上，尝试把我的commit给弄回去</p>
+<p>当然这个过程中可能会出现 rebase conflict ，这时就需要你手动去选择需要哪一行代码了</p>
+<p>rebase 成功之后，我们的状态变为了：</p>
+<table>
+<thead>
+<tr>
+<th>【remote】main</th>
+<th>【remote】my-feature</th>
+<th>【Local】main</th>
+<th>【Local】my-feature</th>
+<th>【Disk】my-feature</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+</tr>
+<tr>
+<td>update</td>
+<td>f-commit</td>
+<td>update</td>
+<td>update</td>
+<td>update</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>f-commit</td>
+<td>f-commit</td>
+</tr>
+</tbody></table>
+<p>更新完我们的feature branch之后，就可以把<strong>当前的状态推送到远端的 my-feature 分支中</strong>了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -f origin my-feature</span><br></pre></td></tr></table></figure>
+
+<p>由于我们做了 rebase，所以我们在<strong>push 时必须加上 -f 表示强制推送</strong>（force）</p>
+<p>然后我们的状态变为：</p>
+<table>
+<thead>
+<tr>
+<th>【remote】main</th>
+<th>【remote】my-feature</th>
+<th>【Local】main</th>
+<th>【Local】my-feature</th>
+<th>【Disk】my-feature</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+</tr>
+<tr>
+<td>update</td>
+<td>update</td>
+<td>update</td>
+<td>update</td>
+<td>update</td>
+</tr>
+<tr>
+<td></td>
+<td>f-commit</td>
+<td></td>
+<td>f-commit</td>
+<td>f-commit</td>
+</tr>
+</tbody></table>
+<h2 id="合并到主分支中"><a href="#合并到主分支中" class="headerlink" title="合并到主分支中"></a>合并到主分支中</h2><p>现在我们可以在GitHub中发起一个 <strong>pull request</strong>（PR）了</p>
+<h3 id="为什么叫-pull-request"><a href="#为什么叫-pull-request" class="headerlink" title="为什么叫 pull request"></a>为什么叫 pull request</h3><p>因为我们通常认为这里是由<strong>主分支的主人来拉取所需要的分支</strong>，所以我们这些contributor 需要提出拉去请求</p>
+<h3 id="分支被拉取合并"><a href="#分支被拉取合并" class="headerlink" title="分支被拉取合并"></a>分支被拉取合并</h3><p>当我们的 PR 成功发出后，由项目负责人来进行 <strong>Squash and merge</strong></p>
+<h4 id="Squash操作是什么？"><a href="#Squash操作是什么？" class="headerlink" title="Squash操作是什么？"></a>Squash操作是什么？</h4><p>Squash就是将我们的一个分支上所做的所有改动，比如说一个分支可能有很多个commit，而一般为了 commit 的简洁，会将这些改动合并为一个改动，然后再合并到主分支中，也就是我们的所有改动被命名为了一个新的改动update2，所有的改动都被正常地合并了，只是commit的结构和数量改变了而已。</p>
+<table>
+<thead>
+<tr>
+<th>【remote】main</th>
+<th>【remote】my-feature</th>
+<th>【Local】main</th>
+<th>【Local】my-feature</th>
+<th>【Disk】my-feature</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+</tr>
+<tr>
+<td>update</td>
+<td>update</td>
+<td>update</td>
+<td>update</td>
+<td>update</td>
+</tr>
+<tr>
+<td>update2</td>
+<td>f-commit</td>
+<td></td>
+<td>f-commit</td>
+<td>f-commit</td>
+</tr>
+</tbody></table>
+<h3 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h3><p>在我们的分支被合并之后，在GitHub上有一个按钮叫做 <strong>delete branch</strong> 会把我们远端这个 my-feature 给删掉</p>
+<table>
+<thead>
+<tr>
+<th>【remote】main</th>
+<th>【Local】main</th>
+<th>【Local】my-feature</th>
+<th>【Disk】my-feature</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+</tr>
+<tr>
+<td>update</td>
+<td>update</td>
+<td>update</td>
+<td>update</td>
+</tr>
+<tr>
+<td>update2</td>
+<td></td>
+<td>f-commit</td>
+<td>f-commit</td>
+</tr>
+</tbody></table>
+<p>但是远端这个被删掉了，<strong>我们的  Local git 中的并没有被删掉</strong>，此时我们切换到main分支上，然后使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -D my-feature</span><br></pre></td></tr></table></figure>
+
+<p>来删掉这个 my-feature 分支</p>
+<p>然后再次同步远程仓库的状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin main</span><br></pre></td></tr></table></figure>
+
+<p>此时我们的状态为：</p>
+<table>
+<thead>
+<tr>
+<th>【remote】main</th>
+<th>【Local】main</th>
+<th>【Disk】main</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Init</td>
+<td>Init</td>
+<td>Init</td>
+</tr>
+<tr>
+<td>update</td>
+<td>update</td>
+<td>update</td>
+</tr>
+<tr>
+<td>update2</td>
+<td>update2</td>
+<td>update2</td>
+</tr>
+</tbody></table>
+<p>此时我们的本地的三个工作区又保持一致了，和我们最开始的状态一致。</p>
+<p>至此我们的一整套GitHub工作流就已经完成了！<code>^_^</code></p>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2025/06/16/C&Cpp%E9%A1%B9%E7%9B%AE%E6%9E%84%E5%BB%BA%E6%B5%81%E7%A8%8B/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Cpp_cover.jpg">
+                </span>
+                <h6 class="trm-op-title">C&amp;Cpp项目构建流程</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/06/16</li>
+                <li>21:15</li>
+                <li>CS工具</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <div class="trm-counter-up trm-scroll-animation">
+    <div class="trm-counter-number">
+        <span class="trm-counter">140</span>
+        <span class="trm-counter-symbol">+</span>
+    </div>
+    <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+    <div class="trm-label">Honors and Awards</div>
+</div>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="梦开始的地方"><a rel="nofollow" class="trm-toc-link" href="#梦开始的地方"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">梦开始的地方</span></a></li><li class="trm-toc-item trm-toc-level-2" title="创建我们自己的一个branch"><a rel="nofollow" class="trm-toc-link" href="#创建我们自己的一个branch"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">创建我们自己的一个branch</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="为什么要建立我们的feature branch ？"><a rel="nofollow" class="trm-toc-link" href="#为什么要建立我们的feature-branch-？"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">为什么要建立我们的feature branch ？</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="开始修改代码"><a rel="nofollow" class="trm-toc-link" href="#开始修改代码"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">开始修改代码</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="查看修改状态"><a rel="nofollow" class="trm-toc-link" href="#查看修改状态"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">查看修改状态</span></a></li><li class="trm-toc-item trm-toc-level-3" title="代码修改完成"><a rel="nofollow" class="trm-toc-link" href="#代码修改完成"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">代码修改完成</span></a></li><li class="trm-toc-item trm-toc-level-3" title="推送到云端分支中"><a rel="nofollow" class="trm-toc-link" href="#推送到云端分支中"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">推送到云端分支中</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="当修改过程中，主分支有了更新"><a rel="nofollow" class="trm-toc-link" href="#当修改过程中，主分支有了更新"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">当修改过程中，主分支有了更新</span></a></li><li class="trm-toc-item trm-toc-level-2" title="合并到主分支中"><a rel="nofollow" class="trm-toc-link" href="#合并到主分支中"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">合并到主分支中</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="为什么叫 pull request"><a rel="nofollow" class="trm-toc-link" href="#为什么叫-pull-request"><span class="trm-toc-number">5.1.</span> <span class="trm-toc-text">为什么叫 pull request</span></a></li><li class="trm-toc-item trm-toc-level-3" title="分支被拉取合并"><a rel="nofollow" class="trm-toc-link" href="#分支被拉取合并"><span class="trm-toc-number">5.2.</span> <span class="trm-toc-text">分支被拉取合并</span></a></li><li class="trm-toc-item trm-toc-level-3" title="删除分支"><a rel="nofollow" class="trm-toc-link" href="#删除分支"><span class="trm-toc-number">5.3.</span> <span class="trm-toc-text">删除分支</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-book-reader"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-arrows-alt-h"></use>
+</svg>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-arrow-up"></use>
+</svg>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.4"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.4"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
