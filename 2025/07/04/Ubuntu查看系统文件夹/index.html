@@ -7,18 +7,21 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="How to read&#x2F;write hidden file in Ubuntu.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu查看系统文件夹">
+<meta property="og:title" content="Ubuntu读写隐藏文件">
 <meta property="og:url" content="https://das1zhang.github.io/2025/07/04/Ubuntu%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6%E5%A4%B9/index.html">
 <meta property="og:site_name" content="Das1&#39;s Blog">
+<meta property="og:description" content="How to read&#x2F;write hidden file in Ubuntu.">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-07-03T16:32:03.000Z">
-<meta property="article:modified_time" content="2025-07-03T16:32:03.906Z">
+<meta property="article:modified_time" content="2025-07-04T18:05:33.636Z">
 <meta property="article:author" content="Das1">
+<meta property="article:tag" content="Ubuntu">
 <meta name="twitter:card" content="summary">
 
 
-<title >Ubuntu查看系统文件夹</title>
+<title >Ubuntu读写隐藏文件</title>
 
 <!-- Favicon -->
 
@@ -61,7 +64,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"das1zhang.github.io","author":"Das1","root":"/","typed_text":["an undergraduate in WHU"],"theme_version":"2.2.4","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/logo.jpg","icon16":"/favicon-16x16.png","icon32":"/favicon-32x32.png","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"/logo.jpg","show_text":"Das1's Blog.","hide_text":"Waiting for u."},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-a-farfa-sun","moon":"icon-fa-moon-line","play":"icon-play","email":"icon-envelop","next":"icon-fa-arrow-right","calendar":"icon-th-list","clock":"icon-farfa-clock","user":"icon-a-zu394","back_top":"icon-fa-arrow-up","close":"icon-a-fasfa-times","search":"icon-fasfa-search","reward":"icon-dashang","toc_tag":"icon-th-list","read":"icon-book-reader","arrows":"icon-arrows-alt-h","double_arrows":"icon-angle-double-down","copy":"icon-copy","user_tag":"icon-a-zu394"},"icontype":"symbol","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":false,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-04 00:32:03"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-05 02:05:33"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.4" id="trm-switch-style">
@@ -236,7 +239,7 @@
     <div class="trm-banner">
     
     <!-- banner cover -->
-    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/img/banner.png">
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Ubuntu4.jpg">
     <!-- banner cover end -->
     
 
@@ -252,10 +255,10 @@
                     <!-- banner title -->
                     <div class="trm-banner-text ">
                         <div class="trm-label trm-mb-20">
-                            NEWS LETTER
+                            How to read/write hidden files in Ubuntu
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            Ubuntu查看系统文件夹
+                            Ubuntu读写隐藏文件
                         </h1>
 
                         
@@ -444,7 +447,22 @@
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    
+    <blockquote>
+<p>在Ubuntu中有两种“隐藏文件”，一种是以.开头的文件&#x2F;目录，一般不会被ls或图形文件管理器显示，另一种是系统目录，如&#x2F;opt,&#x2F;usr&#x2F;local等，用户在图形化界面中往往不会被看见，或者没有写权限</p>
+</blockquote>
+<h1 id="一：命令行查看"><a href="#一：命令行查看" class="headerlink" title="一：命令行查看"></a>一：命令行查看</h1><h2 id="查看-开头的隐藏文件-目录"><a href="#查看-开头的隐藏文件-目录" class="headerlink" title="查看 .开头的隐藏文件&#x2F;目录"></a>查看 .开头的隐藏文件&#x2F;目录</h2><p>输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -a</span><br></pre></td></tr></table></figure>
+<p>这里 -a 代表 all ，即列出所有文件，包括以<code>.</code>开头的文件<br>如果想要更详细的信息，可以加上<code>-l</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -al</span><br></pre></td></tr></table></figure>
+<h2 id="进入系统目录（如-opt）"><a href="#进入系统目录（如-opt）" class="headerlink" title="进入系统目录（如&#x2F;opt）"></a>进入系统目录（如&#x2F;opt）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> /opt</span><br></pre></td></tr></table></figure>
+<p>&#x2F;opt 本身不是隐藏目录，位于根目录下，可以由<code>ls</code>所列出</p>
+<h1 id="二、图形化界面查看"><a href="#二、图形化界面查看" class="headerlink" title="二、图形化界面查看"></a>二、图形化界面查看</h1><h2 id="1-在文件管理器中显示隐藏文件"><a href="#1-在文件管理器中显示隐藏文件" class="headerlink" title="1.在文件管理器中显示隐藏文件"></a>1.在文件管理器中显示隐藏文件</h2><p>打开“文件”应用<br>按下<code>ctrl + H</code>即可切换“显示&#x2F;隐藏”<code>.</code>开头的文件&#x2F;目录</p>
+<h2 id="2-直接打开系统目录（只有读权限）"><a href="#2-直接打开系统目录（只有读权限）" class="headerlink" title="2.直接打开系统目录（只有读权限）"></a>2.直接打开系统目录（只有读权限）</h2><p>在“文件”中的路径中直接输入系统目录路径，例如按下<code>ctrl + H</code>（输入路径地址）然后输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt</span><br></pre></td></tr></table></figure>
+<p>然后回车，即可浏览<code>/opt</code>目录的内容（没有写权限）</p>
+<h2 id="3-以管理员权限打开受限目录（可以读写）"><a href="#3-以管理员权限打开受限目录（可以读写）" class="headerlink" title="3.以管理员权限打开受限目录（可以读写）"></a>3.以管理员权限打开受限目录（可以读写）</h2><p>如果需要写权限，可以使用 <code>sudo</code> 来提升权限：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> nautilus /opt</span><br></pre></td></tr></table></figure>
+
 </article>
     
     
@@ -508,8 +526,26 @@
 
             
 
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="一：命令行查看"><a rel="nofollow" class="trm-toc-link" href="#一：命令行查看"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">一：命令行查看</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="查看 .开头的隐藏文件&#x2F;目录"><a rel="nofollow" class="trm-toc-link" href="#查看-开头的隐藏文件-目录"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">查看 .开头的隐藏文件&#x2F;目录</span></a></li><li class="trm-toc-item trm-toc-level-2" title="进入系统目录（如&#x2F;opt）"><a rel="nofollow" class="trm-toc-link" href="#进入系统目录（如-opt）"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">进入系统目录（如&#x2F;opt）</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="二、图形化界面查看"><a rel="nofollow" class="trm-toc-link" href="#二、图形化界面查看"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">二、图形化界面查看</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="1.在文件管理器中显示隐藏文件"><a rel="nofollow" class="trm-toc-link" href="#1-在文件管理器中显示隐藏文件"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">1.在文件管理器中显示隐藏文件</span></a></li><li class="trm-toc-item trm-toc-level-2" title="2.直接打开系统目录（只有读权限）"><a rel="nofollow" class="trm-toc-link" href="#2-直接打开系统目录（只有读权限）"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">2.直接打开系统目录（只有读权限）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="3.以管理员权限打开受限目录（可以读写）"><a rel="nofollow" class="trm-toc-link" href="#3-以管理员权限打开受限目录（可以读写）"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">3.以管理员权限打开受限目录（可以读写）</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
             
 <div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg>
+        </div>
     
     
         <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
