@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="The basic graph algorithm in CS61B.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS61B中的基本图算法">
+<meta property="og:url" content="https://das1zhang.github.io/2025/07/19/CS61B%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%9B%BE%E7%AE%97%E6%B3%95/index.html">
+<meta property="og:site_name" content="Das1&#39;s Blog">
+<meta property="og:description" content="The basic graph algorithm in CS61B.">
+<meta property="og:locale">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="article:published_time" content="2025-07-19T14:48:44.000Z">
+<meta property="article:modified_time" content="2025-07-19T14:53:32.224Z">
+<meta property="article:author" content="Das1">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://das1zhang.github.io/img/404.jpg">
+
+
+<title >CS61B中的基本图算法</title>
+
+<!-- Favicon -->
+
+    <link href='/favicon-16x16.png?v=2.2.4' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/favicon-32x32.png?v=2.2.4' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.4' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+
+    
+<script src="//at.alicdn.com/t/c/font_4729113_wqedocoac7p.js"></script>
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"das1zhang.github.io","author":"Das1","root":"/","typed_text":["an undergraduate in WHU"],"theme_version":"2.2.4","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/logo.jpg","icon16":"/favicon-16x16.png","icon32":"/favicon-32x32.png","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"/logo.jpg","show_text":"Das1's Blog.","hide_text":"Waiting for u."},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-a-farfa-sun","moon":"icon-fa-moon-line","play":"icon-play","email":"icon-envelop","next":"icon-fa-arrow-right","calendar":"icon-th-list","clock":"icon-farfa-clock","user":"icon-a-zu394","back_top":"icon-fa-arrow-up","close":"icon-a-fasfa-times","search":"icon-fasfa-search","reward":"icon-dashang","toc_tag":"icon-th-list","read":"icon-book-reader","arrows":"icon-arrows-alt-h","double_arrows":"icon-angle-double-down","copy":"icon-copy","user_tag":"icon-a-zu394"},"icontype":"symbol","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":false,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-19 22:53:32"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.4" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-a-farfa-sun"></use>
+</svg></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-moon-line"></use>
+</svg></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/logo.jpg">
+    
+    
+        <div class="trm-logo-text">
+            Zhang<span>Das1</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/" target="">
+                    home
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/archives/" target="">
+                    archives
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/categories/" target="">
+                    categories
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            tags
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/links/" target="">
+                    links
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/lifeguide/" target="">
+                    lifeguide
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/about/" target="">
+                    about
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-a-farfa-sun"></use>
+</svg>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-moon-line"></use>
+</svg>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/background.jpg">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            The basic graph algorithm in CS61B.
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            CS61B中的基本图算法
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2025
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/logo.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        Das1
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/Das1Zhang" title="github" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-github"></use>
+</svg>
+        </a>
+    
+        <a href="https://x.com/SihaoFlower" title="X" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-TwitterX"></use>
+</svg>
+        </a>
+    
+        <a href="https://www.pinterest.com/sihao050721com/" title="pinterest" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-Pinterest"></use>
+</svg>
+        </a>
+    
+        <a href="https://space.bilibili.com/352757351" title="bilibili" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-bilibili-line"></use>
+</svg>
+        </a>
+    
+        <a href="https://www.xiaohongshu.com/user/profile/660a4195000000000b00c2b0" title="redbook" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-xiaohongshu"></use>
+</svg>
+        </a>
+    
+        <a href="http://youtube.com/@Sihao-q3o" title="youtube" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-youtube"></use>
+</svg>
+        </a>
+    
+        <a href="https://steamcommunity.com/profiles/76561199544278917/" title="steam" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-steam"></use>
+</svg>
+        </a>
+    
+        <a href="https://blog.csdn.net/Dasi_C_upup?spm=1000.2115.3001.5343" title="csdn" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-csdn2"></use>
+</svg>
+        </a>
+    
+        <a href="https://www.douyin.com/user/self?from_tab_name=main" title="douyin" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-douyin"></use>
+</svg>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                address:
+            </div>
+            <div class="trm-label trm-label-light">
+                Wuhan
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                age:
+            </div>
+            <div class="trm-label trm-label-light">
+                19
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                school:
+            </div>
+            <div class="trm-label trm-label-light">
+                WHU
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                MBTI:
+            </div>
+            <div class="trm-label trm-label-light">
+                ENFP
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:sihao050721.com@gmail.com" class="trm-btn">
+            联系我
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-envelop"></use>
+</svg>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg><br>
+            07/19
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-farfa-clock"></use>
+</svg><br>
+            22:48
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-a-zu394"></use>
+</svg><br>
+            Das1
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <blockquote>
+<p>CS61B中关于图中的路径问题介绍了很多种算法，这些算法之间根据不同的情况做出了相对应的调整，虽然差别不大，但是做个小整理<br>这里针对寻找路径问题，分别整理了DFS,BFS,Dijkstra 算法，A* 算法</p>
+</blockquote>
+<h1 id="Princeton-Graph-API"><a href="#Princeton-Graph-API" class="headerlink" title="Princeton Graph API"></a>Princeton Graph API</h1><blockquote>
+<p>这里是 Princeton Algorithm textbook 中给出的图接口，其余方法需要自己添加进行实现</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Graph</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Graph</span><span class="params">(<span class="type">int</span> V)</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addEdge</span><span class="params">(<span class="type">int</span> v, <span class="type">int</span> w)</span>;</span><br><span class="line">    Iterable&lt;Integer&gt; <span class="title function_">adj</span><span class="params">(<span class="type">int</span> v)</span>;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">V</span><span class="params">()</span>;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">E</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里要注意几个点：</p>
+<ul>
+<li>顶点的数量提前由构造函数确定，不可后期更改</li>
+<li>不支持在结点或者边上设置权重</li>
+<li>没有针对某个特殊结点得到其边数（度）的方法</li>
+</ul>
+<h2 id="一位观世音菩萨——Paths-java"><a href="#一位观世音菩萨——Paths-java" class="headerlink" title="一位观世音菩萨——Paths.java"></a>一位观世音菩萨——<code>Paths.java</code></h2><p>在一般的图算法设计模式中，我们会将类型进行<strong>解耦</strong><br>比如我们会这样做：</p>
+<ul>
+<li>创造一个图对象</li>
+<li>将这个图传递到一个图处理方法或者客户类中</li>
+<li>然后询问这个客户类关于这个图的一些信息</li>
+</ul>
+<p>就像有一位贤知的观世音菩萨一样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Paths</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Paths</span><span class="params">(Graph G,<span class="type">int</span> s)</span>;</span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">hasPathTo</span><span class="params">(<span class="type">int</span> v)</span>;</span><br><span class="line">    Iterable&lt;Integer&gt; <span class="title function_">pathTo</span><span class="params">(<span class="type">int</span> v)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>这个Paths类就记录了我们传入的Graph中的所有路径信息</strong></p>
+<h1 id="遍历所有路径（不考虑边权重以及结点代价）"><a href="#遍历所有路径（不考虑边权重以及结点代价）" class="headerlink" title="遍历所有路径（不考虑边权重以及结点代价）"></a>遍历所有路径（不考虑边权重以及结点代价）</h1><h2 id="1-深度优先算法（DFS）"><a href="#1-深度优先算法（DFS）" class="headerlink" title="1.深度优先算法（DFS）"></a>1.深度优先算法（DFS）</h2><h3 id="两个辅助数组："><a href="#两个辅助数组：" class="headerlink" title="两个辅助数组："></a>两个辅助数组：</h3><ul>
+<li><code>boolean[] marked</code></li>
+<li><code>int[] edgeTo</code></li>
+</ul>
+<h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><p>dfs(v):</p>
+<ul>
+<li>标记 v</li>
+<li>对每一个相邻的结点 w<ul>
+<li>设置 edgeTo[w] &#x3D; v</li>
+<li>dfs(w)</li>
+</ul>
+</li>
+</ul>
+<h3 id="算法特征"><a href="#算法特征" class="headerlink" title="算法特征"></a>算法特征</h3><p>对于DFS算法有一个特征是：<br><strong>调用DFS算法的顺序是先序遍历的，而返回DFS算法的顺序是后续遍历的</strong></p>
+<h3 id="算法实现："><a href="#算法实现：" class="headerlink" title="算法实现："></a>算法实现：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DepthFirstPaths</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span>[] marked;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span>[] edgeTo;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> s;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">public</span> Iterable&lt;Integer&gt; <span class="title function_">pathTo</span><span class="params">(<span class="type">int</span> v)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!hasPathTo(v))&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;Integer&gt; path = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> v;x != s; x = edgeTo[x])&#123;</span><br><span class="line">            path.add(x);</span><br><span class="line">        &#125;</span><br><span class="line">        Collection.reverse(path);</span><br><span class="line">        <span class="keyword">return</span> path;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasPathTo</span><span class="params">(<span class="type">int</span> v)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> marked[v];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-宽度优先算法（BFS）"><a href="#2-宽度优先算法（BFS）" class="headerlink" title="2.宽度优先算法（BFS）"></a>2.宽度优先算法（BFS）</h2><h3 id="一个辅助队列"><a href="#一个辅助队列" class="headerlink" title="一个辅助队列"></a>一个辅助队列</h3><p>初始化一个队列，将一个起点放入队列中，我们把这个队列称作为<strong>fringe</strong></p>
+<h3 id="算法流程-1"><a href="#算法流程-1" class="headerlink" title="算法流程"></a>算法流程</h3><p>一直重复以下操作直到队列为空：</p>
+<ul>
+<li>将队列第一个结点移出</li>
+<li>对于该结点的每个未标记的相邻结点n：<ul>
+<li>标记 n</li>
+<li>将 edgeTo[n] 设置为 v（或者distTo[n] &#x3D; distTo[v] + 1）</li>
+<li>将 n 加入该队列</li>
+</ul>
+</li>
+</ul>
+<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BreadthFirstPaths</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">bfs</span><span class="params">(Graph G,<span class="type">int</span> s)</span>&#123;</span><br><span class="line">        Queue&lt;Integer&gt; fringe = <span class="keyword">new</span> <span class="title class_">Queue</span>&lt;Integer&gt;();</span><br><span class="line">        fringe.enqueue(s);</span><br><span class="line">        marked[s] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">while</span>(!fringe.isEmpty())&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">v</span> <span class="operator">=</span> fringe.dequeue();</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> w: G.adj(v))&#123;</span><br><span class="line">                fringe.enqueue(w);</span><br><span class="line">                marked[w] = <span class="literal">true</span>;</span><br><span class="line">                edgeTo[w] = v;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="上面这两种算法的缺点"><a href="#上面这两种算法的缺点" class="headerlink" title="上面这两种算法的缺点"></a>上面这两种算法的缺点</h2><p>DFS 对于<strong>细长的图</strong>表现得很坏</p>
+<ul>
+<li>会让函数调用栈变得特别长</li>
+</ul>
+<p>BFS 对于<strong>茂盛的图</strong>表现得很坏</p>
+<ul>
+<li>fringe 会变得非常长</li>
+</ul>
+<p>并且我们需要 V 的内存来追踪distTo和edgeTo数组</p>
+<h1 id="考虑权重的遍历"><a href="#考虑权重的遍历" class="headerlink" title="考虑权重的遍历"></a>考虑权重的遍历</h1><blockquote>
+<p>如果图中每条路径都有权重，比如谷歌地图中我们想找到距离目的地最近的路线呢</p>
+</blockquote>
+<p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/BFS.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>我们会发现只考虑边数是不够的，这样会得出错误的答案，每条边具有对应的长度，也就是权重，这时我们应该采用什么算法呢</p>
+<h2 id="最短路径树"><a href="#最短路径树" class="headerlink" title="最短路径树"></a>最短路径树</h2><blockquote>
+<p>探究这样一个问题：给定一个起点 s 找到对于其他所有顶点的最短路径<br>这样我们画出来的这个路径称作为<strong>最短路径树(SPT)</strong></p>
+</blockquote>
+<h2 id="迪杰斯特拉算法（Dijkstra’s-Algorithm）"><a href="#迪杰斯特拉算法（Dijkstra’s-Algorithm）" class="headerlink" title="迪杰斯特拉算法（Dijkstra’s Algorithm）"></a>迪杰斯特拉算法（Dijkstra’s Algorithm）</h2><h3 id="三种坏算法"><a href="#三种坏算法" class="headerlink" title="三种坏算法"></a>三种坏算法</h3><p>让我们先看三种坏算法，来引入Dijkstra</p>
+<h4 id="1-BFS"><a href="#1-BFS" class="headerlink" title="1.BFS"></a>1.BFS</h4><p>不考虑权重直接将没有见过的结点加入树中<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/BFS1.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>显然这是一个坏算法，构造出了一个错误的SPT,这是因为我们从A开始，直接把BC都加入了树中，而这条A-&gt;B的路径并不是最好的路径，这个只<strong>考虑node问题，没有见过的node直接加入</strong></p>
+<h4 id="2-虚拟结点"><a href="#2-虚拟结点" class="headerlink" title="2.虚拟结点"></a>2.虚拟结点</h4><p>我们把所有路径上的权重看作为一个个虚拟结点：<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/VirtualVertices.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>该算法按照距离起点的远近来将对应的结点加入树，考虑distance的问题，也就是最好优先，这里已经开始触及最核心的部分了<br>但是我们为什么也不用这个算法呢：<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/VirtualVertices1.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>我们不会创造这么多个虚拟结点</p>
+<h4 id="3-best-first"><a href="#3-best-first" class="headerlink" title="3.best first"></a>3.best first</h4><p>当fringe不为空时：</p>
+<ul>
+<li>将最近的结点移出，然后进行标记</li>
+<li>对于每个出边 v-&gt;w : 如果 w 不再 SPT中，那么加入这条边，然后将 w 加入fringe<br>这个算法有什么问题呢：<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/BestFirst.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>我们会发现，他会先把 A-&gt;B 加入SPT中，但后续我们考虑 C-&gt;B时就会<strong>直接跳过他</strong><br>这个算法中给出的第一个解法太强势了，即使<strong>后面的解法更好，他也不做考虑，像一个顽固的老头</strong>！</li>
+</ul>
+<h3 id="Dijkstra"><a href="#Dijkstra" class="headerlink" title="Dijkstra"></a>Dijkstra</h3><p>通过考虑上面三种坏算法，我们发现需要做以下两种修复：</p>
+<ul>
+<li>根据<strong>距离</strong>来考虑结点</li>
+<li>对每个边 v-&gt;w :如果这条边给出了更好的到 w 的距离，那我们就把这条边加入，<strong>然后在 fringe 中更新 w</strong></li>
+</ul>
+<p>我们会借助一个优先队列PQ，将所有的结点加入PQ，根<strong>据到起点的距离排序</strong>，然后重复：</p>
+<ul>
+<li>将最近的结点 v 从 PQ 移出，然后 “relax” 从 v 指出的所有边<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Dijkstra.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>在这个图中我们的流程是：</li>
+</ul>
+<ol>
+<li>所有结点的dist设置为无穷大</li>
+<li>从A开始<ol>
+<li>走A-&gt;C，distTo[C] &#x3D; 1</li>
+<li>走A-&gt;B, distTo[B] &#x3D; 2</li>
+<li>A走完，然后A被标记，即已访问A</li>
+</ol>
+</li>
+<li>考虑BC中最近的</li>
+<li>访问C<ol>
+<li>走 C-&gt;F, distTo[F] &#x3D; distTo[C] + 15 &#x3D; 16</li>
+<li>C被标记</li>
+</ol>
+</li>
+<li>考虑 BF 中最近的</li>
+<li>访问B<ol>
+<li>走B-&gt;C，发现 distTo[B] + 5 &gt; discTo[C],不是更优路径，不考虑</li>
+<li>走B-&gt;E, distTo[E] &#x3D; distTo[B] + 3 &#x3D; 5</li>
+<li>走B-&gt;D, distTo[D] &#x3D; distTo[B] + 11 &#x3D; 13</li>
+<li>B被标记</li>
+</ol>
+</li>
+<li>考虑DEF中最近的</li>
+<li>….</li>
+</ol>
+<p>总结来说就是</p>
+<ul>
+<li>取出当前PQ中<strong>最近的结点</strong>，然后将其<strong>相邻所有更好的方案结点</strong>加入PQ中，然后重复</li>
+</ul>
+<p>如果我们发现了更好的方案，我们只需要<strong>更新edgeTo数组</strong>即可（改变路径），同时更新 distTo 数组来记录更好的距离</p>
+<h3 id="弊端"><a href="#弊端" class="headerlink" title="弊端"></a>弊端</h3><p>如果使用了<strong>负权重</strong>，Dijkstra 算法则会失效</p>
+<h3 id="伪代码"><a href="#伪代码" class="headerlink" title="伪代码"></a>伪代码</h3><ul>
+<li>PQ.add(source, 0)</li>
+<li>For other vertices, PQ.add(v, infinity)</li>
+<li>While PQ is not empty:<ul>
+<li>p &#x3D; PQ.removeSmallest()</li>
+<li>Relax all edges from p</li>
+</ul>
+</li>
+<li>Relaxing an edge p-&gt;q with weight w:<ul>
+<li>If distTo[p] + w &lt; distTo[q]<ul>
+<li>distTo[q] &#x3D; distTo[p] + w</li>
+<li>edgeTo[q] &#x3D; p</li>
+<li>PQ.changePriority(q, distTo[q])</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="不变量"><a href="#不变量" class="headerlink" title="不变量"></a>不变量</h3><ul>
+<li>edgeTo[v] 是已知的v的最好路径前缀</li>
+<li>distTo[v] 是已知的最好的 v 的路径长度</li>
+<li>PQ按顺序容纳了所有未访问过的结点</li>
+</ul>
+<h3 id="重要性质"><a href="#重要性质" class="headerlink" title="重要性质"></a>重要性质</h3><ul>
+<li>总是从起点开始按距离访问结点</li>
+<li>relaxation在每次边指向已经访问过的结点的时候都会失败<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/DijkstraInvariable.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>看上面这个图就很好理解了</li>
+</ul>
+<h1 id="不想要进行遍历——启发性算法"><a href="#不想要进行遍历——启发性算法" class="headerlink" title="不想要进行遍历——启发性算法"></a>不想要进行遍历——启发性算法</h1><p>上面的算法我们都尝试对所有的结点进行遍历，从而找出最短路径，但是看下面的情况：<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/AStar.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>我们只想从Denver,CO 到 New York,大致方向上来说我们需要向东行驶，如果我们使用Dijkstra算法，我们<strong>同样会遍历所有结点，但是显然向西方行驶是荒谬的！</strong><br>所以我们采取在<strong>每个节点上加上代价的方式</strong>，来规避我们不想去的方向，由此我们得到了 A* 算法（A star）</p>
+<h2 id="A-Algorithm"><a href="#A-Algorithm" class="headerlink" title="A* Algorithm"></a>A* Algorithm</h2><p>我们看下面这个 A* 算法实例：<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/AStar1.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>在算法的流程上和Dijkstra 算法大致相同，但是在我们进行算法之前，我们会得到一个<strong>代价数组</strong>，记录了每个结点的代价，而与之对应的，我们的Fringe不再以距离作为排序标准，而是用<strong>距离加上当前代价作为标准</strong></p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>Fringe中的代价只是路径加上当前结点的代价，路径中经<strong>过的结点代价不算</strong>，也就是说，A* 算法的 <strong>distTo 数组仍然保持不变</strong>，只是加上了当前结点的代价作为Fringe数组的排序标准</p>
+<p>这样通过一个代价数组得到启发，从而有选择性的往某些结点或方向探索的算法，被称为<strong>启发性算法</strong></p>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2025/07/04/Ubuntu%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6%E5%A4%B9/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Ubuntu3.jpg">
+                </span>
+                <h6 class="trm-op-title">Ubuntu读写隐藏文件</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/07/04</li>
+                <li>00:32</li>
+                <li>Ubuntu</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <div class="row justify-content-center">
+    <div class="col-lg-4">
+        <div class="trm-counter-up trm-scroll-animation trm-active-el">
+            <div class="trm-counter-number"><span class="trm-counter">30</span><span class="trm-counter-symbol">+</span>
+            </div>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <div class="trm-label">Posts</div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="trm-counter-up trm-scroll-animation trm-active-el">
+            <div class="trm-counter-number"><span class="trm-counter">8</span><span class="trm-counter-symbol">+</span>
+            </div>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <div class="trm-label">Diary</div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="trm-counter-up trm-scroll-animation trm-active-el">
+            <div class="trm-counter-number"><span class="trm-counter">85</span><span class="trm-counter-symbol">+</span>
+            </div>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <div class="trm-label">fans</div>
+        </div>
+    </div>
+</div>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="Princeton Graph API"><a rel="nofollow" class="trm-toc-link" href="#Princeton-Graph-API"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">Princeton Graph API</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="一位观世音菩萨——Paths.java"><a rel="nofollow" class="trm-toc-link" href="#一位观世音菩萨——Paths-java"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">一位观世音菩萨——Paths.java</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="遍历所有路径（不考虑边权重以及结点代价）"><a rel="nofollow" class="trm-toc-link" href="#遍历所有路径（不考虑边权重以及结点代价）"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">遍历所有路径（不考虑边权重以及结点代价）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="1.深度优先算法（DFS）"><a rel="nofollow" class="trm-toc-link" href="#1-深度优先算法（DFS）"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">1.深度优先算法（DFS）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="两个辅助数组："><a rel="nofollow" class="trm-toc-link" href="#两个辅助数组："><span class="trm-toc-number">2.1.1.</span> <span class="trm-toc-text">两个辅助数组：</span></a></li><li class="trm-toc-item trm-toc-level-3" title="算法流程"><a rel="nofollow" class="trm-toc-link" href="#算法流程"><span class="trm-toc-number">2.1.2.</span> <span class="trm-toc-text">算法流程</span></a></li><li class="trm-toc-item trm-toc-level-3" title="算法特征"><a rel="nofollow" class="trm-toc-link" href="#算法特征"><span class="trm-toc-number">2.1.3.</span> <span class="trm-toc-text">算法特征</span></a></li><li class="trm-toc-item trm-toc-level-3" title="算法实现："><a rel="nofollow" class="trm-toc-link" href="#算法实现："><span class="trm-toc-number">2.1.4.</span> <span class="trm-toc-text">算法实现：</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="2.宽度优先算法（BFS）"><a rel="nofollow" class="trm-toc-link" href="#2-宽度优先算法（BFS）"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">2.宽度优先算法（BFS）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="一个辅助队列"><a rel="nofollow" class="trm-toc-link" href="#一个辅助队列"><span class="trm-toc-number">2.2.1.</span> <span class="trm-toc-text">一个辅助队列</span></a></li><li class="trm-toc-item trm-toc-level-3" title="算法流程"><a rel="nofollow" class="trm-toc-link" href="#算法流程-1"><span class="trm-toc-number">2.2.2.</span> <span class="trm-toc-text">算法流程</span></a></li><li class="trm-toc-item trm-toc-level-3" title="算法实现"><a rel="nofollow" class="trm-toc-link" href="#算法实现"><span class="trm-toc-number">2.2.3.</span> <span class="trm-toc-text">算法实现</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="上面这两种算法的缺点"><a rel="nofollow" class="trm-toc-link" href="#上面这两种算法的缺点"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">上面这两种算法的缺点</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="考虑权重的遍历"><a rel="nofollow" class="trm-toc-link" href="#考虑权重的遍历"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">考虑权重的遍历</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="最短路径树"><a rel="nofollow" class="trm-toc-link" href="#最短路径树"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">最短路径树</span></a></li><li class="trm-toc-item trm-toc-level-2" title="迪杰斯特拉算法（Dijkstra’s Algorithm）"><a rel="nofollow" class="trm-toc-link" href="#迪杰斯特拉算法（Dijkstra’s-Algorithm）"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">迪杰斯特拉算法（Dijkstra’s Algorithm）</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="三种坏算法"><a rel="nofollow" class="trm-toc-link" href="#三种坏算法"><span class="trm-toc-number">3.2.1.</span> <span class="trm-toc-text">三种坏算法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="Dijkstra"><a rel="nofollow" class="trm-toc-link" href="#Dijkstra"><span class="trm-toc-number">3.2.2.</span> <span class="trm-toc-text">Dijkstra</span></a></li><li class="trm-toc-item trm-toc-level-3" title="弊端"><a rel="nofollow" class="trm-toc-link" href="#弊端"><span class="trm-toc-number">3.2.3.</span> <span class="trm-toc-text">弊端</span></a></li><li class="trm-toc-item trm-toc-level-3" title="伪代码"><a rel="nofollow" class="trm-toc-link" href="#伪代码"><span class="trm-toc-number">3.2.4.</span> <span class="trm-toc-text">伪代码</span></a></li><li class="trm-toc-item trm-toc-level-3" title="不变量"><a rel="nofollow" class="trm-toc-link" href="#不变量"><span class="trm-toc-number">3.2.5.</span> <span class="trm-toc-text">不变量</span></a></li><li class="trm-toc-item trm-toc-level-3" title="重要性质"><a rel="nofollow" class="trm-toc-link" href="#重要性质"><span class="trm-toc-number">3.2.6.</span> <span class="trm-toc-text">重要性质</span></a></li></ol></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="不想要进行遍历——启发性算法"><a rel="nofollow" class="trm-toc-link" href="#不想要进行遍历——启发性算法"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">不想要进行遍历——启发性算法</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="A* Algorithm"><a rel="nofollow" class="trm-toc-link" href="#A-Algorithm"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">A* Algorithm</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="注意"><a rel="nofollow" class="trm-toc-link" href="#注意"><span class="trm-toc-number">4.1.1.</span> <span class="trm-toc-text">注意</span></a></li></ol></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-book-reader"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-arrows-alt-h"></use>
+</svg>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-arrow-up"></use>
+</svg>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.4"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.4"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
