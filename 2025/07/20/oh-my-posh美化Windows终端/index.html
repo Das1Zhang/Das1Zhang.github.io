@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="Use oh-my-posh to beautify windows terminal.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="oh-my-posh美化Windows终端">
+<meta property="og:url" content="https://das1zhang.github.io/2025/07/20/oh-my-posh%E7%BE%8E%E5%8C%96Windows%E7%BB%88%E7%AB%AF/index.html">
+<meta property="og:site_name" content="Das1&#39;s Blog">
+<meta property="og:description" content="Use oh-my-posh to beautify windows terminal.">
+<meta property="og:locale">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="article:published_time" content="2025-07-20T14:59:15.000Z">
+<meta property="article:modified_time" content="2025-07-20T15:07:18.985Z">
+<meta property="article:author" content="Das1">
+<meta property="article:tag" content="CS工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://das1zhang.github.io/img/404.jpg">
+
+
+<title >oh-my-posh美化Windows终端</title>
+
+<!-- Favicon -->
+
+    <link href='/favicon-16x16.png?v=2.2.4' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/favicon-32x32.png?v=2.2.4' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.4' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+
+    
+<script src="//at.alicdn.com/t/c/font_4729113_wqedocoac7p.js"></script>
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"das1zhang.github.io","author":"Das1","root":"/","typed_text":["an undergraduate in WHU"],"theme_version":"2.2.4","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/logo.jpg","icon16":"/favicon-16x16.png","icon32":"/favicon-32x32.png","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"/logo.jpg","show_text":"Das1's Blog.","hide_text":"Waiting for u."},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-a-farfa-sun","moon":"icon-fa-moon-line","play":"icon-play","email":"icon-envelop","next":"icon-fa-arrow-right","calendar":"icon-th-list","clock":"icon-farfa-clock","user":"icon-a-zu394","back_top":"icon-fa-arrow-up","close":"icon-a-fasfa-times","search":"icon-fasfa-search","reward":"icon-dashang","toc_tag":"icon-th-list","read":"icon-book-reader","arrows":"icon-arrows-alt-h","double_arrows":"icon-angle-double-down","copy":"icon-copy","user_tag":"icon-a-zu394"},"icontype":"symbol","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":false,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-20 23:07:18"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.4" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-a-farfa-sun"></use>
+</svg></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-moon-line"></use>
+</svg></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/logo.jpg">
+    
+    
+        <div class="trm-logo-text">
+            Zhang<span>Das1</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/" target="">
+                    home
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/archives/" target="">
+                    archives
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/categories/" target="">
+                    categories
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            tags
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/links/" target="">
+                    links
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/lifeguide/" target="">
+                    lifeguide
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/about/" target="">
+                    about
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-a-farfa-sun"></use>
+</svg>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-moon-line"></use>
+</svg>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/background1.jpg">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            Use oh-my-posh to beautify windows terminal.
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            oh-my-posh美化Windows终端
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2025
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/logo.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        Das1
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/Das1Zhang" title="github" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-github"></use>
+</svg>
+        </a>
+    
+        <a href="https://x.com/SihaoFlower" title="X" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-TwitterX"></use>
+</svg>
+        </a>
+    
+        <a href="https://www.pinterest.com/sihao050721com/" title="pinterest" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-Pinterest"></use>
+</svg>
+        </a>
+    
+        <a href="https://space.bilibili.com/352757351" title="bilibili" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-bilibili-line"></use>
+</svg>
+        </a>
+    
+        <a href="https://www.xiaohongshu.com/user/profile/660a4195000000000b00c2b0" title="redbook" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-xiaohongshu"></use>
+</svg>
+        </a>
+    
+        <a href="http://youtube.com/@Sihao-q3o" title="youtube" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-youtube"></use>
+</svg>
+        </a>
+    
+        <a href="https://steamcommunity.com/profiles/76561199544278917/" title="steam" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-steam"></use>
+</svg>
+        </a>
+    
+        <a href="https://blog.csdn.net/Dasi_C_upup?spm=1000.2115.3001.5343" title="csdn" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-csdn2"></use>
+</svg>
+        </a>
+    
+        <a href="https://www.douyin.com/user/self?from_tab_name=main" title="douyin" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-douyin"></use>
+</svg>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                address:
+            </div>
+            <div class="trm-label trm-label-light">
+                Wuhan
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                age:
+            </div>
+            <div class="trm-label trm-label-light">
+                19
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                school:
+            </div>
+            <div class="trm-label trm-label-light">
+                WHU
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                MBTI:
+            </div>
+            <div class="trm-label trm-label-light">
+                ENFP
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:sihao050721.com@gmail.com" class="trm-btn">
+            联系我
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-envelop"></use>
+</svg>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg><br>
+            07/20
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-farfa-clock"></use>
+</svg><br>
+            22:59
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-a-zu394"></use>
+</svg><br>
+            Das1
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <blockquote>
+<p>本教程介绍如何使用 Windows terminal + oh-my-posh 来美化命令行终端，并介绍一些基本的参数配置</p>
+</blockquote>
+<h1 id="安装-Windows-Terminal"><a href="#安装-Windows-Terminal" class="headerlink" title="安装 Windows Terminal"></a>安装 Windows Terminal</h1><p>Windows Terminal 可以在 Microsoft store 中直接搜索下载，win11用户自带 windows terminal 不需要进行下载。</p>
+<p>Windows Terminal 会<strong>默认加载 powershell</strong>，当然我们也可以使用其他的shell，比如zsh等等</p>
+<h1 id="安装oh-my-posh"><a href="#安装oh-my-posh" class="headerlink" title="安装oh-my-posh"></a>安装oh-my-posh</h1><h2 id="安装-winget（可选）"><a href="#安装-winget（可选）" class="headerlink" title="安装 winget（可选）"></a>安装 winget（可选）</h2><p>在powershell中输入：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winget</span><br></pre></td></tr></table></figure>
+<p>然后我们可以看到下面的提示信息：<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/winget.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>这就显示我们的系统中已经安装了winget<br>如果显示识别不了的命令，我们可以进入 Microsoft store 搜索 “应用安装程序”，点击安装，安装完成后重启powershell，再次运行<code>winget</code>应该可以显示命令了。</p>
+<h2 id="安装-oh-my-posh"><a href="#安装-oh-my-posh" class="headerlink" title="安装 oh-my-posh"></a>安装 oh-my-posh</h2><h3 id="1-命令行安装"><a href="#1-命令行安装" class="headerlink" title="1.命令行安装"></a>1.命令行安装</h3><p>在powershell中输入</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winget install oh-my-posh</span><br></pre></td></tr></table></figure>
+<p>如果显示有多个源，<strong>挑选其中一个 ID</strong>，然后输入</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winget install &lt;ID&gt;</span><br></pre></td></tr></table></figure>
+<p>即可安装 oh-my-posh</p>
+<h3 id="2-Microsoft-store-安装"><a href="#2-Microsoft-store-安装" class="headerlink" title="2.Microsoft store 安装"></a>2.Microsoft store 安装</h3><p>如果命令行安装有问题的，可以直接在 Microsoft store 中搜索 oh-my-posh 进行安装</p>
+<h2 id="编写-PROFILE-文件"><a href="#编写-PROFILE-文件" class="headerlink" title="编写 PROFILE 文件"></a>编写 PROFILE 文件</h2><p><code>$PROFILE</code>是 powershell 的配置文件路径，指向一个<code>.ps1</code>脚本，每次启动powershell时都会<strong>自动执行这个脚本文件</strong><br>所以 oh-my-posh 的执行逻辑实际上每次启动 powershell 时，运行 <code>$PROFILE</code> 文件，使编写在脚本中的命令执行，实现oh-my-posh</p>
+<p>我们在 power shell 中直接运行</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$PROFILE</span><br></pre></td></tr></table></figure>
+<p>可以查看 <code>$PROFILE</code> 的路径<br>我们输入</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code $PROFILE</span><br></pre></td></tr></table></figure>
+<p>进行编写 <code>$PROFILE</code> 文件<br>如果没有 vscode，可以输入</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">notepad $PROFILE</span><br></pre></td></tr></table></figure>
+<p>进行编写</p>
+<p>第一次打开<code>$PROFILE</code>时应该是一个<strong>空白文件</strong>，将下面这一行加入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oh-my-posh init pwsh --config $env:POSH_THEMES_PATH\montys.omp.json | Invoke-Expression</span><br></pre></td></tr></table></figure>
+<p>我们可以在<a target="_blank" rel="noopener" href="https://ohmyposh.dev/docs/themes">oh-my-posh themes</a>中根据自己喜好来选择oh-my-posh主题<br>将对应的主题名称替换我们这一行中的<code>montys</code>字段即可，因为我这里使用的主题是<code>montys</code></p>
+<p>然后我们重启powershell就可以看到我们的oh-my-posh主题已经启动了</p>
+<h1 id="安装并配置-Nerd-字体"><a href="#安装并配置-Nerd-字体" class="headerlink" title="安装并配置 Nerd 字体"></a>安装并配置 Nerd 字体</h1><h2 id="安装-Nerd-字体"><a href="#安装-Nerd-字体" class="headerlink" title="安装 Nerd 字体"></a>安装 Nerd 字体</h2><p>我们安装 oh-my-posh 之后可能会有<strong>图标显示</strong>的问题，我们可以安装 <strong>Nerd</strong> 字体<br>在powershell中输入：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oh-my-posh font install</span><br></pre></td></tr></table></figure>
+<p>会看到一个字体列表如图：<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/fonts.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>选择我们想要使用的即可<br>当然你也可以在<a target="_blank" rel="noopener" href="https://www.programmingfonts.org/">programming fonts</a>中来预览各个字体</p>
+<h2 id="配置-Nerd-字体"><a href="#配置-Nerd-字体" class="headerlink" title="配置 Nerd 字体"></a>配置 Nerd 字体</h2><p>我们点击命令行窗口最上方的下拉栏，然后点击“设置”<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/TerminalSetting.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>再点击左下角的<strong>打开JSON文件</strong> ，我们可以编辑命令行窗口的配置文件<br>我们找到<code>&quot;profiles&quot;</code>字段，这个字段中第一个是<code>default</code>，我们在<code>default</code>中加入</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;fontFace&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0xProto Nerd Font&quot;</span></span><br></pre></td></tr></table></figure>
+<p>我们这里就让终端使用了<code>0xProto Nerd Font</code>字体，图表显示就不会出现问题了<br>如果你已经安装了喜欢的字体，可以输入<code>win</code>+<code>r</code>输入<code>fonts</code>就可以看到自己安装的所有字体了</p>
+<h1 id="配置其他参数"><a href="#配置其他参数" class="headerlink" title="配置其他参数"></a>配置其他参数</h1><p>除了配置 oh-my-posh，我们还可以配置一些终端窗口的自带参数，可以在<code>settings.json</code>文件的default中加入下面的参数</p>
+<h2 id="配置背景毛玻璃效果"><a href="#配置背景毛玻璃效果" class="headerlink" title="配置背景毛玻璃效果"></a>配置背景毛玻璃效果</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;useAcrylic&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;acrylicOpacity&quot;</span><span class="punctuation">:</span> <span class="number">0.3</span></span><br></pre></td></tr></table></figure>
+<p>通过调整<code>acrylicOpacity</code>的大小，可以调整背景的不透明度</p>
+<h2 id="配置背景图片"><a href="#配置背景图片" class="headerlink" title="配置背景图片"></a>配置背景图片</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;backgroundImage&quot;</span><span class="punctuation">:</span> <span class="string">&quot;&lt;文件路径&gt;&quot;</span></span><br><span class="line"><span class="attr">&quot;backgroundImageOpacity&quot;</span><span class="punctuation">:</span> <span class="number">0.1</span></span><br></pre></td></tr></table></figure>
+<p>通过调整<code>backgroundImageOpacity</code>可以调整背景的亮度</p>
+<h2 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a>其他配置</h2><p>其他细节配置可以参照下面的表格，一般美化用到上面的配置即可</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>colorScheme</code></td>
+<td>string</td>
+<td>设置颜色主题（比如 <code>&quot;One Half Dark&quot;</code>）</td>
+</tr>
+<tr>
+<td><code>cursorShape</code></td>
+<td>string</td>
+<td>光标形状：<code>bar</code>, <code>vintage</code>, <code>filledBox</code>, <code>underscore</code> 等</td>
+</tr>
+<tr>
+<td><code>cursorColor</code></td>
+<td>string</td>
+<td>光标颜色（如 <code>&quot;#FFFFFF&quot;</code>）</td>
+</tr>
+<tr>
+<td><code>fontSize</code></td>
+<td>number</td>
+<td>字体大小</td>
+</tr>
+<tr>
+<td><code>fontWeight</code></td>
+<td>string</td>
+<td>字体粗细，如 <code>normal</code>, <code>bold</code>, <code>thin</code>, <code>semi-bold</code></td>
+</tr>
+<tr>
+<td><code>padding</code></td>
+<td>string</td>
+<td>终端内容边距，如 <code>&quot;8, 8, 8, 8&quot;</code>（上、右、下、左）</td>
+</tr>
+<tr>
+<td><code>backgroundImageStretchMode</code></td>
+<td>string</td>
+<td>背景图缩放方式：<code>none</code>, <code>fill</code>, <code>uniform</code>, <code>uniformToFill</code></td>
+</tr>
+<tr>
+<td><code>backgroundImageAlignment</code></td>
+<td>string</td>
+<td>背景图对齐方式，如 <code>&quot;center&quot;</code>, <code>&quot;topLeft&quot;</code>, <code>&quot;bottomRight&quot;</code></td>
+</tr>
+<tr>
+<td><code>background</code></td>
+<td>string</td>
+<td>纯色背景（使用 hex 色值）</td>
+</tr>
+<tr>
+<td><code>scrollbarState</code></td>
+<td>string</td>
+<td><code>&quot;visible&quot;</code>, <code>&quot;hidden&quot;</code>, <code>&quot;visibleAlways&quot;</code>（控制滚动条）</td>
+</tr>
+<tr>
+<td><code>antialiasingMode</code></td>
+<td>string</td>
+<td><code>&quot;grayscale&quot;</code>, <code>&quot;cleartype&quot;</code>, <code>&quot;aliased&quot;</code>（字体抗锯齿方式）</td>
+</tr>
+<tr>
+<td><code>intenseTextStyle</code></td>
+<td>string</td>
+<td><code>&quot;bold&quot;</code>, <code>&quot;bright&quot;</code>, <code>&quot;all&quot;</code> 控制高亮文字显示风格</td>
+</tr>
+</tbody></table>
+<h1 id="语法建议模块"><a href="#语法建议模块" class="headerlink" title="语法建议模块"></a>语法建议模块</h1><p>在<code>$PROFILE</code>中加入下面的内容：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Import-Module PSReadLine</span><br><span class="line">Set-PSReadLineOption -PredictionSource History</span><br><span class="line">Set-PSReadLineOption -PredictionViewStyle InlineView</span><br></pre></td></tr></table></figure>
+<p>可以启用<strong>基于历史的语法建议模块</strong></p>
+<h1 id="设置语法高亮"><a href="#设置语法高亮" class="headerlink" title="设置语法高亮"></a>设置语法高亮</h1><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Set-PSReadLineOption -Colors @<span class="punctuation">&#123;</span></span><br><span class="line">    <span class="string">&quot;Command&quot;</span> = <span class="punctuation">[</span>ConsoleColor<span class="punctuation">]</span><span class="punctuation">:</span><span class="punctuation">:</span>Green</span><br><span class="line">    <span class="string">&quot;Parameter&quot;</span> = <span class="punctuation">[</span>ConsoleColor<span class="punctuation">]</span><span class="punctuation">:</span><span class="punctuation">:</span>Yellow</span><br><span class="line">    <span class="string">&quot;String&quot;</span> = <span class="punctuation">[</span>ConsoleColor<span class="punctuation">]</span><span class="punctuation">:</span><span class="punctuation">:</span>Cyan</span><br><span class="line">    <span class="string">&quot;Operator&quot;</span> = <span class="punctuation">[</span>ConsoleColor<span class="punctuation">]</span><span class="punctuation">:</span><span class="punctuation">:</span>Gray</span><br><span class="line">    <span class="string">&quot;Variable&quot;</span> = <span class="punctuation">[</span>ConsoleColor<span class="punctuation">]</span><span class="punctuation">:</span><span class="punctuation">:</span>Magenta</span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>我们可以改变<strong>后面的颜色名称</strong>来修改对应的颜色</p>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2025/07/19/CS61B%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%9B%BE%E7%AE%97%E6%B3%95/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/cover1.jpg">
+                </span>
+                <h6 class="trm-op-title">CS61B中的基本图算法</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/07/19</li>
+                <li>22:48</li>
+                <li>数据结构</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <div class="row justify-content-center">
+    <div class="col-lg-4">
+        <div class="trm-counter-up trm-scroll-animation trm-active-el">
+            <div class="trm-counter-number"><span class="trm-counter">30</span><span class="trm-counter-symbol">+</span>
+            </div>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <div class="trm-label">Posts</div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="trm-counter-up trm-scroll-animation trm-active-el">
+            <div class="trm-counter-number"><span class="trm-counter">8</span><span class="trm-counter-symbol">+</span>
+            </div>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <div class="trm-label">Diary</div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="trm-counter-up trm-scroll-animation trm-active-el">
+            <div class="trm-counter-number"><span class="trm-counter">85</span><span class="trm-counter-symbol">+</span>
+            </div>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <div class="trm-label">fans</div>
+        </div>
+    </div>
+</div>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="安装 Windows Terminal"><a rel="nofollow" class="trm-toc-link" href="#安装-Windows-Terminal"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">安装 Windows Terminal</span></a></li><li class="trm-toc-item trm-toc-level-1" title="安装oh-my-posh"><a rel="nofollow" class="trm-toc-link" href="#安装oh-my-posh"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">安装oh-my-posh</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="安装 winget（可选）"><a rel="nofollow" class="trm-toc-link" href="#安装-winget（可选）"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">安装 winget（可选）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="安装 oh-my-posh"><a rel="nofollow" class="trm-toc-link" href="#安装-oh-my-posh"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">安装 oh-my-posh</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="1.命令行安装"><a rel="nofollow" class="trm-toc-link" href="#1-命令行安装"><span class="trm-toc-number">2.2.1.</span> <span class="trm-toc-text">1.命令行安装</span></a></li><li class="trm-toc-item trm-toc-level-3" title="2.Microsoft store 安装"><a rel="nofollow" class="trm-toc-link" href="#2-Microsoft-store-安装"><span class="trm-toc-number">2.2.2.</span> <span class="trm-toc-text">2.Microsoft store 安装</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="编写 PROFILE 文件"><a rel="nofollow" class="trm-toc-link" href="#编写-PROFILE-文件"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">编写 PROFILE 文件</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="安装并配置 Nerd 字体"><a rel="nofollow" class="trm-toc-link" href="#安装并配置-Nerd-字体"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">安装并配置 Nerd 字体</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="安装 Nerd 字体"><a rel="nofollow" class="trm-toc-link" href="#安装-Nerd-字体"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">安装 Nerd 字体</span></a></li><li class="trm-toc-item trm-toc-level-2" title="配置 Nerd 字体"><a rel="nofollow" class="trm-toc-link" href="#配置-Nerd-字体"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">配置 Nerd 字体</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="配置其他参数"><a rel="nofollow" class="trm-toc-link" href="#配置其他参数"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">配置其他参数</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="配置背景毛玻璃效果"><a rel="nofollow" class="trm-toc-link" href="#配置背景毛玻璃效果"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">配置背景毛玻璃效果</span></a></li><li class="trm-toc-item trm-toc-level-2" title="配置背景图片"><a rel="nofollow" class="trm-toc-link" href="#配置背景图片"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">配置背景图片</span></a></li><li class="trm-toc-item trm-toc-level-2" title="其他配置"><a rel="nofollow" class="trm-toc-link" href="#其他配置"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">其他配置</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="语法建议模块"><a rel="nofollow" class="trm-toc-link" href="#语法建议模块"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">语法建议模块</span></a></li><li class="trm-toc-item trm-toc-level-1" title="设置语法高亮"><a rel="nofollow" class="trm-toc-link" href="#设置语法高亮"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">设置语法高亮</span></a></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-book-reader"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-arrows-alt-h"></use>
+</svg>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-arrow-up"></use>
+</svg>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.4"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.4"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
