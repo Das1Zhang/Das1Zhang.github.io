@@ -7,27 +7,29 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="The minimum spanning tree problem in CS61B.">
+<meta name="description" content="The heap and heap sort in CS61B.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CS61B中的最小生成树问题">
-<meta property="og:url" content="https://das1zhang.github.io/2025/07/21/CS61B%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="CS61B中的堆以及堆排序算法">
+<meta property="og:url" content="https://das1zhang.github.io/2025/07/22/CS61B%E4%B8%AD%E7%9A%84%E5%A0%86%E4%BB%A5%E5%8F%8A%E5%A0%86%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Das1&#39;s Blog">
-<meta property="og:description" content="The minimum spanning tree problem in CS61B.">
+<meta property="og:description" content="The heap and heap sort in CS61B.">
 <meta property="og:locale">
 <meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
 <meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
 <meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
 <meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
 <meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
-<meta property="article:published_time" content="2025-07-21T15:39:47.000Z">
-<meta property="article:modified_time" content="2025-07-21T15:42:50.816Z">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="article:published_time" content="2025-07-22T15:57:17.000Z">
+<meta property="article:modified_time" content="2025-07-22T16:00:49.552Z">
 <meta property="article:author" content="Das1">
 <meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://das1zhang.github.io/img/404.jpg">
 
 
-<title >CS61B中的最小生成树问题</title>
+<title >CS61B中的堆以及堆排序算法</title>
 
 <!-- Favicon -->
 
@@ -70,7 +72,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"das1zhang.github.io","author":"Das1","root":"/","typed_text":["an undergraduate in WHU"],"theme_version":"2.2.6","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/logo.jpg","icon16":"/favicon-16x16.png","icon32":"/favicon-32x32.png","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"/logo.jpg","show_text":"Das1's Blog.","hide_text":"Waiting for u."},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-a-farfa-sun","moon":"icon-fa-moon-line","play":"icon-play","email":"icon-envelop","next":"icon-fa-arrow-right","calendar":"icon-th-list","clock":"icon-farfa-clock","user":"icon-a-zu394","back_top":"icon-fa-arrow-up","close":"icon-a-fasfa-times","search":"icon-fasfa-search","reward":"icon-dashang","toc_tag":"icon-th-list","read":"icon-book-reader","arrows":"icon-arrows-alt-h","double_arrows":"icon-angle-double-down","copy":"icon-copy","user_tag":"icon-a-zu394"},"icontype":"symbol","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":false,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-21 23:42:50"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-23 00:00:49"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.6" id="trm-switch-style">
@@ -246,7 +248,7 @@
     <div class="trm-banner">
     
     <!-- banner cover -->
-    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/background2.jpg">
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/background3.jpg">
     <!-- banner cover end -->
     
 
@@ -262,10 +264,10 @@
                     <!-- banner title -->
                     <div class="trm-banner-text ">
                         <div class="trm-label trm-mb-20">
-                            The minimum spanning tree problem in CS61B.
+                            The heap and heap sort in CS61B.
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            CS61B中的最小生成树问题
+                            CS61B中的堆以及堆排序算法
                         </h1>
 
                         
@@ -453,7 +455,7 @@
             <svg class="symbol-icon trm-icon" aria-hidden="true">
     <use xlink:href="#icon-th-list"></use>
 </svg><br>
-            07/21
+            07/22
         </div>
     </div>
     <div class="col-sm-4">
@@ -461,7 +463,7 @@
             <svg class="symbol-icon trm-icon" aria-hidden="true">
     <use xlink:href="#icon-farfa-clock"></use>
 </svg><br>
-            23:39
+            23:57
         </div>
     </div>
     <div class="col-sm-4">
@@ -476,52 +478,76 @@
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
     <blockquote>
-<p>本教程总结CS61B 关于图章节中的最小生成树（Minimum Spanning Trees, MST）问题，以及对应的的算法</p>
+<p>本文章介绍 CS61B 中的堆(heap)，并介绍堆排序</p>
 </blockquote>
-<h1 id="什么是最小生成树（MST）"><a href="#什么是最小生成树（MST）" class="headerlink" title="什么是最小生成树（MST）"></a>什么是最小生成树（MST）</h1><p>考虑这样一个问题，给你一个无向图，你能不能找出这个图中的一组边，让其满足：</p>
+<h1 id="什么是堆-heap-？"><a href="#什么是堆-heap-？" class="headerlink" title="什么是堆(heap)？"></a>什么是堆(heap)？</h1><p>堆是一个在优先队列中表现良好的数据结构<br>虽然我们可以使用二叉搜索树(BST)，但是对<strong>于重复项，二叉搜索数就显得无能为力了</strong></p>
+<h2 id="二叉最小堆-Binary-min-heap"><a href="#二叉最小堆-Binary-min-heap" class="headerlink" title="二叉最小堆(Binary min-heap)"></a>二叉最小堆(Binary min-heap)</h2><p>二叉最小堆是一种完全的，并且满足最小堆性质的树：</p>
 <ul>
-<li><strong>连通的</strong></li>
-<li><strong>无环的</strong></li>
-<li><strong>涉及到了所有的结点</strong><br>比如这样一张图<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/MST.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>这样的一组边构成的树，称为生成树<br>而让这个树中所有的<strong>边权重之和最小</strong>即为最小生成树</li>
+<li>最小堆性质：每个结点都<strong>小于或等于其子结点</strong></li>
+<li>完全：<strong>只有最后一层会不被填满，并且所有叶子结点都排布在左边</strong></li>
 </ul>
-<h1 id="如何找到最小生成树"><a href="#如何找到最小生成树" class="headerlink" title="如何找到最小生成树"></a>如何找到最小生成树</h1><h2 id="一个非常有用的性质：割边属性（Cut-Property）"><a href="#一个非常有用的性质：割边属性（Cut-Property）" class="headerlink" title="一个非常有用的性质：割边属性（Cut Property）"></a>一个非常有用的性质：割边属性（Cut Property）</h2><ul>
-<li>一个 cut 就是将一个图中的结点分成两个非空集合</li>
-<li>一个 crossing cut 就是<strong>从一个集合结点连接到了另一个集合结点的边</strong><br>割边属性是这样描述的：给定任意一个 cut，<strong>最小权重的 crossing edge 一定在最小生成树中</strong><br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/CutProperty.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>比如上面这张图中，所有的红色边都是 crossing edge，其中最小的边一定在最小生成树中<br>我们判断 crossing edge 只需要看这个边<strong>是否连接了两个属于不同集合（也就是不同颜色）的结点</strong>即可</li>
-</ul>
-<h2 id="通用的寻找-MST-算法"><a href="#通用的寻找-MST-算法" class="headerlink" title="通用的寻找 MST 算法"></a>通用的寻找 MST 算法</h2><p>基于割边属性，我们可以这样构造一个算法：<br>首先一开始MST没有边：</p>
+<h1 id="堆的好处"><a href="#堆的好处" class="headerlink" title="堆的好处"></a>堆的好处</h1><p>堆可以非常自然地实现优先队列的性质<br>比如一个简单的问题：你怎么支持<code>getSmallest()</code>这样一个方法呢<br>很简单，直接<strong>取出堆的根</strong>即可</p>
+<h1 id="堆的几个操作"><a href="#堆的几个操作" class="headerlink" title="堆的几个操作"></a>堆的几个操作</h1><h2 id="添加结点"><a href="#添加结点" class="headerlink" title="添加结点"></a>添加结点</h2><p>我们添加一个结点要同时满足堆的两个性质，也就是完<strong>全性和最小堆性</strong>，我们想一次性同时满足这两个性质是困难的。<br>所以我们可以<strong>先满足其中一个，然后对另一个做修正</strong></p>
+<p>比如：<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/heap1.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>我在这个堆中添加一个 3 结点，首先我让其满足完全性，也就是把 3 结点添加到最左下角的部分</p>
+<p>然后我们对这个最小堆性质做修正</p>
+<ol>
+<li>3 的父结点 5 大于它，交换 3 和 5</li>
+<li>交换后仍然 父结点为 5 ，继续交换</li>
+<li>父结点为 1 ，满足最小堆</li>
+</ol>
+<p>这个过程就像一个<strong>泡泡向上冒泡的过程</strong>，不断地与父结点做交换</p>
+<h2 id="删除结点"><a href="#删除结点" class="headerlink" title="删除结点"></a>删除结点</h2><p>我们以删除根结点为例<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/heap2.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>我们还是按照一样的思路，先满足完全性，再满足最小堆性质<br>我们想要删除根结点 1, 我们取“最后一个结点”，也就是最右边的叶子结点，将其放到根结点的位置<br>这个堆会变成这样：<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/heap3.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>现在我们要逐步将其进行修正<br>现在这个根结点太大了，我们要将<strong>其逐渐“下沉”</strong></p>
 <ul>
-<li>找到一个<strong>没有 crossing edge 在MST中的 cut</strong></li>
-<li>然后将<strong>最小权重的 crossing edge 加入 MST</strong></li>
-<li>一直重复到 V-1 条边</li>
+<li>我们选取其<strong>子结点中更小的那个</strong>，然后将其<strong>交换</strong></li>
+<li>不断重复，直到不再发生“下沉”</li>
 </ul>
-<h2 id="Prim’s-Algorithm"><a href="#Prim’s-Algorithm" class="headerlink" title="Prim’s Algorithm"></a>Prim’s Algorithm</h2><p>相比较最短路径树而言，最小生成树<strong>并不需要给出一个起点</strong>，在最小生成树中，只需要给你图然后说告诉我哪<strong>些边触及所有顶点且权重之和最小</strong>即可。</p>
-<p>但是并不代表我们不选取一个起始结点，相对来说，Prim 算法会随机选择一个起始结点，这个<strong>随机性并不对最终结果产生影响</strong>（我们总要寻找一个结点来入手）</p>
-<h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><p>从一个随机结点开始：</p>
+<h1 id="用堆实现优先队列"><a href="#用堆实现优先队列" class="headerlink" title="用堆实现优先队列"></a>用堆实现优先队列</h1><p>给我们一个堆结构，现在我们<strong>知道如何实现优先队列</strong>了</p>
 <ul>
-<li>将一个<strong>一头连接已经在MST中结点的最短的边</strong>，加入MST,直到 V-1 条边</li>
+<li><code>getSmallest()</code>：返回根结点</li>
+<li><code>add(x)</code>：将新结点放在“最后一个位置”，然后进行“上浮”</li>
+<li><code>removeSmallest()</code>：删除跟结点，然后将“最后一个结点”放到跟结点，然后逐步“下沉”</li>
 </ul>
-<p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Prim.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>比如在这个图中，所有符合上述条件的即为红色的边：连接了一个在MST中的结点<br>然后我们<strong>选取这些边中最短的边</strong>，也就是A-&gt;B或者E-&gt;D</p>
-<p>Prim 算法实际上是<strong>不断地使用了割边属性</strong></p>
-<h2 id="改进的-Prim’s-Algorithm"><a href="#改进的-Prim’s-Algorithm" class="headerlink" title="改进的 Prim’s Algorithm"></a>改进的 Prim’s Algorithm</h2><p>Prim 算法是<strong>可以奏效的，但效率太低了</strong>，因为你必须考虑大量的穿过这个 cut 的 crossing edge<br>我们对 Prim 算法进行改进：</p>
+<h1 id="如何在java中表示堆"><a href="#如何在java中表示堆" class="headerlink" title="如何在java中表示堆"></a>如何在java中表示堆</h1><p>得益于堆的完全性，我们知道，最后一层以上的所有层的结点数是有规律的：”1,2,4,8…”<br>如果我们按顺序对每个结点进行编号，我们可以写出<code>parents[]</code>数组<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/parent.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>我们可以得到这样的求<code>parent</code>的方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">parent</span><span class="params">(<span class="type">int</span> k)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (k-<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以把根结点放在<strong>索引 1</strong> 的位置，来简化方法表达<br>以此延伸我们可以得到</p>
 <ul>
-<li>将所有结点放入 fringe PQ 中，以结点到树的距离作为排序标准</li>
-<li>重复：将距离树最近的结点移出，然后将其指出的所有边进行relaxation，然后对 distTo 和 edgeTo 数组进行更新</li>
+<li><code>leftChild(k) = k*2</code></li>
+<li><code>rightChild(k) = k*2 + 1</code></li>
+<li><code>parent(k) = k/2</code></li>
 </ul>
-<p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/OptimizedPrim.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>这个图中我们刚刚把距离树最近的结点E移出，加入到MST中，然后relax它的所有的边，同时更新 distTo 和 edgeTo 数组</p>
-<p>图中<strong>加粗的边为MST中的边</strong>，图中的虚<strong>线表示relax出来的边，作为MST的候选边</strong>，如果在relax中发现<strong>这条边不如之前的边</strong>（比如C-&gt;B），或者这条边被后续的边所取代（比如下一步的C-&gt;F即将被E-&gt;F取代），那么这条边我们甚至不标注为虚线</p>
-<p>而如果在MST中的边被新边取代，那么我们把新边加入MST，<strong>原来的边回到最开始的模样（不加粗，也不标为虚线）</strong></p>
-<p>同时我们看到 Fringe 中的结点是按照到树的距离进行排序的，同时 distTo 数组也变为了到树的距离</p>
-<h3 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PrimMST</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">PrimMST</span><span class="params">(EdgeWeightedGraph G)</span>&#123;</span><br><span class="line">        edgeTo = <span class="keyword">new</span> <span class="title class_">Edge</span>[G.V()];</span><br><span class="line">        distTo = <span class="keyword">new</span> <span class="title class_">double</span>[G.V()];</span><br><span class="line">        marked = <span class="keyword">new</span> <span class="title class_">boolean</span>[G.V()];</span><br><span class="line">        fringe = <span class="keyword">new</span> <span class="title class_">SpecialPQ</span>&lt;Double&gt;[G.V()];</span><br><span class="line"></span><br><span class="line">        distTo[s] = <span class="number">0.0</span>;</span><br><span class="line">        setDDistancesToInfinityExceptS(s);</span><br><span class="line">        insertAllVertices(fringe);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(!fringe.isEmpty())&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">v</span> <span class="operator">=</span> fringe.delMin();</span><br><span class="line">            scan(G,v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    ....</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">scan</span><span class="params">(EdgeWeightedGraph G, <span class="type">int</span> v)</span>&#123;</span><br><span class="line">        marked[v] = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(Edge e: G.adj(v))&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">w</span> <span class="operator">=</span> e.other(v);</span><br><span class="line">            <span class="keyword">if</span>(marked[w])&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(e.weight() &lt; distTo[w])&#123;</span><br><span class="line">                distTo[w] = e.weight();</span><br><span class="line">                edgeTo[w] = e;</span><br><span class="line">                pq.decreasePriority(w, distTo[w]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Kruskal’s-Algorithm"><a href="#Kruskal’s-Algorithm" class="headerlink" title="Kruskal’s Algorithm"></a>Kruskal’s Algorithm</h2><p>按照权重顺序考虑所有的边，只要这条边加入MST后不构成环，那么就将它加入MST中，重复直到 V-1 条边</p>
-<p>Kruskal 算法计算过程中创造出的<strong>MST可能是割裂不连续的，但是没关系，最后会得出正确的结果</strong></p>
-<p>我们可以通过维护两个辅助数据结构来帮助我们实现：</p>
+<h1 id="不同数据结构实现优先队列时间复杂度分析"><a href="#不同数据结构实现优先队列时间复杂度分析" class="headerlink" title="不同数据结构实现优先队列时间复杂度分析"></a>不同数据结构实现优先队列时间复杂度分析</h1><p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/PQtime.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>其中对于 <strong>Bushy BST</strong> 来说，如果有<strong>相同优先级的元素会很难处理</strong></p>
+<h1 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h1><h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><p>我们知道选择排序是<strong>每一次寻找数组的最小值</strong>，并把它放到<strong>已排序数组的前端</strong><br>而我们知道<strong>堆排序具有第一个元素即最大&#x2F;最小元素的性质</strong>，也就是<code>getSmallest()</code>或<code>getBiggest()</code>的时间复杂度为O(1)，由此得到堆排序</p>
+<h2 id="堆排序-1"><a href="#堆排序-1" class="headerlink" title="堆排序"></a>堆排序</h2><h3 id="初始想法"><a href="#初始想法" class="headerlink" title="初始想法"></a>初始想法</h3><p>我们的初始想法是，<strong>将这个输入数组重排为一个最大堆</strong>，并用一个额外数组进行存储，再找一个额外数组作为输出数组，每次取出<strong>最大堆的第一个元素</strong>（根，即最大元素），放入输出数组的最后一个空位置。</p>
+<h3 id="改进思路"><a href="#改进思路" class="headerlink" title="改进思路"></a>改进思路</h3><blockquote>
+<p>我们通过堆的性质改进了时间复杂度，但是我们还需要两个空间复杂度为O(N)的额外数组，我们不<strong>想要占用额外空间</strong>，我们可以怎么改进呢？</p>
+</blockquote>
+<h3 id="省去额外堆数组"><a href="#省去额外堆数组" class="headerlink" title="省去额外堆数组"></a>省去额外堆数组</h3><p>但是我们发现，我们可以将输入数组就看作一个没有重排的堆，我们可以<strong>直接在这个数组基础上直接对它进行重排</strong>，将其<strong>构造为一个最大堆</strong>，这样我们就省去了一个额外存储堆的数组</p>
+<h3 id="省去额外输出数组"><a href="#省去额外输出数组" class="headerlink" title="省去额外输出数组"></a>省去额外输出数组</h3><p>我们又发现，<strong>未排序的堆和已排序的堆的和总是为N</strong>，而且我们每次都是把<strong>最大值放到数组的末尾</strong>，我们可以将<strong>已排序的部分放在末尾</strong>，未排序的部分放在前面，每次重排都只重排未排序的部分，这样我们又省去了额外的输出数组的空间。</p>
+<h3 id="如何构造最大堆"><a href="#如何构造最大堆" class="headerlink" title="如何构造最大堆"></a>如何构造最大堆</h3><p>对于最大堆，我们<strong>从后往前考虑</strong>（也就是从最后一层的最后一个向前考虑），对于每一个结点，都看其两个子结点是否小于自己，如果不，则进行交换<br>向上构造最大堆：</p>
 <ul>
-<li><strong>WQU 加权快速集合</strong>：帮助我们判断是否有环生成</li>
-<li><strong>MST</strong> ：统计最小生成树的边</li>
+<li>按照逆序对每个结点进行<strong>下沉操作</strong>：<code>sink(k)</code></li>
+<li>在下沉之后，<strong>保证以 k 为根的堆是最大堆</strong></li>
 </ul>
-<p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Kruskal.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>在这个图中我们按顺序从 Fringe 中取出对应的边，当我们即将取出E-&gt;B这条边时，WQU告诉我们已经有了一条从E到B的路径，也就是下一步即将成环，所以我们不考虑E-&gt;B这条边</p>
-<h3 id="算法实现-1"><a href="#算法实现-1" class="headerlink" title="算法实现"></a>算法实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">KruskalMST</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Edge&gt; mst = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Edge&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">KruskalMST</span><span class="params">(EdgeWeighedGraph G)</span>&#123;</span><br><span class="line">        MinPQ&lt;Edge&gt; pq = <span class="keyword">new</span> <span class="title class_">MinPQ</span>&lt;Edge&gt;();</span><br><span class="line">        <span class="keyword">for</span>(Edge e: G.edges())&#123;</span><br><span class="line">            pq.insert(e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">WeighedQuickUnionPC</span> <span class="variable">uf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">WeighedQuickUnionPC</span>(G.V());</span><br><span class="line">        <span class="keyword">while</span>(!pq.isEmpty())&#123;</span><br><span class="line">            <span class="type">Edge</span> <span class="variable">e</span> <span class="operator">=</span> pq.delMin();</span><br><span class="line">            <span class="type">int</span> <span class="variable">v</span> <span class="operator">=</span> e.from();</span><br><span class="line">            <span class="type">int</span> <span class="variable">w</span> <span class="operator">=</span> e.to();</span><br><span class="line">            <span class="keyword">if</span>(!uf.connected(v,w))&#123;</span><br><span class="line">                uf.union(v,w);</span><br><span class="line">                mst.add(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="如何重排"><a href="#如何重排" class="headerlink" title="如何重排"></a>如何重排</h3><p>我们每次取出根之后，进行重排，只需要执行<code>sink(0)</code>即可，这就让这个<strong>新上来的结点重新“下沉”下去了</strong></p>
+<h3 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h3><ol>
+<li>将<strong>初始输入看作一个堆</strong></li>
+<li>将初始堆<strong>构造为最大堆</strong></li>
+<li>重复<ol>
+<li>取出<strong>第一个元素</strong>（最大元素）</li>
+<li>将<strong>其余元素前移</strong>（作为下一个初始堆），该元素放到已排序的前一个</li>
+<li>其余元素<strong>重排为最大堆</strong></li>
+</ol>
+</li>
+<li>直到全部已排序完毕</li>
+</ol>
+<p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/heap5.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>比如这个数组，我们每次选择第一个元素，将其放到末尾，然后对剩余元素进行重排，并重复这个操作即可</p>
+<h2 id="堆排序时间复杂度分析"><a href="#堆排序时间复杂度分析" class="headerlink" title="堆排序时间复杂度分析"></a>堆排序时间复杂度分析</h2><ul>
+<li>向上构造最大堆：O(N logN)——N 个结点每个执行<code>sink</code>为logN,即N * logN</li>
+<li>选择最大元素：O(1)</li>
+<li>移除最大元素并重排：O(log N)</li>
+</ul>
+<h2 id="堆排序与选择排序比较"><a href="#堆排序与选择排序比较" class="headerlink" title="堆排序与选择排序比较"></a>堆排序与选择排序比较</h2><p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/HeapandInsert.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
 
 </article>
     
@@ -537,42 +563,22 @@
         </h5>
     </div>
     
+    
         <div class="col-lg-6">
     <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
         <div class="trm-older-publication">
             
-            <a class="trm-op-top trm-anima-link" href="/2025/07/22/CS61B%E4%B8%AD%E7%9A%84%E5%A0%86%E4%BB%A5%E5%8F%8A%E5%A0%86%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/">
+            <a class="trm-op-top trm-anima-link" href="/2025/07/21/CS61B%E4%B8%AD%E7%9A%84%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E9%97%AE%E9%A2%98/">
                 <span class="trm-op-cover">
-                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/cover8.jpg">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/cover7.jpg">
                 </span>
-                <h6 class="trm-op-title">CS61B中的堆以及堆排序算法</h6>
+                <h6 class="trm-op-title">CS61B中的最小生成树问题</h6>
             </a>
             <div class="trm-divider trm-mb-15 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
-                <li>25/07/22</li>
-                <li>23:57</li>
+                <li>25/07/21</li>
+                <li>23:39</li>
                 <li>数据结构</li>
-            </ul>
-        </div>
-    </div>
-</div>
-    
-    
-        <div class="col-lg-6">
-    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
-        <div class="trm-older-publication">
-            
-            <a class="trm-op-top trm-anima-link" href="/2025/07/20/oh-my-posh%E7%BE%8E%E5%8C%96Windows%E7%BB%88%E7%AB%AF/">
-                <span class="trm-op-cover">
-                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/cover5.jpg">
-                </span>
-                <h6 class="trm-op-title">oh-my-posh美化Windows终端</h6>
-            </a>
-            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
-            <ul class="trm-card-data trm-label">
-                <li>25/07/20</li>
-                <li>22:59</li>
-                <li>CS工具</li>
             </ul>
         </div>
     </div>
@@ -634,7 +640,7 @@
 				</span>
       </div>
       <div class="trm-post-toc-content">
-        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="什么是最小生成树（MST）"><a rel="nofollow" class="trm-toc-link" href="#什么是最小生成树（MST）"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">什么是最小生成树（MST）</span></a></li><li class="trm-toc-item trm-toc-level-1" title="如何找到最小生成树"><a rel="nofollow" class="trm-toc-link" href="#如何找到最小生成树"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">如何找到最小生成树</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="一个非常有用的性质：割边属性（Cut Property）"><a rel="nofollow" class="trm-toc-link" href="#一个非常有用的性质：割边属性（Cut-Property）"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">一个非常有用的性质：割边属性（Cut Property）</span></a></li><li class="trm-toc-item trm-toc-level-2" title="通用的寻找 MST 算法"><a rel="nofollow" class="trm-toc-link" href="#通用的寻找-MST-算法"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">通用的寻找 MST 算法</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Prim’s Algorithm"><a rel="nofollow" class="trm-toc-link" href="#Prim’s-Algorithm"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">Prim’s Algorithm</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="算法流程"><a rel="nofollow" class="trm-toc-link" href="#算法流程"><span class="trm-toc-number">2.3.1.</span> <span class="trm-toc-text">算法流程</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="改进的 Prim’s Algorithm"><a rel="nofollow" class="trm-toc-link" href="#改进的-Prim’s-Algorithm"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">改进的 Prim’s Algorithm</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="算法实现"><a rel="nofollow" class="trm-toc-link" href="#算法实现"><span class="trm-toc-number">2.4.1.</span> <span class="trm-toc-text">算法实现</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="Kruskal’s Algorithm"><a rel="nofollow" class="trm-toc-link" href="#Kruskal’s-Algorithm"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">Kruskal’s Algorithm</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="算法实现"><a rel="nofollow" class="trm-toc-link" href="#算法实现-1"><span class="trm-toc-number">2.5.1.</span> <span class="trm-toc-text">算法实现</span></a></li></ol></li></ol></li></ol>
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="什么是堆(heap)？"><a rel="nofollow" class="trm-toc-link" href="#什么是堆-heap-？"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">什么是堆(heap)？</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="二叉最小堆(Binary min-heap)"><a rel="nofollow" class="trm-toc-link" href="#二叉最小堆-Binary-min-heap"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">二叉最小堆(Binary min-heap)</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="堆的好处"><a rel="nofollow" class="trm-toc-link" href="#堆的好处"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">堆的好处</span></a></li><li class="trm-toc-item trm-toc-level-1" title="堆的几个操作"><a rel="nofollow" class="trm-toc-link" href="#堆的几个操作"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">堆的几个操作</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="添加结点"><a rel="nofollow" class="trm-toc-link" href="#添加结点"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">添加结点</span></a></li><li class="trm-toc-item trm-toc-level-2" title="删除结点"><a rel="nofollow" class="trm-toc-link" href="#删除结点"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">删除结点</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="用堆实现优先队列"><a rel="nofollow" class="trm-toc-link" href="#用堆实现优先队列"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">用堆实现优先队列</span></a></li><li class="trm-toc-item trm-toc-level-1" title="如何在java中表示堆"><a rel="nofollow" class="trm-toc-link" href="#如何在java中表示堆"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">如何在java中表示堆</span></a></li><li class="trm-toc-item trm-toc-level-1" title="不同数据结构实现优先队列时间复杂度分析"><a rel="nofollow" class="trm-toc-link" href="#不同数据结构实现优先队列时间复杂度分析"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">不同数据结构实现优先队列时间复杂度分析</span></a></li><li class="trm-toc-item trm-toc-level-1" title="堆排序"><a rel="nofollow" class="trm-toc-link" href="#堆排序"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">堆排序</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="选择排序"><a rel="nofollow" class="trm-toc-link" href="#选择排序"><span class="trm-toc-number">7.1.</span> <span class="trm-toc-text">选择排序</span></a></li><li class="trm-toc-item trm-toc-level-2" title="堆排序"><a rel="nofollow" class="trm-toc-link" href="#堆排序-1"><span class="trm-toc-number">7.2.</span> <span class="trm-toc-text">堆排序</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="初始想法"><a rel="nofollow" class="trm-toc-link" href="#初始想法"><span class="trm-toc-number">7.2.1.</span> <span class="trm-toc-text">初始想法</span></a></li><li class="trm-toc-item trm-toc-level-3" title="改进思路"><a rel="nofollow" class="trm-toc-link" href="#改进思路"><span class="trm-toc-number">7.2.2.</span> <span class="trm-toc-text">改进思路</span></a></li><li class="trm-toc-item trm-toc-level-3" title="省去额外堆数组"><a rel="nofollow" class="trm-toc-link" href="#省去额外堆数组"><span class="trm-toc-number">7.2.3.</span> <span class="trm-toc-text">省去额外堆数组</span></a></li><li class="trm-toc-item trm-toc-level-3" title="省去额外输出数组"><a rel="nofollow" class="trm-toc-link" href="#省去额外输出数组"><span class="trm-toc-number">7.2.4.</span> <span class="trm-toc-text">省去额外输出数组</span></a></li><li class="trm-toc-item trm-toc-level-3" title="如何构造最大堆"><a rel="nofollow" class="trm-toc-link" href="#如何构造最大堆"><span class="trm-toc-number">7.2.5.</span> <span class="trm-toc-text">如何构造最大堆</span></a></li><li class="trm-toc-item trm-toc-level-3" title="如何重排"><a rel="nofollow" class="trm-toc-link" href="#如何重排"><span class="trm-toc-number">7.2.6.</span> <span class="trm-toc-text">如何重排</span></a></li><li class="trm-toc-item trm-toc-level-3" title="算法流程"><a rel="nofollow" class="trm-toc-link" href="#算法流程"><span class="trm-toc-number">7.2.7.</span> <span class="trm-toc-text">算法流程</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="堆排序时间复杂度分析"><a rel="nofollow" class="trm-toc-link" href="#堆排序时间复杂度分析"><span class="trm-toc-number">7.3.</span> <span class="trm-toc-text">堆排序时间复杂度分析</span></a></li><li class="trm-toc-item trm-toc-level-2" title="堆排序与选择排序比较"><a rel="nofollow" class="trm-toc-link" href="#堆排序与选择排序比较"><span class="trm-toc-number">7.4.</span> <span class="trm-toc-text">堆排序与选择排序比较</span></a></li></ol></li></ol>
       </div>
     </div>
 
