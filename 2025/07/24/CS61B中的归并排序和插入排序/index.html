@@ -7,16 +7,26 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Das1&#39;s Blog">
-<meta property="og:url" content="https://das1zhang.github.io/archives/2025/05/index.html">
+<meta name="description" content="The MergeSort And InsertSort in CS61B.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS61B中的归并排序和插入排序">
+<meta property="og:url" content="https://das1zhang.github.io/2025/07/24/CS61B%E4%B8%AD%E7%9A%84%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E5%92%8C%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="Das1&#39;s Blog">
+<meta property="og:description" content="The MergeSort And InsertSort in CS61B.">
 <meta property="og:locale">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="article:published_time" content="2025-07-24T15:58:33.000Z">
+<meta property="article:modified_time" content="2025-07-24T15:59:32.161Z">
 <meta property="article:author" content="Das1">
+<meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://das1zhang.github.io/img/404.jpg">
 
 
-<title >Das1's Blog</title>
+<title >CS61B中的归并排序和插入排序</title>
 
 <!-- Favicon -->
 
@@ -59,7 +69,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"das1zhang.github.io","author":"Das1","root":"/","typed_text":["an undergraduate in WHU"],"theme_version":"2.2.6","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/logo.jpg","icon16":"/favicon-16x16.png","icon32":"/favicon-32x32.png","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"/logo.jpg","show_text":"Das1's Blog.","hide_text":"Waiting for u."},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-a-farfa-sun","moon":"icon-fa-moon-line","play":"icon-play","email":"icon-envelop","next":"icon-fa-arrow-right","calendar":"icon-th-list","clock":"icon-farfa-clock","user":"icon-a-zu394","back_top":"icon-fa-arrow-up","close":"icon-a-fasfa-times","search":"icon-fasfa-search","reward":"icon-dashang","toc_tag":"icon-th-list","read":"icon-book-reader","arrows":"icon-arrows-alt-h","double_arrows":"icon-angle-double-down","copy":"icon-copy","user_tag":"icon-a-zu394"},"icontype":"symbol","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":false,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":false,"postUpdate":"2025-07-24 23:59:42"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-24 23:59:32"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.6" id="trm-switch-style">
@@ -235,7 +245,7 @@
     <div class="trm-banner">
     
     <!-- banner cover -->
-    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/archivebanner.gif">
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/background5.jpg">
     <!-- banner cover end -->
     
 
@@ -251,10 +261,10 @@
                     <!-- banner title -->
                     <div class="trm-banner-text ">
                         <div class="trm-label trm-mb-20">
-                            Welcome to the archive
+                            The MergeSort And InsertSort in CS61B.
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            Archive containing all my posts.
+                            CS61B中的归并排序和插入排序
                         </h1>
 
                         
@@ -264,7 +274,7 @@
                                 </li>
                                 <li>
                                     <span>
-                                        archives
+                                        2025
                                     </span>
                                 </li>
                             </ul>
@@ -436,307 +446,96 @@
             
             <div class="trm-page-content col-lg-8">
                 <div id="trm-content" class="trm-content">
-                    <div class="row">
-    <div class="col-lg-12">
-        <div class="trm-card">
-            <div style="padding: 0 20px;">
-                
-                    <ul class="trm-tag-list"><li class="trm-tag-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">（28）</span></li><li class="trm-tag-list-item"><a class="archive-list-link" href="/archives/2024/">2024</a><span class="archive-list-count">（7）</span></li></ul>
-                
-            </div>
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg><br>
+            07/24
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-farfa-clock"></use>
+</svg><br>
+            23:58
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-a-zu394"></use>
+</svg><br>
+            Das1
         </div>
     </div>
 </div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <blockquote>
+<p>本教程介绍 归并排序和插入排序</p>
+</blockquote>
+<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><h2 id="设想"><a href="#设想" class="headerlink" title="设想"></a>设想</h2><p>首先我们设想一个情景，如果我们有<strong>两个已排序的数组</strong>，现在我们要把这两个数组进行<strong>合并成一个有序的大数组</strong>，应该需要多少的时间复杂度？<br>答案是$O(N)$!</p>
+<p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/merge1.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>我们每次取两数组中最小的那个进行比较，然后把较小者放入合并后的数组即可</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>我们知道选择排序的时间复杂度为 $O(N^2)$ ，我们现在以 $N&#x3D;64$ 的数组进行分析，如果我们直接对它进行选择排序，那我们消耗的时间为：$64^2&#x3D;4096$<br>那我们如果对他进行一次归并呢，也就是把他<strong>化为两个小数组</strong>，分别排序再合并<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/merge2.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>我们会发现，原本 $N^2$ 的时间，变为了 $N+2*(N&#x2F;2)^2&#x3D;N+N^2&#x2F;2$<br>虽然这看起来仍然是<strong>平方的时间复杂度</strong>，但是因为 $N+N^2&#x2F;2&lt;N^2$，所以我们的时间还是变快了</p>
+<h2 id="不断地归并"><a href="#不断地归并" class="headerlink" title="不断地归并"></a>不断地归并</h2><blockquote>
+<p>现在我们通过初步的分析知道，通过归并可以让时间变短，那如果我就这样<strong>贪婪地不断进行归并</strong>呢？<br>我们对原本的数组不断进行归并，直到无法再归并了，也就是基本情况，现在我们再来分析一下所需的时间是多少<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/merge3.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>我们会发现<strong>除了最后一层</strong>以外，上面的每一层都只需要进行<strong>线性操作</strong>即可，也就是对两个已经排序的数组进行合并<br>而最后一层呢？<strong>只有一个元素！</strong> 也就是不需要进行排序<br>所以其实我们<strong>只需要进行这些合并的线性操作即可</strong>！</p>
+</blockquote>
+<h2 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h2><p>接下来我们可以看到，第一层为 $1<em>N$，第二层为 $2 * N&#x2F;2$ ,第三层为 $4</em>N&#x2F;4$……，我们可以发现每一层的时间都是 $N$<br>那么一共有多少层呢，这实际上是一个<strong>完全二叉树</strong>，也就是 $logN$ 层<br>所以我们可以得出时间复杂度为: $\theta(NlogN)$<br>空间复杂度为 $\theta(N)$ ,因为我们<strong>需要一个额外的N数组</strong>，来储存合并后的结果</p>
+<h2 id="btw"><a href="#btw" class="headerlink" title="btw"></a>btw</h2><p>归并排序是一种<strong>非常讲究组织的排序</strong>，他会将一个大数组不断地进行分割，再不断进行合并，可能它会具有比较好的<strong>并行性能</strong></p>
+<h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><blockquote>
+<p>插入排序其实很像我们在构造堆中的“上浮”和“下沉”操作，我们往下看</p>
+</blockquote>
+<h2 id="算法核心"><a href="#算法核心" class="headerlink" title="算法核心"></a>算法核心</h2><p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/insert1.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>我们以这个插入排序为例，对于<strong>未排序的首个元素</strong>，这个元素向左看，是否小于该元素：</p>
+<ul>
+<li>是，则交换</li>
+<li>否，则放置在这里，然后考虑下一个未排序的元素</li>
+</ul>
+<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><p>在这里，第一个元素为32，它左边没有可比较的元素，那他就放在这里<br>然后考虑15，和 32 比较，小于32？是的，进行交换;左边没有可以比较的，就放在这里<br>考虑2，小于32？是的，交换；小于15？是的，交换；左边没有元素，放在这里<br>考虑17，小于32？是的，交换；小于15？否，放在这，考虑下一个<br>…</p>
+<h2 id="类比"><a href="#类比" class="headerlink" title="类比"></a>类比</h2><p>插入排序每次取出的元素不像选择排序那样，每次都需要取出最值元素，每次取出的元素没有限制，取出元素后，<strong>直接进入已排序的区域然后发生“下沉”</strong>，如果发现无法下沉了，这里就一定是他该待的位置了</p>
+<h2 id="时间复杂度分析-1"><a href="#时间复杂度分析-1" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h2><p>最好的情况是，我们每次取出一个元素，发现<strong>都无需发生“下沉”</strong>，也就是每个元素都<strong>已经在它该在的位置</strong>了，这里时间复杂度为 $\Omega(N)$<br>最坏的情况是，每次取出一个元素，都要<strong>下沉到底</strong>，尽可能地做交换，第一次是0,最后一次是 N-1,这里时间复杂度为 $O(N^2)$</p>
+<h2 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h2><p>插入排序的优势在于，在我的整个数组<strong>已经大部分都已排序的情况下，它的表现比其他的算法更好</strong><br>比如我的整个已排序的数组中有一个数据被篡改了，现在我要重新排序，插入排序的性能表现相较于归并排序或者插入排序就非常棒了</p>
 
-<!-- history -->
+</article>
+    
+    
 
-<div class="row">
+</div>
+<div class="trm-post-next-prev row">
     <div class="col-lg-12">
         <!-- title -->
         <h5 class="trm-title-with-divider">
-            
-                2025 年的归档
-            
-            <span data-number="01"></span>
+            其他文章
+            <span data-number="02"></span>
         </h5>
     </div>
-    <div class="col-lg-12">
-        <!-- timeline -->
-        <div class="trm-timeline">
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
             
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/05/29/25-05-28/" class="trm-anima-link">
-                                        25-05-28
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">05/29</li>
-                                        <li class="trm-accent-color">02:06</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/05/28/25-05-27/" class="trm-anima-link">
-                                        25-05-27
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">05/28</li>
-                                        <li class="trm-accent-color">02:57</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/05/27/25-05-26/" class="trm-anima-link">
-                                        25-05-26
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">05/27</li>
-                                        <li class="trm-accent-color">03:05</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/05/27/25-05-25/" class="trm-anima-link">
-                                        25-05-25
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">05/27</li>
-                                        <li class="trm-accent-color">02:16</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/05/25/ssh-hexo/" class="trm-anima-link">
-                                        使用ssh部署hexo
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">05/25</li>
-                                        <li class="trm-accent-color">03:18</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/05/25/25-05-24/" class="trm-anima-link">
-                                        25-05-24
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">05/25</li>
-                                        <li class="trm-accent-color">03:01</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/05/24/25-05-23/" class="trm-anima-link">
-                                        25-05-23
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">05/24</li>
-                                        <li class="trm-accent-color">02:19</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/05/24/xv6%E6%B7%BB%E5%8A%A0%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8/" class="trm-anima-link">
-                                        为risc-v xv6添加系统调用
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">05/24</li>
-                                        <li class="trm-accent-color">02:08</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/05/23/SHELL%20%E5%9F%BA%E7%A1%80%E4%BB%A5%E5%8F%8A%20CLI%E5%B7%A5%E5%85%B7/" class="trm-anima-link">
-                                        SHELL基础以及CLI工具
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">05/23</li>
-                                        <li class="trm-accent-color">19:21</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/05/23/COD-Chap-05/" class="trm-anima-link">
-                                        Chapter_05 of COD
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">05/23</li>
-                                        <li class="trm-accent-color">18:59</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
+            <a class="trm-op-top trm-anima-link" href="/2025/07/23/Windows-%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/cover9.jpg">
+                </span>
+                <h6 class="trm-op-title">Windows 中的常用命令</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/07/23</li>
+                <li>23:11</li>
+                <li>Ubuntu</li>
+            </ul>
         </div>
-        <!-- timeline end -->
     </div>
 </div>
+    
+</div>
 
-<!-- history end -->
-
-
-    <div class="trm-pagination">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/2025/05/page/2/">2</a>
-    </div>
-
-
+    
 
 
 
@@ -782,9 +581,33 @@
 
             
 
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="归并排序"><a rel="nofollow" class="trm-toc-link" href="#归并排序"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">归并排序</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="设想"><a rel="nofollow" class="trm-toc-link" href="#设想"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">设想</span></a></li><li class="trm-toc-item trm-toc-level-2" title="分析"><a rel="nofollow" class="trm-toc-link" href="#分析"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">分析</span></a></li><li class="trm-toc-item trm-toc-level-2" title="不断地归并"><a rel="nofollow" class="trm-toc-link" href="#不断地归并"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">不断地归并</span></a></li><li class="trm-toc-item trm-toc-level-2" title="时间复杂度分析"><a rel="nofollow" class="trm-toc-link" href="#时间复杂度分析"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">时间复杂度分析</span></a></li><li class="trm-toc-item trm-toc-level-2" title="btw"><a rel="nofollow" class="trm-toc-link" href="#btw"><span class="trm-toc-number">1.5.</span> <span class="trm-toc-text">btw</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="插入排序"><a rel="nofollow" class="trm-toc-link" href="#插入排序"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">插入排序</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="算法核心"><a rel="nofollow" class="trm-toc-link" href="#算法核心"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">算法核心</span></a></li><li class="trm-toc-item trm-toc-level-2" title="算法流程"><a rel="nofollow" class="trm-toc-link" href="#算法流程"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">算法流程</span></a></li><li class="trm-toc-item trm-toc-level-2" title="类比"><a rel="nofollow" class="trm-toc-link" href="#类比"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">类比</span></a></li><li class="trm-toc-item trm-toc-level-2" title="时间复杂度分析"><a rel="nofollow" class="trm-toc-link" href="#时间复杂度分析-1"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">时间复杂度分析</span></a></li><li class="trm-toc-item trm-toc-level-2" title="优势"><a rel="nofollow" class="trm-toc-link" href="#优势"><span class="trm-toc-number">2.5.</span> <span class="trm-toc-text">优势</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
             
 <div class="trm-fixed-container">
     
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-book-reader"></use>
+</svg>
+        </div>
     
     
         <div class="trm-fixed-btn hidden-md" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
@@ -827,6 +650,10 @@
     
 
     <!-- 评论插件 -->
+    
+        
+
+        
     
 
 		
