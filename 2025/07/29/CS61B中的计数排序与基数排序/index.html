@@ -7,16 +7,31 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Das1&#39;s Blog">
-<meta property="og:url" content="https://das1zhang.github.io/tags/makefile/index.html">
+<meta name="description" content="The Radix Sort in CS61B.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS61B中的计数排序与基数排序">
+<meta property="og:url" content="https://das1zhang.github.io/2025/07/29/CS61B%E4%B8%AD%E7%9A%84%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F%E4%B8%8E%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="Das1&#39;s Blog">
+<meta property="og:description" content="The Radix Sort in CS61B.">
 <meta property="og:locale">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="article:published_time" content="2025-07-28T17:27:30.000Z">
+<meta property="article:modified_time" content="2025-07-29T09:13:41.822Z">
 <meta property="article:author" content="Das1">
+<meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://das1zhang.github.io/img/404.jpg">
 
 
-<title >Das1's Blog</title>
+<title >CS61B中的计数排序与基数排序</title>
 
 <!-- Favicon -->
 
@@ -59,7 +74,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"das1zhang.github.io","author":"Das1","root":"/","typed_text":["an undergraduate in WHU"],"theme_version":"2.2.6","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/logo.jpg","icon16":"/favicon-16x16.png","icon32":"/favicon-32x32.png","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"/logo.jpg","show_text":"Das1's Blog.","hide_text":"Waiting for u."},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-a-farfa-sun","moon":"icon-fa-moon-line","play":"icon-play","email":"icon-envelop","next":"icon-fa-arrow-right","calendar":"icon-th-list","clock":"icon-farfa-clock","user":"icon-a-zu394","back_top":"icon-fa-arrow-up","close":"icon-a-fasfa-times","search":"icon-fasfa-search","reward":"icon-dashang","toc_tag":"icon-th-list","read":"icon-book-reader","arrows":"icon-arrows-alt-h","double_arrows":"icon-angle-double-down","copy":"icon-copy","user_tag":"icon-a-zu394"},"icontype":"symbol","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":false,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":false,"postUpdate":"2025-07-29 17:13:52"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-07-29 17:13:41"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.6" id="trm-switch-style">
@@ -230,13 +245,12 @@
 
             <!-- body -->
             
-
 <div class="trm-content-start">
     <!-- banner -->
     <div class="trm-banner">
     
     <!-- banner cover -->
-    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/archivebanner.gif">
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/background8.jpg">
     <!-- banner cover end -->
     
 
@@ -252,10 +266,10 @@
                     <!-- banner title -->
                     <div class="trm-banner-text ">
                         <div class="trm-label trm-mb-20">
-                            Welcome to the archive
+                            The Radix Sort in CS61B.
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            Archive containing all my posts.
+                            CS61B中的计数排序与基数排序
                         </h1>
 
                         
@@ -265,7 +279,7 @@
                                 </li>
                                 <li>
                                     <span>
-                                        tags
+                                        2025
                                     </span>
                                 </li>
                             </ul>
@@ -443,73 +457,112 @@
             
             <div class="trm-page-content col-lg-8">
                 <div id="trm-content" class="trm-content">
-                    <div class="row">
-    <div class="col-lg-12">
-        <div class="trm-card">
-            <div style="padding: 0 20px;">
-                
-                    <ul class="trm-tag-list" itemprop="keywords"><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/COD/" rel="tag">COD</a><span class="tag-list-count">5</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/CS-Learning/" rel="tag">CS-Learning</a><span class="tag-list-count">6</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/CS%E5%B7%A5%E5%85%B7/" rel="tag">CS工具</a><span class="tag-list-count">11</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a><span class="tag-list-count">3</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">2</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/makefile/" rel="tag">makefile</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/plan/" rel="tag">plan</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">7</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E5%B8%B8/" rel="tag">日常</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0/" rel="tag">日记</a><span class="tag-list-count">8</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="tag-list-count">1</span></li></ul>
-                
-            </div>
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg><br>
+            07/29
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-farfa-clock"></use>
+</svg><br>
+            01:27
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-a-zu394"></use>
+</svg><br>
+            Das1
         </div>
     </div>
 </div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <blockquote>
+<p>本教程介绍 CS61B 中的基数排序，这是一种可以在某些情况下甚至超越归并排序、快速排序的特殊的排序方法，但是牺牲了<strong>内存空间</strong></p>
+</blockquote>
+<h1 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h1><h2 id="连续编号情形"><a href="#连续编号情形" class="headerlink" title="连续编号情形"></a>连续编号情形</h2><p>我们需要对一个编号从 0 到 11 的表进行排序<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Radix1.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>实际上我们可以拿出另一张同样大小的空白表，在遍历左边表时，我们<strong>不需要进行比较</strong>，就可以直接将元素填到正确的位置上！</p>
+<p>这样我们的时间复杂度来到了 $\theta(N)$，避免了之前我们提到的 $NlogN$ 界限<br>但这种情况你必须保证<strong>编号是连续的</strong></p>
+<h2 id="花色分类情形"><a href="#花色分类情形" class="headerlink" title="花色分类情形"></a>花色分类情形</h2><p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Radix2.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>我们要考虑的问题是，我怎么知道第一个红桃应该放在哪里呢？<br>我们要做的是，扫描两次，第一次扫描来计数<strong>每个相同的元素有多少个</strong>（同时根据优先级，我们可以知道每个元素的索引是多少），第二次<strong>扫描根据第一次扫描的结果来进行放置。</strong></p>
+<p><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Radix3.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>经过第一次扫描后，我可以根据counts表，得出这样一个 Starting Points 的元素索引表，来<strong>记录下一个对应的元素应该放置在哪个索引处</strong>，每次放置之后，更新索引表中的对应元素</p>
+<h2 id="计数排序-vs-快速排序"><a href="#计数排序-vs-快速排序" class="headerlink" title="计数排序 vs 快速排序"></a>计数排序 vs 快速排序</h2><p>考虑城市人口排名的情形，城市人口是<strong>不连续的</strong>，如果在这里我们使用计数排序的话，需要列一个<strong>非常非常大的计数表</strong><br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Radix4.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h2 id="计数排序-1"><a href="#计数排序-1" class="headerlink" title="计数排序"></a>计数排序</h2><p>实际上我需要两个变量来表示计数排序，一个用于告诉我<strong>元素的数量在增加</strong>，第二个变量告诉我，<strong>字母表的大小在增加</strong><br>在花色分类中，字母表大小为4，而在城市人口排名中，字母表的大小为3700万</p>
+<p>这样问题可以以两种不同方式增长<br>如果我们有 k 个不同的种类，而字母表大小为 R，那么时间复杂度为 $\theta(N+R)$ ，空间使用情况仍然为 $\theta(N+R)$<br>（时间复杂度中的 R 来源于我在第一次遍历数组之后，还需要<strong>遍历 R 数组将对应的索引填进去</strong>）</p>
+<h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1><h2 id="LSD"><a href="#LSD" class="headerlink" title="LSD"></a>LSD</h2><p>我们可以将每一个编号看作<strong>一个数字或者具有不同位数的元素</strong><br>我们从最低有效位开始排序，然后逐步向最高有效位排序，同时每次排序保证是稳定的（也就是相同的数字，相对位置保持不变）<br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Radix5.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>这样我们的时间复杂度为 $\theta(W(N+R))$<br>其中 N 表示元素的数量，R 表示字母表的大小，W 表示元素的宽度（位数）<br>相当于对每一位都进行一次计数排序</p>
+<h2 id="MSD"><a href="#MSD" class="headerlink" title="MSD"></a>MSD</h2><blockquote>
+<p>但是如果我的字符串非常长，那么 LSD 可能就会变得很慢，归并排序不会在较长的字符串上变慢，因为<strong>必须比较所有字符</strong></p>
+</blockquote>
+<p>我们可以从最高有效位开始比较<br>但是 MSD 会出现不稳定的情况<br><img src="/%5B%5D(https:/132-1331126615.cos.ap-guangzhou.myqcloud.com/Radix6.png)" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>这样直接从最高位开始进行排序，会因为不稳定导致排序错误<br>为此，我们可以将其<strong>分解成子问题</strong>，比如一旦将所有以 a 开头的单词归类，下一步将是对这个子问题进行排序，而这些元素<strong>不会越界到 b 的范围</strong><br><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Radix7.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p>MSD 的时间复杂度有不同的情况</p>
+<ul>
+<li>最好情况：<strong>比较最高位即完成</strong>，$\theta(N+R)$</li>
+<li>最坏情况：需要<strong>比较每一位</strong>，退化成 LSD ，$\theta(WN+WR)$</li>
+</ul>
+<h1 id="LSD-vs-Merge-Sort"><a href="#LSD-vs-Merge-Sort" class="headerlink" title="LSD vs Merge Sort"></a>LSD vs Merge Sort</h1><p>实际情况；</p>
+<ul>
+<li>我们认为字母表是<strong>常数</strong>，LSD 时间复杂度为 $\theta(WN)$</li>
+<li>归并排序在 $\theta(NlogN)$ 到 $\theta(WNlogN)$ 之间</li>
+</ul>
+<p>而具体来说哪一个更好呢？这取决于实际情况</p>
+<ul>
+<li>LSD 更快<ul>
+<li><strong>N非常非常大</strong></li>
+<li>比较的字符串之间<strong>非常相似</strong></li>
+<li><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Radix8.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ul>
+</li>
+<li>归并排序更快<ul>
+<li>比较的字符串之间<strong>差异非常大</strong></li>
+<li><img src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/Radix9.png" alt="alt text"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></li>
+</ul>
+</li>
+</ul>
 
-<!-- history -->
+</article>
+    
+    
 
-<div class="row">
+</div>
+<div class="trm-post-next-prev row">
     <div class="col-lg-12">
         <!-- title -->
         <h5 class="trm-title-with-divider">
-            
-                makefile
-            
-            <span data-number="01"></span>
+            其他文章
+            <span data-number="02"></span>
         </h5>
     </div>
-    <div class="col-lg-12">
-        <!-- timeline -->
-        <div class="trm-timeline">
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
             
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/03/19/makefile/" class="trm-anima-link">
-                                        About Makefile
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">03/19</li>
-                                        <li class="trm-accent-color">17:16</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
+            <a class="trm-op-top trm-anima-link" href="/2025/07/29/CS61B%E6%84%9F%E4%BA%BA%E7%9A%84%E7%BB%93%E8%AF%AD/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/worldpeace.jpg">
+                </span>
+                <h6 class="trm-op-title">CS61B感人的结语</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/07/29</li>
+                <li>00:36</li>
+                <li>杂谈</li>
+            </ul>
         </div>
-        <!-- timeline end -->
     </div>
 </div>
+    
+</div>
 
-<!-- history end -->
-
-
-    <div class="trm-pagination">
-        <span class="page-number current">1</span>
-    </div>
-
-
+    
 
 
 
@@ -555,9 +608,33 @@
 
             
 
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-1" title="计数排序"><a rel="nofollow" class="trm-toc-link" href="#计数排序"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">计数排序</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="连续编号情形"><a rel="nofollow" class="trm-toc-link" href="#连续编号情形"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">连续编号情形</span></a></li><li class="trm-toc-item trm-toc-level-2" title="花色分类情形"><a rel="nofollow" class="trm-toc-link" href="#花色分类情形"><span class="trm-toc-number">1.2.</span> <span class="trm-toc-text">花色分类情形</span></a></li><li class="trm-toc-item trm-toc-level-2" title="计数排序 vs 快速排序"><a rel="nofollow" class="trm-toc-link" href="#计数排序-vs-快速排序"><span class="trm-toc-number">1.3.</span> <span class="trm-toc-text">计数排序 vs 快速排序</span></a></li><li class="trm-toc-item trm-toc-level-2" title="计数排序"><a rel="nofollow" class="trm-toc-link" href="#计数排序-1"><span class="trm-toc-number">1.4.</span> <span class="trm-toc-text">计数排序</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="基数排序"><a rel="nofollow" class="trm-toc-link" href="#基数排序"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">基数排序</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-2" title="LSD"><a rel="nofollow" class="trm-toc-link" href="#LSD"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">LSD</span></a></li><li class="trm-toc-item trm-toc-level-2" title="MSD"><a rel="nofollow" class="trm-toc-link" href="#MSD"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">MSD</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-1" title="LSD vs Merge Sort"><a rel="nofollow" class="trm-toc-link" href="#LSD-vs-Merge-Sort"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">LSD vs Merge Sort</span></a></li></ol>
+      </div>
+    </div>
+
             
 <div class="trm-fixed-container">
     
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-book-reader"></use>
+</svg>
+        </div>
     
     
         <div class="trm-fixed-btn hidden-md" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
@@ -600,6 +677,10 @@
     
 
     <!-- 评论插件 -->
+    
+        
+
+        
     
 
 		
