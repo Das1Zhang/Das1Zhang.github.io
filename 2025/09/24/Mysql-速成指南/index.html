@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="quick learn mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql 速成指南">
+<meta property="og:url" content="https://das1zhang.github.io/2025/09/24/Mysql-%E9%80%9F%E6%88%90%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="Das1&#39;s Blog">
+<meta property="og:description" content="quick learn mysql">
+<meta property="og:locale">
+<meta property="article:published_time" content="2025-09-24T10:45:33.000Z">
+<meta property="article:modified_time" content="2025-09-26T00:07:35.395Z">
+<meta property="article:author" content="Das1">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+
+
+<title >Mysql 速成指南</title>
+
+<!-- Favicon -->
+
+    <link href='/favicon-16x16.png?v=2.2.6' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/favicon-32x32.png?v=2.2.6' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.6' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+
+    
+<script src="//at.alicdn.com/t/c/font_4729113_2e3pqhonvts.js"></script>
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"das1zhang.github.io","author":"Das1","root":"/","typed_text":["an undergraduate in WHU"],"theme_version":"2.2.6","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/logo.jpg","icon16":"/favicon-16x16.png","icon32":"/favicon-32x32.png","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"/logo.jpg","show_text":"Das1's Blog.","hide_text":"Waiting for u."},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-a-farfa-sun","moon":"icon-fa-moon-line","play":"icon-play","email":"icon-envelop","next":"icon-fa-arrow-right","calendar":"icon-th-list","clock":"icon-farfa-clock","user":"icon-a-zu394","back_top":"icon-fa-arrow-up","close":"icon-a-fasfa-times","search":"icon-fasfa-search","reward":"icon-dashang","toc_tag":"icon-th-list","read":"icon-book-reader","arrows":"icon-arrows-alt-h","double_arrows":"icon-angle-double-down","copy":"icon-copy","user_tag":"icon-a-zu394"},"icontype":"symbol","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":false,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-09-26 08:07:35"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.6" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-a-farfa-sun"></use>
+</svg></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-moon-line"></use>
+</svg></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/logo.jpg">
+    
+    
+        <div class="trm-logo-text">
+            Zhang<span>Das1</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/" target="">
+                    home
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/archives/" target="">
+                    archives
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/categories/" target="">
+                    categories
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            tags
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/links/" target="">
+                    links
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/lifeguide/" target="">
+                    lifeguide
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/about/" target="">
+                    about
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-a-farfa-sun"></use>
+</svg>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-moon-line"></use>
+</svg>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/background12.jpg">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            quick learn mysql
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            Mysql 速成指南
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2025
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/logo.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        Das1
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/Das1Zhang" title="github" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-github"></use>
+</svg>
+        </a>
+    
+        <a href="https://x.com/SihaoFlower" title="X" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-TwitterX"></use>
+</svg>
+        </a>
+    
+        <a href="https://space.bilibili.com/352757351" title="bilibili" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-bilibili-line"></use>
+</svg>
+        </a>
+    
+        <a href="https://www.xiaohongshu.com/user/profile/660a4195000000000b00c2b0" title="redbook" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-xiaohongshu"></use>
+</svg>
+        </a>
+    
+        <a href="http://youtube.com/@Sihao-q3o" title="youtube" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-youtube"></use>
+</svg>
+        </a>
+    
+        <a href="https://steamcommunity.com/profiles/76561199544278917/" title="steam" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-steam"></use>
+</svg>
+        </a>
+    
+        <a href="https://www.douyin.com/user/self?from_tab_name=main" title="douyin" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-douyin"></use>
+</svg>
+        </a>
+    
+        <a href="https://m.weibo.cn/profile/8014863404?user_token=a0.MTg1ZGEwZWU0OWVhNGQyY4X3uthTCg1legONustQKbCUfKYaH4v4mENho2-XMlWY" title="weibo" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-weibo"></use>
+</svg>
+        </a>
+    
+        <a href="https://blog.csdn.net/Dasi_C_upup?spm=1000.2115.3001.5343" title="csdn" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-csdn2"></use>
+</svg>
+        </a>
+    
+        <a href="https://juejin.cn/user/1599104292501972" title="juejin" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-juejin"></use>
+</svg>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                address:
+            </div>
+            <div class="trm-label trm-label-light">
+                Wuhan
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                age:
+            </div>
+            <div class="trm-label trm-label-light">
+                19
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                school:
+            </div>
+            <div class="trm-label trm-label-light">
+                WHU
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                MBTI:
+            </div>
+            <div class="trm-label trm-label-light">
+                ENFP
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:sihao050721.com@gmail.com" class="trm-btn">
+            联系我
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-envelop"></use>
+</svg>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg><br>
+            09/24
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-farfa-clock"></use>
+</svg><br>
+            18:45
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-a-zu394"></use>
+</svg><br>
+            Das1
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="Mysql介绍"><a href="#Mysql介绍" class="headerlink" title="Mysql介绍"></a>Mysql介绍</h2><h2 id="Mysql-主要使用语句"><a href="#Mysql-主要使用语句" class="headerlink" title="Mysql 主要使用语句"></a>Mysql 主要使用语句</h2><h3 id="关于数据库"><a href="#关于数据库" class="headerlink" title="关于数据库"></a>关于数据库</h3><h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE `sql_begin`;</span><br></pre></td></tr></table></figure>
+<p>创建一个名为 <code>sql_begin</code> 的数据库</p>
+<h4 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE `sql_begin`</span><br></pre></td></tr></table></figure>
+<p>使用<code>sql_begin</code>，后续的所有操作都会在该数据库中进行操作</p>
+<h4 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> DATABASE `sql_begin`</span><br></pre></td></tr></table></figure>
+<p>删除<code>sql_begin</code>数据库</p>
+<h4 id="展示数据库"><a href="#展示数据库" class="headerlink" title="展示数据库"></a>展示数据库</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> DATABASES</span><br></pre></td></tr></table></figure>
+<p>展示你的所有的数据库</p>
+<h3 id="关于表格"><a href="#关于表格" class="headerlink" title="关于表格"></a>关于表格</h3><h4 id="创建表格"><a href="#创建表格" class="headerlink" title="创建表格"></a>创建表格</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> `student`(</span><br><span class="line">    `student_id` <span class="type">INT</span> <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    `name` <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">    `major` <span class="type">VARCHAR</span>(<span class="number">20</span>)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>这里的 <code>PRIMARY KEY</code> 代表主键，相当于一个唯一的id，不可重复，就像身份证号一样<br>也可以不直接写在一起，而是在后面进行补充</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> `student`(</span><br><span class="line">    `student_id` <span class="type">INT</span>, </span><br><span class="line">    `name` <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">    `major` <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">    <span class="keyword">PRIMARY KEY</span>(`student_id`)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h4><p>我们可以在各个属性后面加上约束，比如有些属性我们不允许为空，有些属性会随着插入而增加必须序号，我们可以这样写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> `student`(</span><br><span class="line">    `student_id` <span class="type">INT</span> AUTO_INCREMENT,</span><br><span class="line">    `name` <span class="type">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT NULL</span>,</span><br><span class="line">    `major` <span class="type">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">UNIQUE</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;历史&#x27;</span>,</span><br><span class="line">    <span class="keyword">PRIMARY KEY</span>(`student_id`)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>在上面的属性设置中，我们就让 <code>student_id</code> 自增，让 <code>name</code> 禁止为空，让<code>major</code>唯一，且默认为<code>历史</code>，这里我们也可以看到可以<strong>给一个属性添加多个约束</strong></p>
+<h4 id="删除表格"><a href="#删除表格" class="headerlink" title="删除表格"></a>删除表格</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> `student`</span><br></pre></td></tr></table></figure>
+<p>删除 <code>student</code> 表格</p>
+<h3 id="表格属性操作"><a href="#表格属性操作" class="headerlink" title="表格属性操作"></a>表格属性操作</h3><h4 id="添加属性"><a href="#添加属性" class="headerlink" title="添加属性"></a>添加属性</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER TABLE</span> `student` <span class="keyword">ADD</span> `gpa` <span class="type">DECIMAL</span>(<span class="number">3</span>,<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+<p>对<code>student</code>表格进行操作，添加一个属性 <code>gpa</code>，类型为 <code>DECIMAL(3,2)</code></p>
+<h4 id="删除属性"><a href="#删除属性" class="headerlink" title="删除属性"></a>删除属性</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER TABLE</span> `student` <span class="keyword">DROP</span> <span class="keyword">COLUMN</span> `gpa`</span><br></pre></td></tr></table></figure>
+<p>对 <code>student</code> 表格操作，删除列 <code>gpa</code> </p>
+<h3 id="表格元素操作"><a href="#表格元素操作" class="headerlink" title="表格元素操作"></a>表格元素操作</h3><h4 id="添加元素"><a href="#添加元素" class="headerlink" title="添加元素"></a>添加元素</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT INTO</span> `student` <span class="keyword">VALUES</span>(<span class="number">3</span>, <span class="string">&#x27;小绿&#x27;</span>, <span class="keyword">NULL</span>, <span class="number">2.2</span>)</span><br></pre></td></tr></table></figure>
+<p>向<code>student</code>表格中插入元素，注意这里元素的属性需要<strong>按照表格中定义的属性顺序</strong>进行填写，为空则用 <code>NULL</code><br>当然我们也可以自定义顺序</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT INTO</span> `student`(`name`, `major`) <span class="keyword">VALUES</span>(`小红`, `语文`)</span><br></pre></td></tr></table></figure>
+<p>这里我们自定义中没有写入的属性会自动设置为<code>NULL</code>或者<code>default</code>出来的值，而如果你设置了<code>AUTO_INCREAMENT</code>，则会自动自增</p>
+<h4 id="修改元素"><a href="#修改元素" class="headerlink" title="修改元素"></a>修改元素</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> `student`</span><br><span class="line"><span class="keyword">SET</span> `major` <span class="operator">=</span> <span class="string">&#x27;英语文学&#x27;</span></span><br><span class="line"><span class="keyword">WHERE</span> `major` <span class="operator">=</span> <span class="string">&#x27;英语&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>我们指定更新表 <code>student</code> 中 <code>major</code>为<code>英语</code>的元素，使其<code>major</code>设为<code>英语文学</code><br>同样我们这里做出的更改和条件都可以是多个<br>比如</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> `student`</span><br><span class="line"><span class="keyword">SET</span> `name` <span class="operator">=</span> <span class="string">&#x27;小灰&#x27;</span>, `major` <span class="operator">=</span> <span class="string">&#x27;物理&#x27;</span></span><br><span class="line"><span class="keyword">WHERE</span> `student_id` <span class="operator">=</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>这里我们将 <code>student_id</code> 为 1 的元素的<code>name</code>和<code>major</code>都做了更改</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> `student`</span><br><span class="line"><span class="keyword">SET</span> `major` <span class="operator">=</span> <span class="string">&#x27;生化&#x27;</span></span><br><span class="line"><span class="keyword">WHERE</span> `major` <span class="operator">=</span> <span class="string">&#x27;生物&#x27;</span> <span class="keyword">OR</span> `major` <span class="operator">=</span> <span class="string">&#x27;化学&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>这里通过逻辑连接将<code>major</code>为<code>生物</code>或<code>化学</code>的元素的<code>major</code>更改为了<code>生化</code></p>
+<p>而如果我们不通过<code>WHERE</code>来进行条件约束的话，则会更改所有的元素</p>
+<h4 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> `student` <span class="keyword">WHERE</span> `student_id` <span class="operator">=</span> <span class="number">4</span>;</span><br></pre></td></tr></table></figure>
+<p>这样删除了<code>student_id</code>为4 的元素<br>同样的在这里也可以通过逻辑词来连接多个条件，当然，如果不用<code>WHERE</code>来进行限定，也会删除所有的元素</p>
+<h4 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `student`</span><br></pre></td></tr></table></figure>
+<p>这句话表明获取所有的<strong>属性</strong>，注意这里 <code>*</code> 表示的是<strong>所有的属性</strong><br>也可以改成你想要的属性：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name`,`major` <span class="keyword">FROM</span> `student`;</span><br></pre></td></tr></table></figure>
+<p>也可以将属性进行<strong>排序</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `student` <span class="keyword">ORDER</span> <span class="keyword">BY</span> `score` <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+<p>这里就将所有的属性按照<code>score</code>进行降序排序，<code>DESC</code>即descent<br>如果不写<code>DESC</code>就默认是<code>ASC</code>也就是ascend升序</p>
+<p>也可以限制我们想要的元素数量</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `student` <span class="keyword">ORDER</span> <span class="keyword">BY</span> `score` <span class="keyword">DESC</span> LIMIT <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+<p>再加上一个<code>LIMIT</code> 就限制了返回的元素数量</p>
+<p>同样的也是可以通过<code>WHERE</code>进行条件约束</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `student` <span class="keyword">WHERE</span> `major` <span class="operator">=</span> <span class="string">&#x27;英语&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>这样就获取了所有<code>major</code>为<code>英语</code>的元素<br>如果<code>OR</code> 的条件很多，可以用<code>IN</code>来代替</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `student` <span class="keyword">WHERE</span> `major` <span class="keyword">IN</span> (<span class="string">&#x27;历史&#x27;</span>, <span class="string">&#x27;英语&#x27;</span>, <span class="string">&#x27;语文&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如果我们想知道所有元素的某个属性有哪几种，比如说有几种岗位，我们当然需要查询所有的元素，但是不要这些元素属性发生重复，我们可以使用<code>DISTINCT</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> `sex` <span class="keyword">FROM</span> `employee`</span><br></pre></td></tr></table></figure>
+<p>这样得到的<code>sex</code>属性就不会出现重复了</p>
+<h2 id="聚合函数-aggregate-functions"><a href="#聚合函数-aggregate-functions" class="headerlink" title="聚合函数 aggregate functions"></a>聚合函数 aggregate functions</h2><h3 id="COUNT"><a href="#COUNT" class="headerlink" title="COUNT"></a>COUNT</h3><p>比如我们想要取得所有员工的数量</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> `employee`;</span><br></pre></td></tr></table></figure>
+<p>如果我们想要取得出生于 1970-01-01 之后的女性的数量，我们可以写</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> `employee` <span class="keyword">WHERE</span> `birth_date` <span class="operator">&gt;</span> <span class="string">&#x27;1970-01-01&#x27;</span> <span class="keyword">AND</span> `sex` <span class="operator">=</span> <span class="string">&#x27;F&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="AVG"><a href="#AVG" class="headerlink" title="AVG"></a>AVG</h3><p>我们想取得所有员工的平均薪水</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(`salary`) <span class="keyword">FROM</span> `employee`</span><br></pre></td></tr></table></figure>
+<h3 id="SUM"><a href="#SUM" class="headerlink" title="SUM"></a>SUM</h3><p>我们想取得所有员工薪水的总和</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">SUM</span>(`salary`) <span class="keyword">FROM</span> `employee`</span><br></pre></td></tr></table></figure>
+<h3 id="MAX-MIN"><a href="#MAX-MIN" class="headerlink" title="MAX &amp; MIN"></a>MAX &amp; MIN</h3><p>我们想知道薪水最高的员工</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">MAX</span>(`salary`) <span class="keyword">FROM</span> </span><br><span class="line">`employee`</span><br></pre></td></tr></table></figure>
+<p>薪水最低的对应的就是</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">MIN</span>(`salary`) <span class="keyword">FROM</span> </span><br><span class="line">`employee`;</span><br></pre></td></tr></table></figure>
+
+<h2 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h2><blockquote>
+<p><code>%</code>表示多个字元，<code>_</code>表示单个字元</p>
+</blockquote>
+<p>我们想取得号码尾数为 335 的客户</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `client` <span class="keyword">WHERE</span> `phone` <span class="keyword">LIKE</span> <span class="string">&#x27;%335&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>同样的如果是开头为 335 的话，将<code>&#39;%335&#39;</code>改为<code>&#39;335%&#39;</code>即可</p>
+<p>想取得生日在 12 月的员工</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `employee` <span class="keyword">WHERE</span> `birth_day` <span class="keyword">LIKE</span> <span class="string">&#x27;_____12%&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>这样我们用五个<code>_</code>表示了前面类似<code>1970-</code>的五个字符，这样我们就筛选了所有12月份出生的员工</p>
+<h2 id="并集-Union"><a href="#并集-Union" class="headerlink" title="并集 Union"></a>并集 Union</h2><p>比如我们想同时返回员工和客户的名字</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name` <span class="keyword">FROM</span> `employee`</span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">SELECT</span> `client_name` <span class="keyword">FROM</span> `client`;</span><br></pre></td></tr></table></figure>
+<p>要注意的是，我们使用 <code>UNION</code> 时，获取的属性数目一定要是一样的，比如我们这里就不可以在<code>employee</code>中同时搜寻<code>name</code>和<code>sex</code>，同时属性的数据类新也需要是一样的</p>
+<p>如果我们想要 员工id + 员工名字 UNION 客户id + 客户名字</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `emp_id`, `name <span class="keyword">FROM</span> `employee` </span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">SELECT</span> `client_id`, `client_name` <span class="keyword">FROM</span> `client`;</span><br></pre></td></tr></table></figure>
+<p>这里返回的属性名称是<code>emp_id</code>和<code>name</code>，那么我们可以做修改</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `emp_id` <span class="keyword">AS</span> `total_id`, `name` <span class="keyword">AS</span> `total_name` <span class="keyword">FROM</span> `employee` </span><br><span class="line"><span class="keyword">UNION</span></span><br><span class="line"><span class="keyword">SELECT</span> `client_id`, `client_name` <span class="keyword">FROM</span> `client`;</span><br></pre></td></tr></table></figure>
+<p>这样我们就对属性名进行了修改</p>
+<h2 id="连接-JOIN"><a href="#连接-JOIN" class="headerlink" title="连接 JOIN"></a>连接 JOIN</h2><blockquote>
+<p>JOIN 可以帮助我们把两个表格连接在一起</p>
+</blockquote>
+<p>如果我们想取得所有部门经理的名字</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `employee` <span class="keyword">JOIN</span> `branch` <span class="keyword">ON</span> `emp_id` <span class="operator">=</span> `manager_id`</span><br></pre></td></tr></table></figure>
+<p>这样返回的表格就是<code>employee</code>和<code>branch</code>按照<code> emp_id = manager_id</code> 进行拼接的表格</p>
+<p>但是如果我们不需要完整的表格，我们只需要<code>emp_id</code>,<code>name</code>,<code>branch_name</code>这几个属性呢，我们就可以把<code>*</code>做修改</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `emp_id`,`name`,`branch_name` <span class="keyword">FROM</span> `employee` <span class="keyword">JOIN</span> `branch` <span class="keyword">ON</span> `emp_id` <span class="operator">=</span> `manager_id`</span><br></pre></td></tr></table></figure>
+<p>那如果两个表格做匹配的属性名是一样的，我们可以这样：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `employee`.`emp_id`,`employee`.`name`,`branch`.`branch_name` <span class="keyword">FROM</span> `employee` <span class="keyword">JOIN</span> `branch` <span class="keyword">ON</span> `employee`.`emp_id` <span class="operator">=</span> `branch`.`manager_id`</span><br></pre></td></tr></table></figure>
+<p>而我们如果想要保留<code>employee</code>表格，同时返回条件成立的属性<br>我们可以写<code>LEFT JOIN</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `employee`.`emp_id`,`employee`.`name`,`branch`.`branch_name` <span class="keyword">FROM</span> `employee` <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> `branch` <span class="keyword">ON</span> `employee`.`emp_id` <span class="operator">=</span> `branch`.`manager_id`</span><br></pre></td></tr></table></figure>
+<p>这样的话<code>employee</code>的所有元素不论条件是否成立都会被返回，而没有匹配成功的属性则填为<code>NULL</code></p>
+<p>反之如果想要保留<code>branch</code>表格就写<code>RIGHT JOIN</code>，根据位置写即可</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `employee`;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `client`;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> `employee` <span class="keyword">ORDER</span> <span class="keyword">BY</span> `salary` <span class="keyword">ASC</span>;</span><br><span class="line"><span class="keyword">SELECT</span> `name` <span class="keyword">FROM</span> `employee` <span class="keyword">ORDER</span> <span class="keyword">BY</span> `salary` <span class="keyword">DESC</span> LIMIT <span class="number">3</span>;</span><br><span class="line"><span class="keyword">SELECT</span> `name` <span class="keyword">FROM</span> `employee`;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> `sex` <span class="keyword">from</span> `employee`</span><br></pre></td></tr></table></figure>
+
+<h2 id="子查询-subquery"><a href="#子查询-subquery" class="headerlink" title="子查询 subquery"></a>子查询 subquery</h2><blockquote>
+<p>我们可以在一个查询语句里面使用另外一个查询语句的结果</p>
+</blockquote>
+<p>如果我们要找出研发部门的经理名字<br>我们可以先在<code>branch</code>中找到研发部门的 <code>manager_id</code>再到<code>employee</code>中找到<code>manager_id</code>对应的<code>emp_id</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name` <span class="keyword">FROM</span> `employee` <span class="keyword">WHERE</span> `emp_id` <span class="operator">=</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> `manager_id` <span class="keyword">FROM</span> `branch` <span class="keyword">WHERE</span> `branch_name` <span class="operator">=</span> `研发`</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> `name` <span class="keyword">FROM</span> `employee` <span class="keyword">WHERE</span> `emp_id` <span class="keyword">IN</span> (</span><br><span class="line">    <span class="keyword">SELECT</span> `emp_id` <span class="keyword">FROM</span> `work_with` <span class="keyword">WHERE</span> `total_sales` <span class="operator">&gt;</span> <span class="number">50000</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h2 id="ON-DELETE"><a href="#ON-DELETE" class="headerlink" title="ON DELETE"></a>ON DELETE</h2><blockquote>
+<p>ON DELETE 也是一种对表格属性的附加，主要用于 FOREIGN KEY 中，简单来说，ON DELETE 就是用于外键对应的属性被删除时（此时外键失去了对应的属性，无法进行对应），该外键应该如何操作</p>
+</blockquote>
+<h3 id="ON-DELETE-NULL"><a href="#ON-DELETE-NULL" class="headerlink" title="ON DELETE NULL"></a>ON DELETE NULL</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> `branch`(</span><br><span class="line">    `branch_id` INI <span class="keyword">PRIMARY KEY</span>,</span><br><span class="line">    `branch_name` <span class="type">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">    `manager_id` <span class="type">INT</span>,</span><br><span class="line">    <span class="keyword">FOREIGN KEY</span>(`manager_id`) <span class="keyword">REFERENCES</span> `employee`(`emp_id`) <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">SET</span> <span class="keyword">NULL</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>这里我们的外键 <code>manager_id</code> 对应到表格<code>employee</code>的<code>emp_id</code>上，而<code>ON DELETE SET NULL</code>表示，如果对应到的这个 <code>emp_id</code>被删除了，我们这个<code>manager_id</code>就设置为<code>NULL</code></p>
+<h3 id="ON-DELETE-CASCADE"><a href="#ON-DELETE-CASCADE" class="headerlink" title="ON DELETE CASCADE"></a>ON DELETE CASCADE</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> `works_with` (</span><br><span class="line">    `emp_id` <span class="type">INT</span>,</span><br><span class="line">    `client_id` <span class="type">INT</span>,</span><br><span class="line">    `total_sales` <span class="type">INT</span>,</span><br><span class="line">    <span class="keyword">PRIMARY KEY</span>(`emp_id`, `client_id`),</span><br><span class="line">    <span class="keyword">FOREIGN KEY</span> (`emp_id`) <span class="keyword">REFERENCES</span> `employee`(`emp_id`) <span class="keyword">ON</span> <span class="keyword">DELETE</span> CASCADE,</span><br><span class="line">    <span class="keyword">FOREIGN KEY</span> (`client_id`) <span class="keyword">REFERENCES</span> `client`(`client_id`) <span class="keyword">ON</span> <span class="keyword">DELETE</span> CASCADE</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>这里的 <code>ON DELETE CASCADE</code> 就表示如果<code>works_with</code>表格中的<code>emp_id</code>和<code>client_id</code>在失去对应的表格中的属性时，也进行删除</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>当然这些只是非常基础的 sql 操作，一般项目中肯定不是直接手敲，而是通过各种自动化操作来完成非常频繁的数据操作，任重而道远</p>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2025/09/26/task-of-25fall/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/cover16.jpg">
+                </span>
+                <h6 class="trm-op-title">Task of 25fall</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/09/26</li>
+                <li>07:55</li>
+                <li>杂谈</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2025/09/20/neovim%E5%A4%8D%E5%88%B6%E6%8F%90%E7%A4%BAclipboard-no-provider/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/cover14.jpg">
+                </span>
+                <h6 class="trm-op-title">neovim复制提示clipboard:no provider</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/09/20</li>
+                <li>00:12</li>
+                <li>CS工具</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <div class="row justify-content-center">
+    <div class="col-lg-4">
+        <div class="trm-counter-up trm-scroll-animation trm-active-el">
+            <div class="trm-counter-number"><span class="trm-counter">30</span><span class="trm-counter-symbol">+</span>
+            </div>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <div class="trm-label">Posts</div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="trm-counter-up trm-scroll-animation trm-active-el">
+            <div class="trm-counter-number"><span class="trm-counter">8</span><span class="trm-counter-symbol">+</span>
+            </div>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <div class="trm-label">Diary</div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="trm-counter-up trm-scroll-animation trm-active-el">
+            <div class="trm-counter-number"><span class="trm-counter">85</span><span class="trm-counter-symbol">+</span>
+            </div>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <div class="trm-label">fans</div>
+        </div>
+    </div>
+</div>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="Mysql介绍"><a rel="nofollow" class="trm-toc-link" href="#Mysql介绍"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">Mysql介绍</span></a></li><li class="trm-toc-item trm-toc-level-2" title="Mysql 主要使用语句"><a rel="nofollow" class="trm-toc-link" href="#Mysql-主要使用语句"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">Mysql 主要使用语句</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="关于数据库"><a rel="nofollow" class="trm-toc-link" href="#关于数据库"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">关于数据库</span></a></li><li class="trm-toc-item trm-toc-level-3" title="关于表格"><a rel="nofollow" class="trm-toc-link" href="#关于表格"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">关于表格</span></a></li><li class="trm-toc-item trm-toc-level-3" title="表格属性操作"><a rel="nofollow" class="trm-toc-link" href="#表格属性操作"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">表格属性操作</span></a></li><li class="trm-toc-item trm-toc-level-3" title="表格元素操作"><a rel="nofollow" class="trm-toc-link" href="#表格元素操作"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">表格元素操作</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="聚合函数 aggregate functions"><a rel="nofollow" class="trm-toc-link" href="#聚合函数-aggregate-functions"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">聚合函数 aggregate functions</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="COUNT"><a rel="nofollow" class="trm-toc-link" href="#COUNT"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">COUNT</span></a></li><li class="trm-toc-item trm-toc-level-3" title="AVG"><a rel="nofollow" class="trm-toc-link" href="#AVG"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">AVG</span></a></li><li class="trm-toc-item trm-toc-level-3" title="SUM"><a rel="nofollow" class="trm-toc-link" href="#SUM"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">SUM</span></a></li><li class="trm-toc-item trm-toc-level-3" title="MAX &amp; MIN"><a rel="nofollow" class="trm-toc-link" href="#MAX-MIN"><span class="trm-toc-number">3.4.</span> <span class="trm-toc-text">MAX &amp; MIN</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="通配符"><a rel="nofollow" class="trm-toc-link" href="#通配符"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">通配符</span></a></li><li class="trm-toc-item trm-toc-level-2" title="并集 Union"><a rel="nofollow" class="trm-toc-link" href="#并集-Union"><span class="trm-toc-number">5.</span> <span class="trm-toc-text">并集 Union</span></a></li><li class="trm-toc-item trm-toc-level-2" title="连接 JOIN"><a rel="nofollow" class="trm-toc-link" href="#连接-JOIN"><span class="trm-toc-number">6.</span> <span class="trm-toc-text">连接 JOIN</span></a></li><li class="trm-toc-item trm-toc-level-2" title="子查询 subquery"><a rel="nofollow" class="trm-toc-link" href="#子查询-subquery"><span class="trm-toc-number">7.</span> <span class="trm-toc-text">子查询 subquery</span></a></li><li class="trm-toc-item trm-toc-level-2" title="ON DELETE"><a rel="nofollow" class="trm-toc-link" href="#ON-DELETE"><span class="trm-toc-number">8.</span> <span class="trm-toc-text">ON DELETE</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="ON DELETE NULL"><a rel="nofollow" class="trm-toc-link" href="#ON-DELETE-NULL"><span class="trm-toc-number">8.1.</span> <span class="trm-toc-text">ON DELETE NULL</span></a></li><li class="trm-toc-item trm-toc-level-3" title="ON DELETE CASCADE"><a rel="nofollow" class="trm-toc-link" href="#ON-DELETE-CASCADE"><span class="trm-toc-number">8.2.</span> <span class="trm-toc-text">ON DELETE CASCADE</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="总结"><a rel="nofollow" class="trm-toc-link" href="#总结"><span class="trm-toc-number">9.</span> <span class="trm-toc-text">总结</span></a></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-book-reader"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-arrows-alt-h"></use>
+</svg>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-arrow-up"></use>
+</svg>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.6"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.6"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
