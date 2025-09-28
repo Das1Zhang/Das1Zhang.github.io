@@ -7,16 +7,21 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Das1&#39;s Blog">
-<meta property="og:url" content="https://das1zhang.github.io/tags/CS%E5%B7%A5%E5%85%B7/page/2/index.html">
+<meta name="description" content="express binary tree by array">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二叉树的数组表示推导">
+<meta property="og:url" content="https://das1zhang.github.io/2025/09/28/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%95%B0%E7%BB%84%E8%A1%A8%E7%A4%BA%E6%8E%A8%E5%AF%BC/index.html">
 <meta property="og:site_name" content="Das1&#39;s Blog">
+<meta property="og:description" content="express binary tree by array">
 <meta property="og:locale">
+<meta property="article:published_time" content="2025-09-28T00:04:47.000Z">
+<meta property="article:modified_time" content="2025-09-28T02:58:34.765Z">
 <meta property="article:author" content="Das1">
+<meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
 
 
-<title >Das1's Blog</title>
+<title >二叉树的数组表示推导</title>
 
 <!-- Favicon -->
 
@@ -59,7 +64,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"das1zhang.github.io","author":"Das1","root":"/","typed_text":["an undergraduate in WHU"],"theme_version":"2.2.6","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/logo.jpg","icon16":"/favicon-16x16.png","icon32":"/favicon-32x32.png","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"/logo.jpg","show_text":"Das1's Blog.","hide_text":"Waiting for u."},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-a-farfa-sun","moon":"icon-fa-moon-line","play":"icon-play","email":"icon-envelop","next":"icon-fa-arrow-right","calendar":"icon-th-list","clock":"icon-farfa-clock","user":"icon-a-zu394","back_top":"icon-fa-arrow-up","close":"icon-a-fasfa-times","search":"icon-fasfa-search","reward":"icon-dashang","toc_tag":"icon-th-list","read":"icon-book-reader","arrows":"icon-arrows-alt-h","double_arrows":"icon-angle-double-down","copy":"icon-copy","user_tag":"icon-a-zu394"},"icontype":"symbol","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":false,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":false,"postUpdate":"2025-09-28 10:58:43"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-09-28 10:58:34"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.6" id="trm-switch-style">
@@ -230,13 +235,12 @@
 
             <!-- body -->
             
-
 <div class="trm-content-start">
     <!-- banner -->
     <div class="trm-banner">
     
     <!-- banner cover -->
-    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/archivebanner.gif">
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/background15.jpg">
     <!-- banner cover end -->
     
 
@@ -252,10 +256,10 @@
                     <!-- banner title -->
                     <div class="trm-banner-text ">
                         <div class="trm-label trm-mb-20">
-                            Welcome to the archive
+                            express binary tree by array
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            Archive containing all my posts.
+                            二叉树的数组表示推导
                         </h1>
 
                         
@@ -265,7 +269,7 @@
                                 </li>
                                 <li>
                                     <span>
-                                        tags
+                                        2025
                                     </span>
                                 </li>
                             </ul>
@@ -443,151 +447,84 @@
             
             <div class="trm-page-content col-lg-8">
                 <div id="trm-content" class="trm-content">
-                    <div class="row">
-    <div class="col-lg-12">
-        <div class="trm-card">
-            <div style="padding: 0 20px;">
-                
-                    <ul class="trm-tag-list" itemprop="keywords"><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/COD/" rel="tag">COD</a><span class="tag-list-count">5</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/CS-Learning/" rel="tag">CS-Learning</a><span class="tag-list-count">6</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/CS%E5%B7%A5%E5%85%B7/" rel="tag">CS工具</a><span class="tag-list-count">14</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/OS/" rel="tag">OS</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/Ubuntu/" rel="tag">Ubuntu</a><span class="tag-list-count">3</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">3</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">2</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/makefile/" rel="tag">makefile</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/neovim/" rel="tag">neovim</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/plan/" rel="tag">plan</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/wsl/" rel="tag">wsl</a><span class="tag-list-count">2</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a><span class="tag-list-count">9</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E5%B8%B8/" rel="tag">日常</a><span class="tag-list-count">1</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E8%AE%B0/" rel="tag">日记</a><span class="tag-list-count">8</span></li><li class="trm-tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a><span class="tag-list-count">2</span></li></ul>
-                
-            </div>
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg><br>
+            09/28
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-farfa-clock"></use>
+</svg><br>
+            08:04
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-a-zu394"></use>
+</svg><br>
+            Das1
         </div>
     </div>
 </div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="数组存树的方式"><a href="#数组存树的方式" class="headerlink" title="数组存树的方式"></a>数组存树的方式</h2><p>我们按照层数来看</p>
+<ol>
+<li>第0层：1 个节点</li>
+<li>第1层：2 个节点</li>
+<li>第2层：4 个节点</li>
+<li>第3层：8 个节点<br>…<br>我们可以看出来第$i$层一共有$2^k$个节点</li>
+</ol>
+<h2 id="数组中的位置"><a href="#数组中的位置" class="headerlink" title="数组中的位置"></a>数组中的位置</h2><p>我们将这样的树存在数组中，我们就可以根据 层数 和 偏移 来表示数组中的节点位置<br>第$k$层的第$m$个节点：<br>$2^0 + 2^1 +…+2^{(k-1)}+m &#x3D; (2^k-1)+m$</p>
+<h2 id="子节点位置"><a href="#子节点位置" class="headerlink" title="子节点位置"></a>子节点位置</h2><p>从父节点到左子节点之间的节点个数为该层剩余 + 下一层到子节点之前的节点个数，也就是<br>$2^k-m + 2*(m-1) + 1$<br>所以子节点的位置为<br>$(2^k-1) + m + 2^k-m + 2*(m-1) + 1 &#x3D; 2^{k+1}-1+2m$<br>我们将左子节点和右子节点在数组中的索引分别定义为 $leftIndex$和$rightIndex$</p>
+<p>我们可以得到<br>$leftIndex&#x3D;(2^{k+1}-1) + 2m$<br>$rightIndex &#x3D; (2^{k+1})+2m$</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>从上面的推到中将父节点位置设为$i$，那么就可以看出<br>$leftIndex&#x3D;(2i+1)$<br>$rightIndex&#x3D;(2i+2)$</p>
 
-<!-- history -->
+</article>
+    
+    
 
-<div class="row">
+</div>
+<div class="trm-post-next-prev row">
     <div class="col-lg-12">
         <!-- title -->
         <h5 class="trm-title-with-divider">
-            
-                CS工具
-            
-            <span data-number="01"></span>
+            其他文章
+            <span data-number="02"></span>
         </h5>
     </div>
-    <div class="col-lg-12">
-        <!-- timeline -->
-        <div class="trm-timeline">
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
             
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/05/23/VScode%20%E9%85%8D%E7%BD%AEc&c++%20%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/" class="trm-anima-link">
-                                        VScode配置c&amp;c++运行环境(win)
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">05/23</li>
-                                        <li class="trm-accent-color">17:44</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2025/03/19/makefile/" class="trm-anima-link">
-                                        About Makefile
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">03/19</li>
-                                        <li class="trm-accent-color">17:16</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2024/11/13/hexo/" class="trm-anima-link">
-                                        Hexo搭建 &amp; 关键命令
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">11/13</li>
-                                        <li class="trm-accent-color">21:51</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
-            <div class="trm-timeline-item trm-scroll-animation">
-                <div class="trm-timeline-mark-light"></div>
-                <div class="trm-timeline-mark"></div>
-                <div class="trm-timeline-content more">
-                    
-                        <div class="trm-card-header">
-                            <div class="trm-left-side">
-                                <h6>
-                                    <a href="/2024/11/13/git/" class="trm-anima-link">
-                                        git
-                                    </a>
-                                </h6>
-                                <div class="trm-text-sm trm-accent-color trm-mt-15">
-                                    <ul class="trm-card-data trm-label ">
-                                        <li class="trm-accent-color">11/13</li>
-                                        <li class="trm-accent-color">21:37</li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    
-                </div>
-            </div>
-            
+            <a class="trm-op-top trm-anima-link" href="/2025/09/26/gitlet/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/cover19.jpg">
+                </span>
+                <h6 class="trm-op-title">gitlet文档翻译 &amp; 人话版</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/09/26</li>
+                <li>10:20</li>
+                <li>数据结构</li>
+            </ul>
         </div>
-        <!-- timeline end -->
     </div>
 </div>
+    
+</div>
 
-<!-- history end -->
-
-
-    <div class="trm-pagination">
-        <a class="page-number" href="/tags/CS%E5%B7%A5%E5%85%B7/">1</a><span class="page-number current">2</span>
-    </div>
-
-
+    
 
 
 
@@ -633,9 +570,33 @@
 
             
 
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="数组存树的方式"><a rel="nofollow" class="trm-toc-link" href="#数组存树的方式"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">数组存树的方式</span></a></li><li class="trm-toc-item trm-toc-level-2" title="数组中的位置"><a rel="nofollow" class="trm-toc-link" href="#数组中的位置"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">数组中的位置</span></a></li><li class="trm-toc-item trm-toc-level-2" title="子节点位置"><a rel="nofollow" class="trm-toc-link" href="#子节点位置"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">子节点位置</span></a></li><li class="trm-toc-item trm-toc-level-2" title="总结"><a rel="nofollow" class="trm-toc-link" href="#总结"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">总结</span></a></li></ol>
+      </div>
+    </div>
+
             
 <div class="trm-fixed-container">
     
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-book-reader"></use>
+</svg>
+        </div>
     
     
         <div class="trm-fixed-btn hidden-md" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
@@ -678,6 +639,10 @@
     
 
     <!-- 评论插件 -->
+    
+        
+
+        
     
 
 		

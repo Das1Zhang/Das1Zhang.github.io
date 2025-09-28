@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="the translated version of gitlet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gitlet文档翻译 &amp; 人话版">
+<meta property="og:url" content="https://das1zhang.github.io/2025/09/26/gitlet/index.html">
+<meta property="og:site_name" content="Das1&#39;s Blog">
+<meta property="og:description" content="the translated version of gitlet">
+<meta property="og:locale">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="og:image" content="https://das1zhang.github.io/img/404.jpg">
+<meta property="article:published_time" content="2025-09-26T02:20:29.000Z">
+<meta property="article:modified_time" content="2025-09-28T02:57:15.458Z">
+<meta property="article:author" content="Das1">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://das1zhang.github.io/img/404.jpg">
+
+
+<title >gitlet文档翻译 & 人话版</title>
+
+<!-- Favicon -->
+
+    <link href='/favicon-16x16.png?v=2.2.6' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/favicon-32x32.png?v=2.2.6' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/apple-touch-icon.png?v=2.2.6' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+
+    
+<script src="//at.alicdn.com/t/c/font_4729113_2e3pqhonvts.js"></script>
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"das1zhang.github.io","author":"Das1","root":"/","typed_text":["an undergraduate in WHU"],"theme_version":"2.2.6","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/logo.jpg","icon16":"/favicon-16x16.png","icon32":"/favicon-32x32.png","apple_touch_icon":"apple-touch-icon.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"/logo.jpg","show_text":"Das1's Blog.","hide_text":"Waiting for u."},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://npm.elemecdn.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-a-farfa-sun","moon":"icon-fa-moon-line","play":"icon-play","email":"icon-envelop","next":"icon-fa-arrow-right","calendar":"icon-th-list","clock":"icon-farfa-clock","user":"icon-a-zu394","back_top":"icon-fa-arrow-up","close":"icon-a-fasfa-times","search":"icon-fasfa-search","reward":"icon-dashang","toc_tag":"icon-th-list","read":"icon-book-reader","arrows":"icon-arrows-alt-h","double_arrows":"icon-angle-double-down","copy":"icon-copy","user_tag":"icon-a-zu394"},"icontype":"symbol","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":false,"title":"mac","height_limit":200},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"},"danmu":{"enable":false,"el":".trm-banner"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2025-09-28 10:57:15"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.2.6" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+
+ 
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-a-farfa-sun"></use>
+</svg></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-moon-line"></use>
+</svg></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/logo.jpg">
+    
+    
+        <div class="trm-logo-text">
+            Zhang<span>Das1</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/" target="">
+                    home
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/archives/" target="">
+                    archives
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/categories/" target="">
+                    categories
+                </a>
+                
+                <ul>
+                    
+                    <li>
+                        <a  href="/tags/" target="">
+                            tags
+                        </a>
+                    </li>
+                    
+                </ul>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/links/" target="">
+                    links
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/lifeguide/" target="">
+                    lifeguide
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/about/" target="">
+                    about
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-a-farfa-sun"></use>
+</svg>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-moon-line"></use>
+</svg>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/background14.jpg">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            The translated version of gitlet
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            gitlet文档翻译 & 人话版
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2025
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/logo.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        Das1
+    </h5>
+    
+        <div class="trm-label">
+            I`m
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="https://github.com/Das1Zhang" title="github" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-github"></use>
+</svg>
+        </a>
+    
+        <a href="https://x.com/SihaoFlower" title="X" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-TwitterX"></use>
+</svg>
+        </a>
+    
+        <a href="https://space.bilibili.com/352757351" title="bilibili" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-bilibili-line"></use>
+</svg>
+        </a>
+    
+        <a href="https://www.xiaohongshu.com/user/profile/660a4195000000000b00c2b0" title="redbook" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-xiaohongshu"></use>
+</svg>
+        </a>
+    
+        <a href="http://youtube.com/@Sihao-q3o" title="youtube" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-youtube"></use>
+</svg>
+        </a>
+    
+        <a href="https://steamcommunity.com/profiles/76561199544278917/" title="steam" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-steam"></use>
+</svg>
+        </a>
+    
+        <a href="https://www.douyin.com/user/self?from_tab_name=main" title="douyin" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-douyin"></use>
+</svg>
+        </a>
+    
+        <a href="https://m.weibo.cn/profile/8014863404?user_token=a0.MTg1ZGEwZWU0OWVhNGQyY4X3uthTCg1legONustQKbCUfKYaH4v4mENho2-XMlWY" title="weibo" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-weibo"></use>
+</svg>
+        </a>
+    
+        <a href="https://blog.csdn.net/Dasi_C_upup?spm=1000.2115.3001.5343" title="csdn" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-csdn2"></use>
+</svg>
+        </a>
+    
+        <a href="https://juejin.cn/user/1599104292501972" title="juejin" rel="nofollow" target="_blank">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-juejin"></use>
+</svg>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                address:
+            </div>
+            <div class="trm-label trm-label-light">
+                Wuhan
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                age:
+            </div>
+            <div class="trm-label trm-label-light">
+                19
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                school:
+            </div>
+            <div class="trm-label trm-label-light">
+                WHU
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                MBTI:
+            </div>
+            <div class="trm-label trm-label-light">
+                ENFP
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:sihao050721.com@gmail.com" class="trm-btn">
+            联系我
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-envelop"></use>
+</svg>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg><br>
+            09/26
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-farfa-clock"></use>
+</svg><br>
+            10:20
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <svg class="symbol-icon trm-icon" aria-hidden="true">
+    <use xlink:href="#icon-a-zu394"></use>
+</svg><br>
+            Das1
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <blockquote>
+<p>gitlet的技术文档可能是很多小白第一次接触的长技术文档即使目前有很多市面上的翻译软件阅读起来也并非非常流畅，因此在这里做一个简单的翻译</p>
+</blockquote>
+<h2 id="前置信息"><a href="#前置信息" class="headerlink" title="前置信息"></a>前置信息</h2><h3 id="lab6-中提到的重要方法"><a href="#lab6-中提到的重要方法" class="headerlink" title="lab6 中提到的重要方法"></a>lab6 中提到的重要方法</h3><h4 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">f</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;file.txt&quot;</span>);</span><br><span class="line">f.createNewFile() <span class="comment">// 创建这个文件</span></span><br><span class="line">f.exist() <span class="comment">// 确认文件存在</span></span><br><span class="line">Utils.writeContents(f, <span class="string">&quot;Hello world&quot;</span>); <span class="comment">// 字符串写入文件</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 文件读为字符串</span></span><br><span class="line"><span class="keyword">static</span> String <span class="title function_">readContentAsString</span><span class="params">(File file)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 文件读入为字节数组</span></span><br><span class="line"><span class="keyword">static</span> <span class="type">byte</span>[] readContents(File file)</span><br><span class="line"></span><br><span class="line"><span class="comment">//文件路径拼接</span></span><br><span class="line"><span class="keyword">static</span> File <span class="title function_">join</span><span class="params">(String first, String... others)</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">File</span> <span class="variable">d</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;dummy&quot;</span>)</span><br><span class="line">d.mkdir()</span><br></pre></td></tr></table></figure>
+<p>Java 中目录同样用 <code>File</code> 表示</p>
+<h4 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h4><p>我们想要储存一个对象而不单纯是一个字符串的话，可以使用序列化，将<code>Model</code>转换为 <code>String</code>，存入，需要读取时，再进行反序列化解析回 <code>Model</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Model</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="序列化-1"><a href="#序列化-1" class="headerlink" title="序列化"></a>序列化</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Model m;</span><br><span class="line"><span class="type">File</span> <span class="variable">outfile</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(saveFileName);</span><br><span class="line">writeObject(outFile, m);</span><br></pre></td></tr></table></figure>
+<h5 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Model m;</span><br><span class="line"><span class="type">File</span> <span class="variable">inFile</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(saveFileName);</span><br><span class="line">m = readObject(inFile, Model.class);</span><br></pre></td></tr></table></figure>
+
+<h2 id="gitlet介绍"><a href="#gitlet介绍" class="headerlink" title="gitlet介绍"></a>gitlet介绍</h2><blockquote>
+<p>Gitlet实际上就是一个mini版git，将文件不同版本历史记录呈现在一个提交树中</p>
+</blockquote>
+<p>这就是gitlet的文件形态<br><img src="https://sp21.datastructur.es/materials/proj/proj2/image/two_developed_versions.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><h4 id="游离-HEAD-指针"><a href="#游离-HEAD-指针" class="headerlink" title="游离 HEAD 指针"></a>游离 HEAD 指针</h4><p>你不会处于一个游离HEAD的状态，也就是这样的<br><img src="https://sp21.datastructur.es/materials/proj/proj2/image/reverted_head.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br>在实际的git中，你可以使用 <code>checkout</code> 或者 <code>reset</code>来实现这个状态，比如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将指定file的修改放弃，恢复到当前分支最后一个commit时的状态</span></span><br><span class="line">git checkout -- filename</span><br><span class="line"><span class="comment"># 将 HEAD 指针移动到某个历史提交，这就是 游离 HEAD状态</span></span><br><span class="line">git checkout &lt;commit_id&gt;</span><br><span class="line"><span class="comment"># 移动 HEAD 并且清空暂存区，工作区也恢复到 &lt;commit&gt; 状态</span></span><br><span class="line">git reset --hard &lt;commit&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="提交树"><a href="#提交树" class="headerlink" title="提交树"></a>提交树</h4><p>提交树是<strong>不可变的</strong>，一旦commit节点创建，就无法销毁</p>
+<h3 id="几个概念"><a href="#几个概念" class="headerlink" title="几个概念"></a>几个概念</h3><ul>
+<li>blob: 已经保存的文件内容，实际上就是一个文件的多个版本，一个文件会对应一个或多个blob</li>
+<li>trees: 一个将文件名对应到相应 blob 的目录结构</li>
+<li>commit: 一个提交</li>
+</ul>
+<h3 id="相对于-git-的简化"><a href="#相对于-git-的简化" class="headerlink" title="相对于 git 的简化"></a>相对于 git 的简化</h3><ul>
+<li>不处理子目录</li>
+<li>父级最多只有两个，也就是最多只可以由两个父级 merge 而来</li>
+<li>元数据仅包含时间戳和日志消息<ul>
+<li>日志信息</li>
+<li>时间戳</li>
+<li>文件名到blob引用的映射</li>
+<li>两个父级引用（另一个用于merge）</li>
+</ul>
+</li>
+</ul>
+<h3 id="blob的独特性"><a href="#blob的独特性" class="headerlink" title="blob的独特性"></a>blob的独特性</h3><p>使用 SHA-1 哈希函数来生成160位的哈希值，所以基本上不可能出现完全一样的哈希值<br>我们用这个 SHA-1 哈希值来标识每个 blob<br>我们不需要进行计算，但是需要正确标记我们所有的对象</p>
+<ul>
+<li>哈希处理时包括所有的元数据</li>
+<li>正确区分 blob 和 commit 的哈希值<ul>
+<li>在<code>.gitlet</code>中设计一个目录结构</li>
+<li>为每个对象都添加一个额外的哈希，让这个对象的blob和commit分别可以对应一个哈希</li>
+</ul>
+</li>
+</ul>
+<h2 id="建议与规范"><a href="#建议与规范" class="headerlink" title="建议与规范"></a>建议与规范</h2><h3 id="类的实现"><a href="#类的实现" class="headerlink" title="类的实现"></a>类的实现</h3><p>有两个建议类<code>Commit</code>和<code>Repository</code>，我们要实现的是<code>gitlet.Main</code>类，<code>Main</code>应该主要调用<code>Repository</code>中的辅助方法，而不是在<code>Main</code>本身中进行实现</p>
+<h3 id="runtime和memory要求"><a href="#runtime和memory要求" class="headerlink" title="runtime和memory要求"></a>runtime和memory要求</h3><p>有些命令有runtime或者memory的要求，需要根据要求完成</p>
+<h3 id="失败情况"><a href="#失败情况" class="headerlink" title="失败情况"></a>失败情况</h3><p>需要根据失败情况打印错误消息，并且不得更改其他内容<br>立即退出程序：<code>System.exit(0)</code></p>
+<h4 id="一些与命令无关的的失败情况"><a href="#一些与命令无关的的失败情况" class="headerlink" title="一些与命令无关的的失败情况"></a>一些与命令无关的的失败情况</h4><ul>
+<li>没有输入参数：打印<code>Please enter a command.</code>然后退出</li>
+<li>输入无效命令：打印消息<code>No command with that name exists.</code> 并退出。</li>
+<li>输入操作数量或格式错误：印消息 <code>Incorrect operands.</code> 并退出</li>
+<li>输入命令要求位于已初始化的Gitlet工作目录（包含<code>.gitlet</code>的目录）但是路径错误：打印消息 <code>Not in an initialized Gitlet directory.</code></li>
+</ul>
+<h2 id="参数响应"><a href="#参数响应" class="headerlink" title="参数响应"></a>参数响应</h2><h3 id="init"><a href="#init" class="headerlink" title="init"></a>init</h3><p>创建一个初始commit，该commit不包含任何文件，message为<code>init commit</code>，属于一个初始分支<code>master</code>（也是当前分支），时间戳为 00:00:00 UTC, Thursday, 1 January 1970，所有仓库的这个初始 commit 都是一样的（同样的UID）</p>
+<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><p><code>java gitlet.Main init</code></p>
+<h4 id="失败情况-1"><a href="#失败情况-1" class="headerlink" title="失败情况"></a>失败情况</h4><p>已存在gitlet的话，打印：<code>A Gitlet version-control system already exists in the current directory.</code></p>
+<h3 id="add"><a href="#add" class="headerlink" title="add"></a>add</h3><p>将当前文件的副本添加到暂存区，用新内容覆盖暂存区中的旧内容（版本相同则不进行添加，若被更改后被添加，再次更改回原始版本，则直接从暂存区移除）<br>如果执行<code>add</code>时文件处于<code>rm</code>状态，则文件不再处于<code>rm</code>状态</p>
+<h4 id="用法-1"><a href="#用法-1" class="headerlink" title="用法"></a>用法</h4><p><code>java gitlet.Main add [file name]</code></p>
+<h4 id="runtime"><a href="#runtime" class="headerlink" title="runtime"></a>runtime</h4><p>$ lgN $</p>
+<h4 id="失败情况-2"><a href="#失败情况-2" class="headerlink" title="失败情况"></a>失败情况</h4><p>文件不存在，打印<code>File does not exist.</code></p>
+<h4 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h4><p>一次只能 <code>add</code> 一个文件（与git不同）</p>
+<h3 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h3><p>保存一个当前commit 和 暂存区中文件的快照，commit只更新已经跟踪且已经被add的文件，当然这个commit中已经跟踪的文件也可能在新commit中被取消跟踪（<code>rm</code>指令删除）<br>提交后是这样的：<br><img src="https://sp21.datastructur.es/materials/proj/proj2/image/before_and_after_commit.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h4 id="用法-2"><a href="#用法-2" class="headerlink" title="用法"></a>用法</h4><p><code>java gitlet.Main commit [message]</code></p>
+<h4 id="注意-2"><a href="#注意-2" class="headerlink" title="注意"></a>注意</h4><ol>
+<li>commit之后，暂存区清空</li>
+<li>不会对文件做任何改动，除了<code>rm</code>会在commit之后取消对文件的跟踪</li>
+<li>只会commit暂存区的内容</li>
+<li>添加到 commit tree中</li>
+<li>移动HEAD指针指向我们的新commit</li>
+<li>包含日期和时间</li>
+<li>有一个关联的 log message 日志消息</li>
+<li>每个commit 由 SHA-1 进行标识，包含blob引用，夫引用，log message 日志消息和提交时间</li>
+</ol>
+<h4 id="失败情况-3"><a href="#失败情况-3" class="headerlink" title="失败情况"></a>失败情况</h4><p>没有文件被暂存，中止，打印<code>No changes added to the commit.</code><br>如果没有 log message，打印<code>Please enter a commit message.</code></p>
+<h3 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h3><p>如果文件被暂存，还没有被添加，取消暂存，如果已经被追踪了，将其暂存（便于稍后删除），下次commit的时候这个暂存区中文件就消失了。已经被暂存或者追踪的文件都会直接在工作区中删除（物理上）</p>
+<h4 id="用法-3"><a href="#用法-3" class="headerlink" title="用法"></a>用法</h4><p><code>java gitlet.Main rm [file name]</code></p>
+<h4 id="失败情况-4"><a href="#失败情况-4" class="headerlink" title="失败情况"></a>失败情况</h4><p>文件没有被暂存或者追踪的话，打印<code>No reason to remove the file.</code></p>
+<h3 id="log"><a href="#log" class="headerlink" title="log"></a>log</h3><p>从当前commit开始，沿着 commit tree 向后追溯，忽略 merge commit 中的第二个父提交<br><img src="https://sp21.datastructur.es/materials/proj/proj2/image/history.png"  data-tag='post-image' onload='this.onload=null;this.style.opacity=1;' loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<h4 id="注意-3"><a href="#注意-3" class="headerlink" title="注意"></a>注意</h4><ol>
+<li>每个commit前面有个<code>===</code>，后面有一个空行<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">===</span><br><span class="line">commit a0da1ea5a15ab613bf9961fd86f010cf74c7ee48</span><br><span class="line">Date: Thu Nov 9 20:00:05 2017 -0800</span><br><span class="line">A commit message.</span><br><span class="line"></span><br><span class="line">===</span><br><span class="line">commit 3e8bf1d794ca2e9ef8a4007275acf3751c7170ff</span><br><span class="line">Date: Thu Nov 9 17:01:33 2017 -0800</span><br><span class="line">Another commit message.</span><br><span class="line"></span><br><span class="line">===</span><br><span class="line">commit e881c9575d180a215d1a636545b8fd9abfb1d2bb</span><br><span class="line">Date: Wed Dec 31 16:00:00 1969 -0800</span><br><span class="line">initial commit</span><br></pre></td></tr></table></figure></li>
+<li>每个 commit 条目显示提交对象的唯一 SHA-1 ID</li>
+<li><code>java.util.Date</code>和<code>java.util.Formatter</code>对获取和格式化时间非常有用</li>
+<li>对于 merge commit：在 SHA-1 下方添加一行类似<code>Merge: 4975af1 2c1ead1</code>，两个数字由第一个和第二个父提交 id 的前 7 位组成<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">===</span><br><span class="line">commit 3e8bf1d794ca2e9ef8a4007275acf3751c7170ff</span><br><span class="line">Merge: 4975af1 2c1ead1</span><br><span class="line">Date: Sat Nov 11 12:30:00 2017 -0800</span><br><span class="line">Merged development into master.</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="runtime-1"><a href="#runtime-1" class="headerlink" title="runtime"></a>runtime</h4><p>与历史节点呈线性关系</p>
+<h3 id="global-log"><a href="#global-log" class="headerlink" title="global-log"></a>global-log</h3><p>类似log，显示所有信息，顺序无关紧要</p>
+<h4 id="用法-4"><a href="#用法-4" class="headerlink" title="用法"></a>用法</h4><p><code>java gitlet.Main global-log</code></p>
+<h4 id="注意-4"><a href="#注意-4" class="headerlink" title="注意"></a>注意</h4><ol>
+<li><code>gitlet.Utils</code>中有一个使用方法，帮助迭代目录中的文件</li>
+</ol>
+<h4 id="runtime-2"><a href="#runtime-2" class="headerlink" title="runtime"></a>runtime</h4><p>与历史提交文件次数呈线性关系</p>
+<h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><p>找到包含指定提交信息的 id，每行一个<br>多字信息需要放在引号中</p>
+<h4 id="runtime-3"><a href="#runtime-3" class="headerlink" title="runtime"></a>runtime</h4><p>与commit次数呈现线性关系</p>
+<h4 id="失败情况-5"><a href="#失败情况-5" class="headerlink" title="失败情况"></a>失败情况</h4><p>不存在这样的 commit 的话，打印：<code>Found no commit with that message.</code></p>
+<h3 id="status"><a href="#status" class="headerlink" title="status"></a>status</h3><p>显示当前存在的分支，用 <code>*</code> 标记当前分支，显示已暂存和添加的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">=== Branches ===</span><br><span class="line">*master</span><br><span class="line">other-branch</span><br><span class="line">  </span><br><span class="line">=== Staged Files ===</span><br><span class="line">wug.txt</span><br><span class="line">wug2.txt</span><br><span class="line">  </span><br><span class="line">=== Removed Files ===</span><br><span class="line">goodbye.txt</span><br><span class="line">  </span><br><span class="line">=== Modifications Not Staged For Commit ===</span><br><span class="line">junk.txt (deleted)</span><br><span class="line">wug3.txt (modified)</span><br><span class="line">  </span><br><span class="line">=== Untracked Files ===</span><br><span class="line">random.stuff</span><br></pre></td></tr></table></figure>
+<h4 id="用法-5"><a href="#用法-5" class="headerlink" title="用法"></a>用法</h4><p><code>java gitlet.Main status</code></p>
+<h4 id="注意-5"><a href="#注意-5" class="headerlink" title="注意"></a>注意</h4><p>这几种情况会被视为 “modified but not staged”:</p>
+<ol>
+<li>已被跟踪，被更改，但未 add</li>
+<li>已add，用于添加，但是内容与工作区不同</li>
+<li>已add，用于添加，但是被删掉了</li>
+<li>没有被暂存用于删除，但是已经被跟踪且已经删掉了</li>
+</ol>
+<h4 id="runtime-4"><a href="#runtime-4" class="headerlink" title="runtime"></a>runtime</h4><p>取决于工作目录中的数据量加上要添加或删除的文件数加上分支数</p>
+<h3 id="checkout"><a href="#checkout" class="headerlink" title="checkout"></a>checkout</h3><h4 id="三种用法"><a href="#三种用法" class="headerlink" title="三种用法"></a>三种用法</h4><ol>
+<li><p><code>java gitlet.Main checkout -- [file name]</code><br>将当前commit的文件版本覆盖工作区中的文件，且不会被暂存</p>
+</li>
+<li><p><code>java gitlet.Main checkout [commit id] -- [file name]</code><br>获取指定的 commit id 的文件版本，覆盖当前工作区的文件</p>
+</li>
+<li><p><code>java gitlet.Main checkout [branch name]</code><br>切换分支，将新分支的所有文件覆盖当前工作区，清空暂存区，所有旧分支的被跟踪的文件在新分支中不存在的话，会被清除</p>
+</li>
+</ol>
+<h4 id="runtime-5"><a href="#runtime-5" class="headerlink" title="runtime"></a>runtime</h4><p>与被checkout的文件呈线性关系<br>与commit 快照中的文件呈线性关系</p>
+<h4 id="失败情况-6"><a href="#失败情况-6" class="headerlink" title="失败情况"></a>失败情况</h4><ol>
+<li>文件在之前commit中不存在，打印<code>File does not exist in that commit.</code></li>
+<li>不存在指定的 commit id，打印<br><code>No commit with that id exists.</code></li>
+<li>不存在指定名字的branch， 打印<code>No such branch exists.</code>，如果checkout到当前分支，打印<code>No need to checkout the current branch.</code>，如果当前分支有未跟踪的文件，并且该文件被checkout后的文件覆盖，打印<code>There is an untracked file in the way; delete it, or add and commit it first.</code>并退出</li>
+</ol>
+<h3 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h3><p>创建一个新分支，这个新分支只是指向当前commit的指针而已（SHA-1标识）</p>
+<h4 id="用法-6"><a href="#用法-6" class="headerlink" title="用法"></a>用法</h4><p><code>java gitlet.Main branch [branch name]</code></p>
+<h4 id="注意-6"><a href="#注意-6" class="headerlink" title="注意"></a>注意</h4><ol>
+<li>不会立刻切换到新分支</li>
+<li>调用<code>branch</code>之前，应该在名为master的默认分支上运行</li>
+</ol>
+<h4 id="失败情况-7"><a href="#失败情况-7" class="headerlink" title="失败情况"></a>失败情况</h4><p>给定名称已经存在，打印<code>A branch with that name already exists.</code></p>
+<h3 id="rm-branch-rm"><a href="#rm-branch-rm" class="headerlink" title="rm-branch rm"></a>rm-branch rm</h3><p>删除指定名称的分支指针</p>
+<h4 id="用法-7"><a href="#用法-7" class="headerlink" title="用法"></a>用法</h4><p><code>java gitlet.Main rm-branch [branch name]</code></p>
+<h4 id="注意-7"><a href="#注意-7" class="headerlink" title="注意"></a>注意</h4><p>只是删除与该分支关联的指针，而并没有删除 commit tree 中的commit</p>
+<h4 id="runtime-6"><a href="#runtime-6" class="headerlink" title="runtime"></a>runtime</h4><p>常数时间</p>
+<h4 id="失败情况-8"><a href="#失败情况-8" class="headerlink" title="失败情况"></a>失败情况</h4><p>指定分支名称不存在，打印<code>A branch with that name does not exist.</code><br>删除当前分支，打印<code>annot remove the current branch.</code> 并 中止</p>
+<h3 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h3><p>将 HEAD 移动到指定的 commit id，然后删除所有已被跟踪但是在指定commit中不存在的文件，暂存区清空，这里的<code>[commit id]</code>可以直接缩写为<code>checkout</code></p>
+<h4 id="用法-8"><a href="#用法-8" class="headerlink" title="用法"></a>用法</h4><p><code>java gitlet.Main reset [commit id]</code></p>
+<h4 id="失败情况-9"><a href="#失败情况-9" class="headerlink" title="失败情况"></a>失败情况</h4><p>不存在指定的 id，打印<code>No commit with that id exists.</code>，存在未跟踪的文件，而且即将被覆盖，打印<code>There is an untracked file in the way; delete it, or add and commit it first.</code></p>
+<h4 id="注意-8"><a href="#注意-8" class="headerlink" title="注意"></a>注意</h4><p>很接近git中的<code>git reset --hard [commit hash]</code></p>
+<h3 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h3><ol>
+<li>引入一个概念叫分割点，就是开始出现两个分支的commit<ol>
+<li>如果给定的分支与分割点是同一个提交，啥都不做，打印<code>Given branch is an ancestor of the current branch.</code></li>
+<li>如果分割点是当前分支，打印<code>Current branch fast-forwarded.</code></li>
+</ol>
+</li>
+<li>自分割点来，当前branch没修改过，在给定 branch 中修改的，直接覆盖，然后自动暂存</li>
+<li>当前branch修改，给定branch为修改，不动</li>
+<li>相同方式修改，不动（都删除了的话，也不动）</li>
+<li>分割点不存在，存在当前分支的文件，不动</li>
+<li>分割点不存在，存在给定branch的文件，check out 然后暂存</li>
+<li>存在于分割点，当前branch未修改，给定branch不存在的，被删除</li>
+<li>存在于分割点，给定branch未修改，当前branch不存在，也被删除</li>
+<li>不同方式修改，将冲突文件内容替换为：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">contents of file in current branch</span><br><span class="line">=======</span><br><span class="line">contents of file in given branch</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+将 “contents of …” 替换为指定文件的内容<br>已删除的文件视为空文件，直接连接，如果末尾没有换行符，可能类似于：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">contents of file in current branch=======</span><br><span class="line">contents of file in given branch&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="用法-9"><a href="#用法-9" class="headerlink" title="用法"></a>用法</h4><p><code>java gitlet.Main merge [branch name]</code></p>
+<h4 id="注意-9"><a href="#注意-9" class="headerlink" title="注意"></a>注意</h4><ol>
+<li>merge之后会自动commit并记录一个log message<code>Merged [given branch name] into [current branch name].</code></li>
+<li>如果merge遇到冲入，在终端打印<code>Encountered a merge conflict.</code></li>
+</ol>
+<h4 id="runtime-7"><a href="#runtime-7" class="headerlink" title="runtime"></a>runtime</h4><p>$O(NlgN + D)$，其中 $N$ 是两个分支的祖先提交的总数，$D$ 是这些提交下的所有文件的总数据量</p>
+<h4 id="失败情况-10"><a href="#失败情况-10" class="headerlink" title="失败情况"></a>失败情况</h4><ol>
+<li>存在已暂存的添加或删除操作，打印<code>You have uncommitted changes.</code>并退出</li>
+<li>不存在指定名称的分支，打印<code>A branch with that name does not exist.</code></li>
+<li>将分支与其自身合并，打印<code>Cannot merge a branch with itself.</code></li>
+<li>合并操作由于 commit 中没有更改而导致错误，则直接让正常的提交错误消息通过</li>
+<li>如果覆盖或删除当前提交中未跟踪的文件，打印<code>There is an untracked file in the way; delete it, or add and commit it first.</code> 并退出</li>
+</ol>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2025/09/28/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%95%B0%E7%BB%84%E8%A1%A8%E7%A4%BA%E6%8E%A8%E5%AF%BC/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/cover18.jpg">
+                </span>
+                <h6 class="trm-op-title">二叉树的数组表示推导</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/09/28</li>
+                <li>08:04</li>
+                <li>数据结构</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-older-publications-card trm-scroll-animation trm-active-el">
+        <div class="trm-older-publication">
+            
+            <a class="trm-op-top trm-anima-link" href="/2025/09/26/task-of-25fall/">
+                <span class="trm-op-cover">
+                    <img alt="cover" class="no-fancybox" src="https://132-1331126615.cos.ap-guangzhou.myqcloud.com/cover16.jpg">
+                </span>
+                <h6 class="trm-op-title">Task of 25fall</h6>
+            </a>
+            <div class="trm-divider trm-mb-15 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>25/09/26</li>
+                <li>07:55</li>
+                <li>杂谈</li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <div class="row justify-content-center">
+    <div class="col-lg-4">
+        <div class="trm-counter-up trm-scroll-animation trm-active-el">
+            <div class="trm-counter-number"><span class="trm-counter">30</span><span class="trm-counter-symbol">+</span>
+            </div>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <div class="trm-label">Posts</div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="trm-counter-up trm-scroll-animation trm-active-el">
+            <div class="trm-counter-number"><span class="trm-counter">8</span><span class="trm-counter-symbol">+</span>
+            </div>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <div class="trm-label">Diary</div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="trm-counter-up trm-scroll-animation trm-active-el">
+            <div class="trm-counter-number"><span class="trm-counter">85</span><span class="trm-counter-symbol">+</span>
+            </div>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <div class="trm-label">fans</div>
+        </div>
+    </div>
+</div>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+    <div id="post-toc" class="trm-post-toc">
+      <div class="trm-post-toc-header">
+        目录导航
+				<span id="post-toc-top">
+					置顶
+				</span>
+      </div>
+      <div class="trm-post-toc-content">
+        <ol class="trm-toc"><li class="trm-toc-item trm-toc-level-2" title="前置信息"><a rel="nofollow" class="trm-toc-link" href="#前置信息"><span class="trm-toc-number">1.</span> <span class="trm-toc-text">前置信息</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="lab6 中提到的重要方法"><a rel="nofollow" class="trm-toc-link" href="#lab6-中提到的重要方法"><span class="trm-toc-number">1.1.</span> <span class="trm-toc-text">lab6 中提到的重要方法</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="gitlet介绍"><a rel="nofollow" class="trm-toc-link" href="#gitlet介绍"><span class="trm-toc-number">2.</span> <span class="trm-toc-text">gitlet介绍</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="注意"><a rel="nofollow" class="trm-toc-link" href="#注意"><span class="trm-toc-number">2.1.</span> <span class="trm-toc-text">注意</span></a></li><li class="trm-toc-item trm-toc-level-3" title="几个概念"><a rel="nofollow" class="trm-toc-link" href="#几个概念"><span class="trm-toc-number">2.2.</span> <span class="trm-toc-text">几个概念</span></a></li><li class="trm-toc-item trm-toc-level-3" title="相对于 git 的简化"><a rel="nofollow" class="trm-toc-link" href="#相对于-git-的简化"><span class="trm-toc-number">2.3.</span> <span class="trm-toc-text">相对于 git 的简化</span></a></li><li class="trm-toc-item trm-toc-level-3" title="blob的独特性"><a rel="nofollow" class="trm-toc-link" href="#blob的独特性"><span class="trm-toc-number">2.4.</span> <span class="trm-toc-text">blob的独特性</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="建议与规范"><a rel="nofollow" class="trm-toc-link" href="#建议与规范"><span class="trm-toc-number">3.</span> <span class="trm-toc-text">建议与规范</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="类的实现"><a rel="nofollow" class="trm-toc-link" href="#类的实现"><span class="trm-toc-number">3.1.</span> <span class="trm-toc-text">类的实现</span></a></li><li class="trm-toc-item trm-toc-level-3" title="runtime和memory要求"><a rel="nofollow" class="trm-toc-link" href="#runtime和memory要求"><span class="trm-toc-number">3.2.</span> <span class="trm-toc-text">runtime和memory要求</span></a></li><li class="trm-toc-item trm-toc-level-3" title="失败情况"><a rel="nofollow" class="trm-toc-link" href="#失败情况"><span class="trm-toc-number">3.3.</span> <span class="trm-toc-text">失败情况</span></a></li></ol></li><li class="trm-toc-item trm-toc-level-2" title="参数响应"><a rel="nofollow" class="trm-toc-link" href="#参数响应"><span class="trm-toc-number">4.</span> <span class="trm-toc-text">参数响应</span></a><ol class="trm-toc-child"><li class="trm-toc-item trm-toc-level-3" title="init"><a rel="nofollow" class="trm-toc-link" href="#init"><span class="trm-toc-number">4.1.</span> <span class="trm-toc-text">init</span></a></li><li class="trm-toc-item trm-toc-level-3" title="add"><a rel="nofollow" class="trm-toc-link" href="#add"><span class="trm-toc-number">4.2.</span> <span class="trm-toc-text">add</span></a></li><li class="trm-toc-item trm-toc-level-3" title="commit"><a rel="nofollow" class="trm-toc-link" href="#commit"><span class="trm-toc-number">4.3.</span> <span class="trm-toc-text">commit</span></a></li><li class="trm-toc-item trm-toc-level-3" title="rm"><a rel="nofollow" class="trm-toc-link" href="#rm"><span class="trm-toc-number">4.4.</span> <span class="trm-toc-text">rm</span></a></li><li class="trm-toc-item trm-toc-level-3" title="log"><a rel="nofollow" class="trm-toc-link" href="#log"><span class="trm-toc-number">4.5.</span> <span class="trm-toc-text">log</span></a></li><li class="trm-toc-item trm-toc-level-3" title="global-log"><a rel="nofollow" class="trm-toc-link" href="#global-log"><span class="trm-toc-number">4.6.</span> <span class="trm-toc-text">global-log</span></a></li><li class="trm-toc-item trm-toc-level-3" title="find"><a rel="nofollow" class="trm-toc-link" href="#find"><span class="trm-toc-number">4.7.</span> <span class="trm-toc-text">find</span></a></li><li class="trm-toc-item trm-toc-level-3" title="status"><a rel="nofollow" class="trm-toc-link" href="#status"><span class="trm-toc-number">4.8.</span> <span class="trm-toc-text">status</span></a></li><li class="trm-toc-item trm-toc-level-3" title="checkout"><a rel="nofollow" class="trm-toc-link" href="#checkout"><span class="trm-toc-number">4.9.</span> <span class="trm-toc-text">checkout</span></a></li><li class="trm-toc-item trm-toc-level-3" title="branch"><a rel="nofollow" class="trm-toc-link" href="#branch"><span class="trm-toc-number">4.10.</span> <span class="trm-toc-text">branch</span></a></li><li class="trm-toc-item trm-toc-level-3" title="rm-branch rm"><a rel="nofollow" class="trm-toc-link" href="#rm-branch-rm"><span class="trm-toc-number">4.11.</span> <span class="trm-toc-text">rm-branch rm</span></a></li><li class="trm-toc-item trm-toc-level-3" title="reset"><a rel="nofollow" class="trm-toc-link" href="#reset"><span class="trm-toc-number">4.12.</span> <span class="trm-toc-text">reset</span></a></li><li class="trm-toc-item trm-toc-level-3" title="merge"><a rel="nofollow" class="trm-toc-link" href="#merge"><span class="trm-toc-number">4.13.</span> <span class="trm-toc-text">merge</span></a></li></ol></li></ol>
+      </div>
+    </div>
+
+            
+<div class="trm-fixed-container">
+    
+        <div class="trm-fixed-btn post-toc-btn" data-title="目录">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-th-list"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-book-reader"></use>
+</svg>
+        </div>
+    
+    
+        <div class="trm-fixed-btn hidden-md" data-title="单栏和双栏切换" onclick="asyncFun.switchSingleColumn()">
+            <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-arrows-alt-h"></use>
+</svg>
+        </div>
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <svg class="symbol-icon " aria-hidden="true">
+    <use xlink:href="#icon-fa-arrow-up"></use>
+</svg>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://npm.elemecdn.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.2.6"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+		
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.2.6"></script>
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+</body>
+
+</html>
